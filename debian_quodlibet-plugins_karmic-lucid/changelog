@@ -1,0 +1,5 @@
+quodlibet-plugins (%ver%~rev%rev%~ppa%ppa%~%dist%) %dist%; urgency=medium
+
+  * unofficial/untested trunk build
+
+ -- Christoph Reiter <christoph.reiter@gmx.at>  %date%

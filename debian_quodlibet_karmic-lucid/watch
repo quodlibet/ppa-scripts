@@ -1,0 +1,4 @@
+version=2
+
+http://code.google.com/p/quodlibet/downloads/list \
+    (?:.*/)?quodlibet-([\d\.]*).tar.gz

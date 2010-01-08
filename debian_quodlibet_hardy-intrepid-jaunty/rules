@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+DEB_PYTHON_SYSTEM = pycentral
+DEB_INSTALL_DOCS_ALL =
+DEB_INSTALL_CHANGELOGS_ALL = NEWS
+DEB_DH_INSTALL_SOURCEDIR = $(DEB_DESTDIR)
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/python-distutils.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+
+DEFAULT_PYTHON = `pyversions -d`
+IMAGES_DIR = debian/tmp/usr/lib/${DEFAULT_PYTHON}/*-packages/quodlibet/images
+EXFALSO_ICON = ${IMAGES_DIR}/exfalso.png
+QUODLIBET_ICON = ${IMAGES_DIR}/quodlibet.png
+PIXMAPS_DIR = usr/share/pixmaps
+
+binary-install/exfalso::
+	cp ${EXFALSO_ICON} debian/exfalso/${PIXMAPS_DIR}
+	rm debian/exfalso/usr/lib/${DEFAULT_PYTHON}/*-packages/quodlibet/*.so
+
+binary-install/quodlibet::
+	cp ${QUODLIBET_ICON} debian/quodlibet/${PIXMAPS_DIR}

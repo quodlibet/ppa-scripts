@@ -1,0 +1,14 @@
+Don't build gobject extensions
+--- a/gdist/__init__.py
++++ b/gdist/__init__.py
+@@ -94,7 +94,8 @@
+         return os.name != 'nt' and bool(self.shortcuts)
+ 
+     def has_gobject_ext(self):
+-        return os.name != 'nt' and bool(self.gobject_modules)
++        #return os.name != 'nt' and bool(self.gobject_modules)
++        return False
+ 
+     def has_man_pages(self):
+         return os.name != 'nt' and bool(self.man_pages)
+

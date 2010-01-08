@@ -1,0 +1,20 @@
+[unstable]
+fqdn = ppa.launchpad.net
+method = ftp
+incoming = ~lazka/dumpingplace/ubuntu/
+login = anonymous
+allow_unsigned_uploads = 0
+
+[stable]
+fqdn = ppa.launchpad.net
+method = ftp
+incoming = ~lazka/ppa/ubuntu/
+login = anonymous
+allow_unsigned_uploads = 0
+
+[experimental]
+fqdn = ppa.launchpad.net
+method = ftp
+incoming = ~lazka/expedition/ubuntu/
+login = anonymous
+allow_unsigned_uploads = 0

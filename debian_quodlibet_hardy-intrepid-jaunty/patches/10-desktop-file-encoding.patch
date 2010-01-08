@@ -1,0 +1,29 @@
+Remove unused encoding and update categories.
+--- a/exfalso.desktop.in
++++ b/exfalso.desktop.in
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=Ex Falso
+ _GenericName=Audio tag editor
+ _Comment=Edit tags in your audio files
+@@ -7,4 +6,4 @@
+ Terminal=false
+ Type=Application
+ Icon=exfalso.png
+-Categories=Application;AudioVideo;GTK
++Categories=AudioVideo;Audio;GTK
+--- a/quodlibet.desktop.in
++++ b/quodlibet.desktop.in
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=Quod Libet
+ _GenericName=Music Player
+ _Comment=Listen to, browse, or edit your audio collection
+@@ -7,4 +6,4 @@
+ Terminal=false
+ Type=Application
+ Icon=quodlibet.png
+-Categories=Application;AudioVideo;AudioPlayer;GTK
++Categories=AudioVideo;Audio;Player;GTK

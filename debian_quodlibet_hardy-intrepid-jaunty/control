@@ -1,0 +1,65 @@
+Source: quodlibet
+Section: sound
+Priority: optional
+Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
+XSBC-Original-Maintainer: Tristan Seligmann <mithrandi@mithrandi.net>
+Uploaders: Christine Spang <christine@debian.org>
+Build-Depends: debhelper (>= 5.0.37.3), python-dev, cdbs (>= 0.4.42),
+    python-gtk2-dev (>= 2.12), pkg-config, libgtk2.0-dev, intltool,
+    python-central (>= 0.5.2)
+Standards-Version: 3.8.0
+XS-Python-Version: current, >= 2.4
+Homepage: http://code.google.com/p/quodlibet/
+
+Package: exfalso
+Architecture: all
+Depends: ${python:Depends},
+    python-mutagen (>= 1.14),
+    python-gtk2 (>= 2.10), libgtk2.0-0 (>= 2.10)
+Recommends: quodlibet-plugins
+Suggests: python-ctypes, libmodplug0c2
+Conflicts: quodlibet-plugins (<< 20090127), quodlibet (<< 2.0)
+XB-Python-Version: ${python:Versions}
+Description: audio tag editor for GTK+
+ Ex Falso displays and edits audio metadata tags. Supported formats include
+ MP3, Ogg Vorbis, FLAC, Musepack (MPC), WavPack, and MOD/XM/IT.
+ .
+ Notable features include:
+  * Freeform tag editing for most supported formats, including ID3v2
+  * Multiple values for tag keys
+  * Flexible rename-by-tags and tag-by-filename patterns
+  * Extensible using simple Python-based plugins
+  * Edit multiple files in several formats at once
+
+Package: quodlibet
+Architecture: all
+Depends: ${python:Depends},
+    exfalso (= ${source:Version}),
+    gstreamer0.10-plugins-base (>= 0.10.3), python-gst0.10 (>= 0.10.1),
+    gstreamer0.10-plugins-good, gstreamer0.10-plugins-ugly
+Recommends: quodlibet-ext (>= ${source:Version}),
+    gstreamer0.10-alsa, gstreamer0.10-gnomevfs, python-feedparser,
+    python-gpod, python-dbus, quodlibet-plugins
+Suggests: gstreamer0.10-plugins-bad
+XB-Python-Version: ${python:Versions}
+Description: audio library manager and player for GTK+
+ Quod Libet is a music management program. It provides several different ways
+ to view your audio library, as well as support for Internet radio and
+ audio feeds. It has extremely flexible metadata tag editing and searching
+ capabilities, using the same interface as Ex Falso.
+ .
+ Supported formats include MP3, Ogg Vorbis, FLAC, Musepack (MPC), WavPack,
+ and MOD/XM/IT.
+
+Package: quodlibet-ext
+Architecture: any
+Depends: ${shlibs:Depends},
+    quodlibet (= ${source:Version}),
+    quodlibet-plugins (>= 20090127)
+XB-Python-Version: ${python:Versions}
+Description: extensions for the Quod Libet audio player
+ This package contains architecture-dependent extensions to Quod
+ Libet. It adds a notification area icon and multimedia key support
+ to Quod Libet.
+ .
+ Quod Libet is an audio player for GTK+.

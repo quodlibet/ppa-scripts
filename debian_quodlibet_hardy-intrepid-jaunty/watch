@@ -1,0 +1,4 @@
+version=2
+
+http://www.sacredchao.net/quodlibet/wiki/Download \
+    (?:.*/)?quodlibet-([\d\.]*).tar.gz

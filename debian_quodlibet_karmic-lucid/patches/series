@@ -1,0 +1,3 @@
+10-desktop-file-encoding.patch
+20-no-gobject-build.patch
+40-no-po-update.patch

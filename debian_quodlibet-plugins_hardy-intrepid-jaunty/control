@@ -1,0 +1,28 @@
+Source: quodlibet-plugins
+Section: sound
+Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
+Build-Depends: debhelper (>= 4.0), python, quilt
+Priority: extra
+Standards-Version: 3.7.3
+XS-Python-Version: current
+
+Package: quodlibet-plugins
+Architecture: all
+Depends: exfalso (>= 2.0), ${python:Depends}
+Recommends: python-musicbrainz, notification-daemon, python-cddb,
+    python-dbus, python-gnome2, librsvg2-common
+XB-Python-Version: ${python:Versions}
+Description: various contributed plugins for Quod Libet
+ This package contains a number of contributed plugins for the Quod
+ Libet media player, each extending the player's functionality in
+ different ways.
+ .
+ Notable plugins in this package include:
+ .
+  - Animated On-Screen Display
+  - MusicBrainz and CDDB/FreeDB tag lookups
+  - Alarm clock and lullaby, start and stop playing music at specified times
+  - Export a playlist as HTML
+  - Export a Jabber JEP-118 file
+  - Burn CDs with K3b
+  - AudioScrobbler/Last.fm submission (http://www.last.fm)
