@@ -8,7 +8,7 @@ Standards-Version: 3.8.3
 Package: quodlibet-plugins
 Architecture: all
 Depends: exfalso (>= 2.0), ${python:Depends}
-Recommends: python-musicbrainz, notification-daemon, python-cddb,
+Recommends: python-musicbrainz2, notification-daemon, python-cddb,
     python-dbus, python-gnome2, librsvg2-common
 Description: various contributed plugins for Quod Libet
  This package contains a number of contributed plugins for the Quod

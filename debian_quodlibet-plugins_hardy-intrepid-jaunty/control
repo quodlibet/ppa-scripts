@@ -9,7 +9,7 @@ XS-Python-Version: current
 Package: quodlibet-plugins
 Architecture: all
 Depends: exfalso (>= 2.0), ${python:Depends}
-Recommends: python-musicbrainz, notification-daemon, python-cddb,
+Recommends: python-musicbrainz2, notification-daemon, python-cddb,
     python-dbus, python-gnome2, librsvg2-common
 XB-Python-Version: ${python:Versions}
 Description: various contributed plugins for Quod Libet
