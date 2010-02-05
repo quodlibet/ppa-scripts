@@ -3,11 +3,16 @@ import subprocess
 import os
 import sys
 
+release = False
+release_rev = "1fcdfa4dce"
+release_ver = "2.2"
+release_ver += "-0"
+
 #########################################################
 ###################### Settings #########################
 #########################################################
 package = "quodlibet"
-package_version = "2.1.99-0"
+package_version = "2.2.99-0"
 ppa_version = "1"
 #########################################################
 #########################################################
@@ -61,6 +66,8 @@ clean()
 p("hg revert --all")
 p("hg pull")
 p("hg up -C")
+if release:
+    p("hg up -r%s" % release_rev)
 
 rev = p("hg tip")[-1].split()[1].replace(":","~")
 date = p("date -R")[-1]
@@ -71,11 +78,14 @@ for release, folder in releases.iteritems():
     p("cp -R ../../%s ." % folder)
     p("mv %s debian" % folder)
 
+    if not release:
+        version_str = "%s~rev%s~ppa%s" % (package_version, rev, ppa_version)
+    else:
+        version_str = "%s~ppa%s" % (release_ver, ppa_version)
+
     changelog = "debian/changelog"
     t = open(changelog).read()
-    t = t.replace("%ver%", package_version)
-    t = t.replace("%rev%", rev)
-    t = t.replace("%ppa%", ppa_version)
+    t = t.replace("%version%", version_str)
     t = t.replace("%dist%", release)
     t = t.replace("%date%", date)
     open(changelog, "w").write(t)

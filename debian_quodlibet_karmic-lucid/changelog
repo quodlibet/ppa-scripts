@@ -1,4 +1,4 @@
-quodlibet (%ver%~rev%rev%~ppa%ppa%~%dist%) %dist%; urgency=medium
+quodlibet (%version%~%dist%) %dist%; urgency=medium
 
   * unofficial/untested trunk build
 
