@@ -3,7 +3,7 @@ import subprocess
 import os
 import sys
 
-release = False
+release_flag = False
 release_rev = "1fcdfa4dce"
 release_ver = "2.2"
 release_ver += "-0"
@@ -66,7 +66,7 @@ clean()
 p("hg revert --all")
 p("hg pull")
 p("hg up -C")
-if release:
+if release_flag:
     p("hg up -r%s" % release_rev)
 
 rev = p("hg tip")[-1].split()[1].replace(":","~")
@@ -78,7 +78,7 @@ for release, folder in releases.iteritems():
     p("cp -R ../../%s ." % folder)
     p("mv %s debian" % folder)
 
-    if not release:
+    if not release_flag:
         version_str = "%s~rev%s~ppa%s" % (package_version, rev, ppa_version)
     else:
         version_str = "%s~ppa%s" % (release_ver, ppa_version)
