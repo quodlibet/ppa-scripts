@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Christoph Reiter <christoph.reiter@gmx.at>
 Build-Depends-Indep: python-support (>= 0.8)
 Build-Depends: debhelper (>= 6), python (>= 2.5), quilt,
- python-pyrex, python-dev, libicu-dev
+ python-pyrex, python-all-dev, libicu-dev
 Standards-Version: 3.8.0
 Homepage: http://code.google.com/p/python-collate/
 
