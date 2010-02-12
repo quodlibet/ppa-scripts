@@ -1,0 +1,30 @@
+Source: python-collate
+Section: python
+Priority: optional
+Maintainer: Christoph Reiter <christoph.reiter@gmx.at>
+Build-Depends-Indep: python-central (>= 0.5)
+Build-Depends: cdbs (>= 0.4.42), debhelper (>= 6), python (>= 2.5), quilt,
+ python-pyrex, python-dev, libicu-dev
+Standards-Version: 3.8.0
+XS-Python-Version: >= 2.5
+Homepage: http://code.google.com/p/python-collate/
+
+Package: python-collate
+Architecture: any
+Depends: ${python:Depends}, ${misc:Depends}
+Recommends: libicu40
+Provides: ${python:Provides}
+XB-Python-Version: ${python:Versions}
+Description: library
+ pycollate is an interface to various collation algorithms for Python.
+ .
+ Supported backends:
+ - icu - Based on the IBM ICU toolkit and Jim Fulton's zope.ucol.
+ - uca - Native Python UCA implementation, based on James Tauber's.
+ - syslocale - Native OS collation routines.
+ .
+ The different backends have varying features and behaviors; which one
+ is best depends on your goals. A specific backend can be used, or the
+ default one (usually ICU or UCA) can also be used.
+ pycollate also provides tools to perform word-wise and numeric sorts.
+ pycollate, as with all Unicode collation tools, is a work in progress.
