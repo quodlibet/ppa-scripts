@@ -1,4 +1,4 @@
-mutagen (%ver%~rev%rev%~ppa%ppa%~%dist%) %dist%; urgency=medium
+mutagen (%version%~%dist%) %dist%; urgency=medium
 
   * unofficial/untested trunk build
 
