@@ -92,8 +92,8 @@ os.chdir("..")
 fail(p("debsign %s*.changes %s*.dsc" % ((package,) * 2)))
 
 dput = "dput --config %s" % dput_cfg
-fail(p("%s stable %s*.changes" % (dput, package)))
-#fail(p("%s unstable %s*.changes" % (dput, package)))
+#fail(p("%s stable %s*.changes" % (dput, package)))
+fail(p("%s unstable %s*.changes" % (dput, package)))
 #fail(p("%s experimental %s*.changes" % (dput, package)))
 
 clean()

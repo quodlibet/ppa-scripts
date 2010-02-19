@@ -15,16 +15,16 @@ Depends: ${python:Depends}, ${misc:Depends}
 Recommends: libicu40
 Provides: ${python:Provides}
 XB-Python-Version: ${python:Versions}
-Description: library
- pycollate is an interface to various collation algorithms for Python.
- .
+Description: interface to various collation algorithms for Python
  Supported backends:
  - icu - Based on the IBM ICU toolkit and Jim Fulton's zope.ucol.
- - uca - Native Python UCA implementation, based on James Tauber's.
  - syslocale - Native OS collation routines.
+ - codepoint - Raw Unicode codepoint comparison
  .
  The different backends have varying features and behaviors; which one
- is best depends on your goals. A specific backend can be used, or the
- default one (usually ICU or UCA) can also be used.
+ is best depends on your goals. A specific backend can be used, or a
+ "best" backend is chosen by default.
+ .
  pycollate also provides tools to perform word-wise and numeric sorts.
- pycollate, as with all Unicode collation tools, is a work in progress.
+ .
+ pycollate, as with all Unicode collation tools, is a wo

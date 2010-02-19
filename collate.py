@@ -44,11 +44,11 @@ def fail(out):
 dput_cfg = os.path.join(os.getcwd(), "dput.cf")
 
 releases = {
-    #"lucid": "debian_collate_karmic-lucid",
-    #"karmic": "debian_collate_karmic-lucid",
-    "jaunty": "debian_collate_hardy-intrepid-jaunty",}
-    #"hardy": "debian_collate_hardy-intrepid-jaunty",
-    #"intrepid": "debian_collate_hardy-intrepid-jaunty"}
+    "lucid": "debian_collate_karmic-lucid",
+    "karmic": "debian_collate_karmic-lucid",
+    "jaunty": "debian_collate_hardy-intrepid-jaunty",
+    "hardy": "debian_collate_hardy-intrepid-jaunty",
+    "intrepid": "debian_collate_hardy-intrepid-jaunty"}
 
 start = os.getcwd()
 clean()
