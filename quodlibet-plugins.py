@@ -2,12 +2,17 @@
 import subprocess
 import os
 import sys
-import datetime
+
+release_flag = True
+release_rev = "213a162f6d"
+release_ver = "1:2.2.1"
+release_ver += "-0"
 
 #########################################################
 ###################### Settings #########################
 #########################################################
 package = "quodlibet-plugins"
+package_version = "1:2.2.99-0"
 ppa_version = "1"
 #########################################################
 #########################################################
@@ -65,8 +70,9 @@ clean()
 p("hg revert --all")
 p("hg pull")
 p("hg up -C")
+if release_flag:
+    p("hg up -r%s" % release_rev)
 
-ver = datetime.date.today().strftime("%Y%m%d") + "-0"
 rev = p("hg tip")[-1].split()[1].replace(":", "~")
 date = p("date -R")[-1]
 
@@ -78,11 +84,14 @@ for release, folder in releases.iteritems():
     p("cp -R ../../%s ." % folder)
     p("mv %s debian" % folder)
 
+    if not release_flag:
+        version_str = "%s~rev%s~ppa%s" % (package_version, rev, ppa_version)
+    else:
+        version_str = "%s~ppa%s" % (release_ver, ppa_version)
+
     changelog = "debian/changelog"
     t = open(changelog).read()
-    t = t.replace("%ver%", ver)
-    t = t.replace("%rev%", rev)
-    t = t.replace("%ppa%", ppa_version)
+    t = t.replace("%version%", version_str)
     t = t.replace("%dist%", release)
     t = t.replace("%date%", date)
     open(changelog, "w").write(t)
@@ -96,7 +105,7 @@ fail(p("debsign %s*.changes %s*.dsc" % ((package,) * 2)))
 
 dput = "dput --config '%s'" % dput_cfg
 #fail(p("%s stable %s*.changes" % (dput, package)))
-fail(p("%s unstable %s*.changes" % (dput, package)))
-#fail(p("%s experimental %s*.changes" % (dput, package)))
+#fail(p("%s unstable %s*.changes" % (dput, package)))
+fail(p("%s experimental %s*.changes" % (dput, package)))
 
 clean()

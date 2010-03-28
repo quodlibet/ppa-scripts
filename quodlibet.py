@@ -4,8 +4,8 @@ import os
 import sys
 
 release_flag = False
-release_rev = "1fcdfa4dce"
-release_ver = "2.2"
+release_rev = "213a162f6d"
+release_ver = "2.2.1"
 release_ver += "-0"
 
 #########################################################
@@ -98,7 +98,7 @@ fail(p("debsign %s*.changes %s*.dsc" % ((package,) * 2)))
 
 dput = "dput --config '%s'" % dput_cfg
 #fail(p("%s stable %s*.changes" % (dput, package)))
-fail(p("%s unstable %s*.changes" % (dput, package)))
-#fail(p("%s experimental %s*.changes" % (dput, package)))
+#fail(p("%s unstable %s*.changes" % (dput, package)))
+fail(p("%s experimental %s*.changes" % (dput, package)))
 
 clean()

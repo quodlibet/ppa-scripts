@@ -7,7 +7,7 @@ import sys
 ###################### Settings #########################
 #########################################################
 package = "python-collate"
-package_version = "0.0.0.1-0"
+package_version = "0.2.99-0"
 ppa_version = "1"
 #########################################################
 #########################################################
@@ -66,7 +66,6 @@ rev = p("hg tip")[-1].split()[1].replace(":","~")
 date = p("date -R")[-1]
 
 for release, folder in releases.iteritems():
-    print os.getcwd()
     p("rm -R debian")
     p("cp -R ../%s ." % folder)
     p("mv %s debian" % folder)
@@ -88,7 +87,7 @@ fail(p("debsign %s*.changes %s*.dsc" % ((package,) * 2)))
 
 dput = "dput --config '%s'" % dput_cfg
 #fail(p("%s stable %s*.changes" % (dput, package)))
-#fail(p("%s unstable %s*.changes" % (dput, package)))
-fail(p("%s experimental %s*.changes" % (dput, package)))
+fail(p("%s unstable %s*.changes" % (dput, package)))
+#fail(p("%s experimental %s*.changes" % (dput, package)))
 
 clean()
