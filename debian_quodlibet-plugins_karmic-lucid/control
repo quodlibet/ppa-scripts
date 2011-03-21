@@ -1,7 +1,7 @@
 Source: quodlibet-plugins
 Section: sound
 Maintainer: Christine Spang <christine@debian.org>
-Build-Depends: debhelper (>= 7.0), python-dev (>= 2.5.4), python-support (>= 0.90)
+Build-Depends: debhelper (>= 7.0), python, python-support (>= 0.90)
 Priority: extra
 Standards-Version: 3.8.3
 

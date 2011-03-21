@@ -49,11 +49,12 @@ def fail(out):
 dput_cfg = os.path.join(os.getcwd(), "dput.cf")
 
 releases = {
+    "natty": "debian_quodlibet_karmic-lucid",
+    "maverick": "debian_quodlibet_karmic-lucid",
     "lucid": "debian_quodlibet_karmic-lucid",
     "karmic": "debian_quodlibet_karmic-lucid",
     "jaunty": "debian_quodlibet_hardy-intrepid-jaunty",
-    "hardy": "debian_quodlibet_hardy-intrepid-jaunty",
-    "intrepid": "debian_quodlibet_hardy-intrepid-jaunty"}
+    "hardy": "debian_quodlibet_hardy-intrepid-jaunty"}
 
 hg_dir = "quodlibet-hg"
 if not os.path.isdir(hg_dir):
@@ -98,7 +99,7 @@ fail(p("debsign %s*.changes %s*.dsc" % ((package,) * 2)))
 
 dput = "dput --config '%s'" % dput_cfg
 #fail(p("%s stable %s*.changes" % (dput, package)))
-#fail(p("%s unstable %s*.changes" % (dput, package)))
-fail(p("%s experimental %s*.changes" % (dput, package)))
+fail(p("%s unstable %s*.changes" % (dput, package)))
+#fail(p("%s experimental %s*.changes" % (dput, package)))
 
 clean()

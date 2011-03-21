@@ -4,16 +4,16 @@ import os
 import sys
 
 release_flag = False
-release_rev = "85"
-release_ver = "1.19"
+release_tag = "mutagen-1.20"
+release_ver = "1.20"
 release_ver += "-0"
 
 #########################################################
 ###################### Settings #########################
 #########################################################
 package = "mutagen"
-package_version = "1.19.99-0"
-ppa_version = "1"
+package_version = "1.20.0.99-0"
+ppa_version = "2"
 #########################################################
 #########################################################
 
@@ -48,29 +48,35 @@ def fail(out):
 #########################################################
 dput_cfg = os.path.join(os.getcwd(), "dput.cf")
 
+debian_root = os.getcwd()
+
 svn_dir = "mutagen-svn"
 if not os.path.isdir(svn_dir):
     os.mkdir(svn_dir)
 
 os.chdir(svn_dir)
-start = os.getcwd()
-clean()
 
 if not os.path.isdir(package):
-    fail(p("svn checkout http://mutagen.googlecode.com/svn/trunk/ %s" % package))
+    fail(p("svn checkout http://mutagen.googlecode.com/svn/ %s" % package))
 
 os.chdir(package)
 p("svn revert -R .")
-if release_flag:
-    rev = fail(p("svn up -r%s" % release_rev))[-1].split()[-1].strip()[:-1]
-else:
-    rev = fail(p("svn up"))[-1].split()[-1].strip()[:-1]
+rev = fail(p("svn up"))[-1].split()[-1].strip()[:-1]
 date = p("date -R")[-1]
 
+if release_flag:
+    os.chdir("tags")
+start = os.getcwd()
+clean()
+if release_flag:
+    os.chdir(release_tag)
+else:
+    os.chdir("trunk")
+
 debian = "debian_mutagen"
-for release in "lucid karmic jaunty hardy intrepid".split():
+for release in "lucid karmic jaunty hardy maverick".split():
     p("rm -R debian")
-    p("cp -R ../../%s ." % debian)
+    p("cp -R %s/%s ." % (debian_root, debian))
     p("mv %s debian" % debian)
 
     if not release_flag:
