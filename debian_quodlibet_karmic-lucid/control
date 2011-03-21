@@ -37,6 +37,7 @@ Recommends: gstreamer0.10-alsa, gstreamer0.10-gnomevfs, python-feedparser,
     python-mmkeys, python-ctypes, python-dbus, media-player-info,
     python-gpod, quodlibet-plugins
 Suggests: gstreamer0.10-plugins-bad
+Provides: quodlibet-ext
 Conflicts: quodlibte-ext
 Replaces: quodlibte-ext
 Description: audio library manager and player for GTK+
