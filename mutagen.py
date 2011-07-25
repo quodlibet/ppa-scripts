@@ -3,7 +3,7 @@ import subprocess
 import os
 import sys
 
-release_flag = True
+release_flag = False
 release_tag = "mutagen-1.20"
 release_ver = "1.20"
 release_ver += "-0"
@@ -13,7 +13,7 @@ release_ver += "-0"
 #########################################################
 package = "mutagen"
 package_version = "1.20.0.99-0"
-ppa_version = "2"
+ppa_version = "1"
 #########################################################
 #########################################################
 
@@ -99,8 +99,10 @@ os.chdir("..")
 fail(p("debsign %s*.changes %s*.dsc" % ((package,) * 2)))
 
 dput = "dput --config %s" % dput_cfg
-#fail(p("%s stable %s*.changes" % (dput, package)))
-fail(p("%s unstable %s*.changes" % (dput, package)))
+if release_flag:
+    fail(p("%s stable %s*.changes" % (dput, package)))
+else:
+    fail(p("%s unstable %s*.changes" % (dput, package)))
 #fail(p("%s experimental %s*.changes" % (dput, package)))
 
 clean()

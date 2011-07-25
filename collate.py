@@ -20,19 +20,20 @@ def p(cmd):
     pipe = subprocess.PIPE
     p = subprocess.Popen(cmd, shell=True, stdout=pipe, stderr=pipe, stdin=pipe)
     stdout, stderr = p.communicate()
-    return p.returncode, stdout.strip()
+    return p.returncode, stdout.strip(), stderr.strip()
 
 def clean():
     global start, package
     os.chdir(start)
-    cmd = "rm %s*.changes %s*.tar.gz %s*.dsc %s*.upload" % ((package,) * 4)
+    cmd = "rm %s*.changes %s*.tar.gz %s*.dsc %s*.upload  %s*.build" % ((package,) * 5)
     p(cmd)
 
 def fail(out):
-    status, stdout = out
+    status, stdout, stderr = out
     if status != 0:
         print "#" * 24
         print stdout
+        print stderr
         print "#" * 24
         clean()
         sys.exit()
@@ -42,13 +43,6 @@ def fail(out):
 # Start
 #########################################################
 dput_cfg = os.path.join(os.getcwd(), "dput.cf")
-
-releases = {
-    "maverick": "debian_collate_karmic-lucid",
-    "lucid": "debian_collate_karmic-lucid",
-    "karmic": "debian_collate_karmic-lucid",
-    "jaunty": "debian_collate_hardy-intrepid-jaunty",
-    "hardy": "debian_collate_hardy-intrepid-jaunty"}
 
 start = os.getcwd()
 clean()
@@ -62,13 +56,14 @@ p("hg revert --all")
 p("hg pull")
 p("hg up -C")
 
-rev = p("hg tip")[-1].split()[1].replace(":","~")
-date = p("date -R")[-1]
+rev = p("hg tip")[1].split()[1].replace(":","~")
+date = p("date -R")[1]
 
-for release, folder in releases.iteritems():
+debian = "debian_quodlibet"
+for release in "lucid maverick natty oneiric".split():
     p("rm -R debian")
-    p("cp -R ../%s ." % folder)
-    p("mv %s debian" % folder)
+    p("cp -R ../%s ." % debian)
+    p("mv %s debian" % debian)
 
     changelog = "debian/changelog"
     t = open(changelog).read()
@@ -79,7 +74,7 @@ for release, folder in releases.iteritems():
     t = t.replace("%date%", date)
     open(changelog, "w").write(t)
 
-    fail(p("dpkg-buildpackage -uc -us -S -I -rfakeroot"))
+    fail(p("debuild -uc -us -S -I -rfakeroot"))
 
 p("rm -Rf debian")
 os.chdir("..")
