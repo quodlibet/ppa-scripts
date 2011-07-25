@@ -3,7 +3,7 @@ import subprocess
 import os
 import sys
 
-release_flag = False
+release_flag = True
 release_tag = "mutagen-1.20"
 release_ver = "1.20"
 release_ver += "-0"
@@ -25,19 +25,20 @@ def p(cmd):
     pipe = subprocess.PIPE
     p = subprocess.Popen(cmd, shell=True, stdout=pipe, stderr=pipe, stdin=pipe)
     stdout, stderr = p.communicate()
-    return p.returncode, stdout.strip()
+    return p.returncode, stdout.strip(), stderr.strip()
 
 def clean():
     global start, package
     os.chdir(start)
-    cmd = "rm %s*.changes %s*.tar.gz %s*.dsc %s*.upload" % ((package,) * 4)
+    cmd = "rm %s*.changes %s*.tar.gz %s*.dsc %s*.upload  %s*.build" % ((package,) * 5)
     p(cmd)
 
 def fail(out):
-    status, stdout = out
+    status, stdout, stderr = out
     if status != 0:
         print "#" * 24
         print stdout
+        print stderr
         print "#" * 24
         clean()
         sys.exit()
@@ -61,8 +62,8 @@ if not os.path.isdir(package):
 
 os.chdir(package)
 p("svn revert -R .")
-rev = fail(p("svn up"))[-1].split()[-1].strip()[:-1]
-date = p("date -R")[-1]
+rev = fail(p("svn up"))[1].split()[-1].strip()[:-1]
+date = p("date -R")[1]
 
 if release_flag:
     os.chdir("tags")
@@ -74,7 +75,7 @@ else:
     os.chdir("trunk")
 
 debian = "debian_mutagen"
-for release in "lucid karmic jaunty hardy maverick".split():
+for release in "lucid maverick natty oneiric".split():
     p("rm -R debian")
     p("cp -R %s/%s ." % (debian_root, debian))
     p("mv %s debian" % debian)
@@ -91,7 +92,7 @@ for release in "lucid karmic jaunty hardy maverick".split():
     t = t.replace("%date%", date)
     open(changelog, "w").write(t)
 
-    fail(p("dpkg-buildpackage -uc -us -S -I -rfakeroot"))
+    fail(p("debuild -uc -us -S -I -rfakeroot"))
 
 p("rm -Rf debian")
 os.chdir("..")

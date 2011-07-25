@@ -3,17 +3,17 @@ import subprocess
 import os
 import sys
 
-release_flag = False
-release_rev = "213a162f6d"
-release_ver = "1:2.2.1"
+release_flag = True
+release_rev = "quodlibet-2.3.1"
+release_ver = "1:2.3.1"
 release_ver += "-0"
 
 #########################################################
 ###################### Settings #########################
 #########################################################
 package = "quodlibet-plugins"
-package_version = "1:2.2.99-0"
-ppa_version = "1"
+package_version = "1:2.3.1.99-0"
+ppa_version = "2"
 #########################################################
 #########################################################
 
@@ -25,20 +25,21 @@ def p(cmd):
     pipe = subprocess.PIPE
     p = subprocess.Popen(cmd, shell=True, stdout=pipe, stderr=pipe, stdin=pipe)
     stdout, stderr = p.communicate()
-    return p.returncode, stdout.strip()
+    return p.returncode, stdout.strip(), stderr.strip()
 
 def clean():
     global start, package
     os.chdir(start)
-    cmd = "rm %s*.changes %s*.tar.gz %s*.dsc %s*.upload" % ((package,) * 4)
+    cmd = "rm %s*.changes %s*.tar.gz %s*.dsc %s*.upload  %s*.build" % ((package,) * 5)
     p(cmd)
 
 def fail(out):
     global package
-    status, stdout = out
+    status, stdout, stderr = out
     if status != 0:
         print "#" * 24
         print stdout
+        print stderr
         print "#" * 24
         clean()
         #try renaming the folder back
@@ -53,12 +54,10 @@ def fail(out):
 dput_cfg = os.path.join(os.getcwd(), "dput.cf")
 
 releases = {
-    "natty": "debian_quodlibet-plugins_karmic-lucid",
-    "maverick": "debian_quodlibet-plugins_karmic-lucid",
     "lucid": "debian_quodlibet-plugins_karmic-lucid",
-    "karmic": "debian_quodlibet-plugins_karmic-lucid",
-    "jaunty": "debian_quodlibet-plugins_hardy-intrepid-jaunty",
-    "hardy": "debian_quodlibet-plugins_hardy-intrepid-jaunty"}
+    "maverick": "debian_quodlibet-plugins_karmic-lucid",
+    "natty": "debian_quodlibet-plugins_karmic-lucid",
+    "oneiric": "debian_quodlibet-plugins_karmic-lucid",}
 
 hg_dir = "quodlibet-hg"
 if not os.path.isdir(hg_dir):
@@ -74,8 +73,8 @@ p("hg up -C")
 if release_flag:
     p("hg up -r%s" % release_rev)
 
-rev = p("hg tip")[-1].split()[1].replace(":", "~")
-date = p("date -R")[-1]
+rev = p("hg tip")[1].split()[1].replace(":", "~")
+date = p("date -R")[1]
 
 os.rename("plugins", package)
 os.chdir(package)
@@ -97,7 +96,7 @@ for release, folder in releases.iteritems():
     t = t.replace("%date%", date)
     open(changelog, "w").write(t)
 
-    fail(p("dpkg-buildpackage -us -uc -S -I -rfakeroot"))
+    fail(p("debuild -us -uc -S -I -rfakeroot"))
 
 p("rm -Rf debian")
 os.chdir("..")
@@ -105,8 +104,8 @@ os.rename(package, "plugins")
 fail(p("debsign %s*.changes %s*.dsc" % ((package,) * 2)))
 
 dput = "dput --config '%s'" % dput_cfg
-#fail(p("%s stable %s*.changes" % (dput, package)))
-fail(p("%s unstable %s*.changes" % (dput, package)))
+fail(p("%s stable %s*.changes" % (dput, package)))
+#fail(p("%s unstable %s*.changes" % (dput, package)))
 #fail(p("%s experimental %s*.changes" % (dput, package)))
 
 clean()
