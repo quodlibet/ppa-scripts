@@ -59,7 +59,7 @@ p("hg up -C")
 rev = p("hg tip")[1].split()[1].replace(":","~")
 date = p("date -R")[1]
 
-debian = "debian_quodlibet"
+debian = "debian_collate"
 for release in "lucid maverick natty oneiric".split():
     p("rm -R debian")
     p("cp -R ../%s ." % debian)

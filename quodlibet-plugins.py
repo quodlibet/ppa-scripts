@@ -73,7 +73,7 @@ date = p("date -R")[1]
 os.rename("plugins", package)
 os.chdir(package)
 
-debian = "debian_quodlibet"
+debian = "debian_quodlibet_plugins"
 for release in "lucid maverick natty oneiric".split():
     p("rm -R debian")
     p("cp -R ../../%s ." % debian)
