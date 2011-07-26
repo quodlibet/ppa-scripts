@@ -13,7 +13,7 @@ release_ver += "-0"
 #########################################################
 package = "quodlibet"
 package_version = "2.3.1.99-0"
-ppa_version = "1"
+ppa_version = "2"
 #########################################################
 #########################################################
 
@@ -65,7 +65,7 @@ clean()
 
 p("hg revert --all")
 p("hg pull")
-p("hg up -C")
+p("hg up default -C")
 if release_flag:
     p("hg up -r%s" % release_rev)
 
