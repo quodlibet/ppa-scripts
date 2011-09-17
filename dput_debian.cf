@@ -1,0 +1,7 @@
+[local]
+fqdn = localhost
+method = local
+incoming = /home/lazka/debian_archive/mini-dinstall/incoming
+allow_unsigned_uploads = 0
+run_dinstall = 0
+post_upload_command = mini-dinstall -r

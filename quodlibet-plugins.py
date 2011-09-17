@@ -1,88 +1,63 @@
 #!/usr/bin/env python
-import subprocess
+
 import os
-import sys
+from _util import *
 
-release_flag = False
-release_rev = "quodlibet-2.3.1"
-release_ver = "1:2.3.1"
-release_ver += "-0"
+##########################################################
 
-#########################################################
-###################### Settings #########################
-#########################################################
-package = "quodlibet-plugins"
-package_version = "1:2.3.1.99-0"
-ppa_version = "2"
-#########################################################
-#########################################################
+PACKAGE= "quodlibet-plugins"
+RELEASE_TAG = "quodlibet-2.3.1"
+PPA_VERSION = "1:2.3.1.99-0"
+RELEASE_VERSION = "1:2.3.1-0"
 
-#########################################################
-# Functions
-#########################################################
-def p(cmd):
-    print "> %s" % cmd
-    pipe = subprocess.PIPE
-    p = subprocess.Popen(cmd, shell=True, stdout=pipe, stderr=pipe, stdin=pipe)
-    stdout, stderr = p.communicate()
-    return p.returncode, stdout.strip(), stderr.strip()
+##########################################################
 
-def clean():
-    global start, package
-    os.chdir(start)
-    cmd = "rm %s*.changes %s*.tar.gz %s*.dsc %s*.upload  %s*.build" % ((package,) * 5)
-    p(cmd)
+args = parse_args()
 
-def fail(out):
-    global package
-    status, stdout, stderr = out
-    if status != 0:
-        print "#" * 24
-        print stdout
-        print stderr
-        print "#" * 24
-        clean()
-        #try renaming the folder back
-        try: os.rename(package, "plugins")
-        except: pass
-        sys.exit()
-    return out
-
-#########################################################
-# Start
-#########################################################
-dput_cfg = os.path.join(os.getcwd(), "dput.cf")
+if args.dist == "ubuntu":
+    dput_cfg = os.path.join(os.getcwd(), "dput.cf")
+else:
+    dput_cfg = os.path.join(os.getcwd(), "dput_debian.cf")
 
 hg_dir = "quodlibet-hg"
 if not os.path.isdir(hg_dir):
     p("hg clone https://quodlibet.googlecode.com/hg/ %s" % hg_dir)
-os.chdir(hg_dir)
+cd(hg_dir)
 
-start = os.getcwd()
-clean()
+start_dir = os.getcwd()
+clean(start_dir, PACKAGE)
+
+try: os.rename(PACKAGE, "plugins")
+except OSError: pass
 
 p("hg revert --all")
 p("hg pull")
 p("hg up default -C")
-if release_flag:
-    p("hg up -r%s" % release_rev)
+if args.release:
+    p("hg up -r%s" % RELEASE_TAG)
 
-rev = p("hg tip")[1].split()[1].replace(":", "~")
+rev = p("hg tip")[1].split()[1].replace(":","~")
 date = p("date -R")[1]
 
-os.rename("plugins", package)
-os.chdir(package)
+os.rename("plugins", PACKAGE)
 
-debian = "debian_quodlibet-plugins"
-for release in "lucid maverick natty oneiric".split():
+cd(PACKAGE)
+
+if args.dist == "debian":
+    releases = ["unstable"]
+else:
+    releases = ["lucid", "maverick", "natty", "oneiric"]
+
+debian_dir = "debian_quodlibet-plugins"
+for release in releases:
     p("rm -R debian")
-    p("cp -R ../../%s ." % debian)
-    p("mv %s debian" % debian)
+    p("cp -R ../../%s ." % debian_dir)
+    p("mv %s debian" % debian_dir)
 
-    if not release_flag:
-        version_str = "%s~rev%s~ppa%s" % (package_version, rev, ppa_version)
+    if not args.release:
+        version_str = "%s~rev%s~ppa%s" % (PPA_VERSION, rev, args.version)
     else:
-        version_str = "%s~ppa%s" % (release_ver, ppa_version)
+        version_str = "%s~ppa%s" % (RELEASE_VERSION, args.version)
 
     changelog = "debian/changelog"
     t = open(changelog).read()
@@ -91,18 +66,24 @@ for release in "lucid maverick natty oneiric".split():
     t = t.replace("%date%", date)
     open(changelog, "w").write(t)
 
-    fail(p("debuild -us -uc -S -I -rfakeroot"))
+    if args.dist == "debian":
+        fail(p("dpkg-buildpackage -tc -uc -us -I -rfakeroot"))
+    else:
+        fail(p("dpkg-buildpackage -uc -us -S -I -rfakeroot"))
 
-p("rm -Rf debian")
-os.chdir("..")
-os.rename(package, "plugins")
-fail(p("debsign %s*.changes %s*.dsc" % ((package,) * 2)))
+p("rm -R debian")
+cd("..")
+os.rename(PACKAGE, "plugins")
+fail(p("debsign %s*.changes %s*.dsc" % ((PACKAGE,) * 2)))
 
 dput = "dput --config '%s'" % dput_cfg
-if release_flag:
-    fail(p("%s stable %s*.changes" % (dput, package)))
+if args.dist == "debian":
+    fail(p("%s local %s*.changes" % (dput, PACKAGE)))
 else:
-    fail(p("%s unstable %s*.changes" % (dput, package)))
-#fail(p("%s experimental %s*.changes" % (dput, package)))
+    if args.release:
+        fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
+    else:
+        fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
+    #fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
 
-clean()
+clean(start_dir, PACKAGE)
