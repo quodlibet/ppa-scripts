@@ -30,7 +30,7 @@ clean(start_dir, PACKAGE)
 try: os.rename(PACKAGE, "plugins")
 except OSError: pass
 
-p("hg revert --all")
+p("hg revert --all --no-backup")
 p("hg pull")
 p("hg up default -C")
 if args.release:
@@ -91,10 +91,10 @@ dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
     fail(p("%s local %s*.changes" % (dput, PACKAGE)))
 else:
-    #~ if args.release:
-        #~ fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
-    #~ else:
-        #~ fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
-    fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
+    if args.release:
+        fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
+    else:
+        fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
+    #fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
 
 clean(start_dir, PACKAGE)

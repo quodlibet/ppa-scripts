@@ -27,7 +27,7 @@ cd(hg_dir)
 start_dir = os.getcwd()
 clean(start_dir, PACKAGE)
 
-p("hg revert --all")
+p("hg revert --all --no-backup")
 p("hg pull")
 p("hg up default -C")
 if args.release:
