@@ -1,0 +1,5 @@
+version=3
+
+#opts=downloadurlmangle=sc//[^/]*cc \
+http://code.google.com/p/quodlibet/downloads/list \
+    (?:.*)quodlibet-plugins-([\d\.]*).tar.gz

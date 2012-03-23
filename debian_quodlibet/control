@@ -14,7 +14,7 @@ Package: exfalso
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.14),
     python-gtk2 (>= 2.12)
-Recommends: quodlibet-plugins (>= 1:2.3.2)
+Recommends: quodlibet-plugins (>= 1:2.4)
 Suggests: python-ctypes, libmodplug1
 Description: audio tag editor for GTK+
  Ex Falso displays and edits audio metadata tags. Supported formats include

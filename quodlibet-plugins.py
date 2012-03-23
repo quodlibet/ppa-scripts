@@ -7,8 +7,8 @@ from _util import *
 
 PACKAGE= "quodlibet-plugins"
 RELEASE_TAG = "quodlibet-2.4.0"
-PPA_VERSION = "1:2.4.0.99-0"
-RELEASE_VERSION = "1:2.4-0"
+PPA_VERSION = "1:2.4.99"
+RELEASE_VERSION = "1:2.4"
 
 ##########################################################
 
@@ -37,27 +37,38 @@ if args.release:
     p("hg up -r%s" % RELEASE_TAG)
 
 rev = p("hg tip")[1].split()[1].replace(":","~")
+rev_num = rev.split("~")[0]
 date = p("date -R")[1]
 
 os.rename("plugins", PACKAGE)
 
+if not args.release:
+    VERSION = PPA_VERSION + "+" + rev_num
+else:
+    VERSION = RELEASE_VERSION + "+" + rev_num
+
+p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, VERSION[2:], PACKAGE))
+
 cd(PACKAGE)
 
 if args.dist == "debian":
-    releases = ["quodlibet-unstable"]
+    releases = {"quodlibet-unstable": "debian_quodlibet-plugins"}
 else:
-    releases = ["lucid", "maverick", "natty", "oneiric"]
+    releases = {"lucid": "debian_quodlibet-plugins_old",
+                "maverick": "debian_quodlibet-plugins_old",
+                "natty": "debian_quodlibet-plugins",
+                "oneiric": "debian_quodlibet-plugins",
+                "precise": "debian_quodlibet-plugins"}
 
-debian_dir = "debian_quodlibet-plugins"
-for release in releases:
+for release, debian_dir in releases.iteritems():
     p("rm -R debian")
     p("cp -R ../../%s ." % debian_dir)
     p("mv %s debian" % debian_dir)
 
     if not args.release:
-        version_str = "%s~rev%s~ppa%s" % (PPA_VERSION, rev, args.version)
+        version_str = "%s-0~rev%s~ppa%s" % (VERSION, rev, args.version)
     else:
-        version_str = "%s~ppa%s" % (RELEASE_VERSION, args.version)
+        version_str = "%s-0~ppa%s" % (VERSION, args.version)
 
     changelog = "debian/changelog"
     t = open(changelog).read()
@@ -80,10 +91,10 @@ dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
     fail(p("%s local %s*.changes" % (dput, PACKAGE)))
 else:
-    if args.release:
-        fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
-    else:
-        fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
-    #fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
+    #~ if args.release:
+        #~ fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
+    #~ else:
+        #~ fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
+    fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
 
 clean(start_dir, PACKAGE)

@@ -2,40 +2,5 @@
 # debian/rules for quodlibet-plugins
 # It's obscenely simple. I feel bad.
 
-include /usr/share/python/python.mk
-
-DEFAULT_PYTHON = `pyversions -d`
-PYLIBDIR = $(call py_libdir_sh,$(DEFAULT_PYTHON))
-D := debian/quodlibet-plugins
-U := $(PYLIBDIR)/quodlibet/plugins
-P := $(D)$(U)
-
-build binary-arch install:
-# Ye olde no-op.
-
-binary: binary-indep
-
-binary-indep:
-	dh_prep
-	dh_installdirs $(U)
-	for plugin in $(wildcard */*.py *.py); do \
-		install -D -m 644 -o 0 -g 0 $$plugin $(P)/$$plugin; \
-	done
-	dh_pysupport
-	dh_installchangelogs
-	dh_installdocs
-	dh_installdeb
-	for dir in editing events playorder songsmenu; do \
-		for pyver in `pyversions -r`; do \
-			mkdir -p $(D)/usr/lib/pymodules/$$pyver/quodlibet/plugins/$$dir; \
-			touch $(D)/usr/lib/pymodules/$$pyver/quodlibet/plugins/$$dir/.noinit; \
-		done \
-	done
-	dh_compress
-	dh_fixperms
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-clean:
-	dh_clean
+%:
+	dh $@ --with python2
