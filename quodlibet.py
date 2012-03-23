@@ -40,7 +40,7 @@ date = p("date -R")[1]
 if not args.release:
     VERSION = PPA_VERSION + "+" + rev_num
 else:
-    VERSION = RELEASE_VERSION + "+" + rev_num
+    VERSION = RELEASE_VERSION
 
 p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, VERSION, PACKAGE))
 
