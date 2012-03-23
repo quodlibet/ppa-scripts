@@ -7,7 +7,7 @@ from _util import *
 
 PACKAGE= "mutagen"
 RELEASE_TAG = "mutagen-1.20"
-PPA_VERSION = "1.20.0.99-0"
+PPA_VERSION = "1.20.99-0"
 RELEASE_VERSION = "1.20-0"
 
 ##########################################################
@@ -49,7 +49,7 @@ else:
 if args.dist == "debian":
     releases = ["quodlibet-unstable"]
 else:
-    releases = ["lucid", "maverick", "natty", "oneiric"]
+    releases = ["lucid", "maverick", "natty", "oneiric", "precise"]
 
 debian_dir = "debian_mutagen"
 for release in releases:
