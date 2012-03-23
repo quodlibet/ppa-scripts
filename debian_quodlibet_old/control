@@ -1,11 +1,12 @@
 Source: quodlibet
 Section: sound
 Priority: optional
-Maintainer: Ondřej Kuzník <ondra@mistotebe.net>
-Uploaders: Christine Spang <christine@debian.org>
-Build-Depends: debhelper (>= 8), python-gobject,
-    intltool, python-all (>= 2.6.6-3~), quilt, libgtk2.0-bin,
-Standards-Version: 3.9.2.0
+Maintainer: Christine Spang <christine@debian.org>
+Uploaders: Tristan Seligmann <mithrandi@mithrandi.net>,
+    Ondřej Kuzník <ondra@mistotebe.net>
+Build-Depends: debhelper (>= 7.0.50~), python-gobject,
+    intltool, python-support (>= 0.90), quilt, libgtk2.0-bin,
+Standards-Version: 3.8.3
 Vcs-git: git://git.debian.org/git/collab-maint/quodlibet
 Vcs-Browser: http://git.debian.org/?p=collab-maint/quodlibet.git
 Homepage: http://code.google.com/p/quodlibet/
@@ -14,8 +15,9 @@ Package: exfalso
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.14),
     python-gtk2 (>= 2.12)
-Recommends: quodlibet-plugins (>= 1:2.3.2)
-Suggests: python-ctypes, libmodplug1
+Recommends: quodlibet-plugins
+Suggests: python-ctypes, libmodplug0c2 | libmodplug1
+Conflicts: quodlibet-plugins (<< 20090127)
 Description: audio tag editor for GTK+
  Ex Falso displays and edits audio metadata tags. Supported formats include
  MP3, Ogg Vorbis, FLAC, Musepack (MPC), WavPack, and MOD/XM/IT.
@@ -29,12 +31,14 @@ Description: audio tag editor for GTK+
 
 Package: quodlibet
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
+Depends: ${python:Depends}, ${misc:Depends},
+    exfalso (= ${source:Version}),
     gstreamer0.10-plugins-base (>= 0.10.3), python-gst0.10 (>= 0.10.1),
     gstreamer0.10-plugins-good, gstreamer0.10-plugins-ugly
-Recommends: gstreamer0.10-alsa | gstreamer0.10-audiosink, python-feedparser,
-    python-gpod, python-dbus, python-mmkeys, udisks, media-player-info
-Suggests: gstreamer0.10-plugins-bad, quodlibet-plugins, gstreamer0.10-gconf
+Recommends: gstreamer0.10-alsa, gstreamer0.10-gnomevfs, python-feedparser,
+    python-gpod, python-dbus, python-mmkeys, udisks, media-player-info,
+    quodlibet-plugins
+Suggests: gstreamer0.10-plugins-bad, gstreamer0.10-gconf
 Replaces: quodlibet-ext
 Conflicts: quodlibet-ext
 Provides: quodlibet-ext

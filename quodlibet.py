@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_TAG = "quodlibet-2.3.1"
-PPA_VERSION = "2.3.1.99-0"
-RELEASE_VERSION = "2.3.1-0"
+RELEASE_TAG = "quodlibet-2.4.0"
+PPA_VERSION = "2.4.99"
+RELEASE_VERSION = "2.4"
 
 ##########################################################
 
@@ -34,25 +34,36 @@ if args.release:
     p("hg up -r%s" % RELEASE_TAG)
 
 rev = p("hg tip")[1].split()[1].replace(":","~")
+rev_num = rev.split("~")[0]
 date = p("date -R")[1]
+
+if not args.release:
+    VERSION = PPA_VERSION + "+" + rev_num
+else:
+    VERSION = RELEASE_VERSION + "+" + rev_num
+
+p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, VERSION, PACKAGE))
 
 cd(PACKAGE)
 
 if args.dist == "debian":
-    releases = ["unstable"]
+    releases = {"quodlibet-unstable": "debian_quodlibet"}
 else:
-    releases = ["lucid", "maverick", "natty", "oneiric"]
+    releases = {"lucid": "debian_quodlibet_old",
+                "maverick": "debian_quodlibet_old",
+                "natty": "debian_quodlibet",
+                "oneiric": "debian_quodlibet",
+                "precise": "debian_quodlibet"}
 
-debian_dir = "debian_quodlibet"
-for release in releases:
+for release, debian_dir in releases.iteritems():
     p("rm -R debian")
     p("cp -R ../../%s ." % debian_dir)
     p("mv %s debian" % debian_dir)
 
     if not args.release:
-        version_str = "%s~rev%s~ppa%s" % (PPA_VERSION, rev, args.version)
+        version_str = "%s-0~rev%s~ppa%s" % (VERSION, rev, args.version)
     else:
-        version_str = "%s~ppa%s" % (RELEASE_VERSION, args.version)
+        version_str = "%s-0~ppa%s" % (VERSION, args.version)
 
     changelog = "debian/changelog"
     t = open(changelog).read()

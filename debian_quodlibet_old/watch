@@ -1,5 +1,4 @@
 version=2
 
-opts=dversionmangle=s/\+debian// \
 http://code.google.com/p/quodlibet/downloads/list \
     (?:.*/)?quodlibet-([\d\.]*).tar.gz

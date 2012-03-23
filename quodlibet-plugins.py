@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet-plugins"
-RELEASE_TAG = "quodlibet-2.3.1"
-PPA_VERSION = "1:2.3.1.99-0"
-RELEASE_VERSION = "1:2.3.1-0"
+RELEASE_TAG = "quodlibet-2.4.0"
+PPA_VERSION = "1:2.4.0.99-0"
+RELEASE_VERSION = "1:2.4-0"
 
 ##########################################################
 
@@ -44,7 +44,7 @@ os.rename("plugins", PACKAGE)
 cd(PACKAGE)
 
 if args.dist == "debian":
-    releases = ["unstable"]
+    releases = ["quodlibet-unstable"]
 else:
     releases = ["lucid", "maverick", "natty", "oneiric"]
 

@@ -47,7 +47,7 @@ else:
     os.chdir("trunk")
 
 if args.dist == "debian":
-    releases = ["unstable"]
+    releases = ["quodlibet-unstable"]
 else:
     releases = ["lucid", "maverick", "natty", "oneiric"]
 
