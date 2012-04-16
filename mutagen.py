@@ -49,7 +49,7 @@ else:
 if args.dist == "debian":
     releases = ["quodlibet-unstable"]
 else:
-    releases = ["lucid", "maverick", "natty", "oneiric", "precise"]
+    releases = ["lucid", "natty", "oneiric", "precise"]
 
 debian_dir = "debian_mutagen"
 for release in releases:

@@ -33,7 +33,7 @@ Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gstreamer0.10-plugins-base (>= 0.10.3), python-gst0.10 (>= 0.10.1),
     gstreamer0.10-plugins-good, gstreamer0.10-plugins-ugly
 Recommends: gstreamer0.10-alsa | gstreamer0.10-audiosink, python-feedparser,
-    python-gpod, python-dbus, python-mmkeys, udisks, media-player-info
+    python-gpod, python-dbus, python-keybinder, udisks, media-player-info
 Suggests: gstreamer0.10-plugins-bad, quodlibet-plugins, gstreamer0.10-gconf
 Replaces: quodlibet-ext
 Conflicts: quodlibet-ext

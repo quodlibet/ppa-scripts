@@ -50,7 +50,6 @@ if args.dist == "debian":
     releases = {"quodlibet-unstable": "debian_quodlibet"}
 else:
     releases = {"lucid": "debian_quodlibet_old",
-                "maverick": "debian_quodlibet_old",
                 "natty": "debian_quodlibet",
                 "oneiric": "debian_quodlibet",
                 "precise": "debian_quodlibet"}
