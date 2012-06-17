@@ -13,7 +13,6 @@ Recommends: notification-daemon, python-dbus, python-gnome2, python-cddb,
     python-musicbrainz2, brasero | k3b, python (>= 2.6) | python-simplejson,
     python-indicate, python-gtk2 (>= 2.16) | python-eggtrayicon
 Conflicts: python-json
-Suggests: lastfmsubmitd
 Description: various contributed plugins for Quod Libet
  This package contains a number of contributed plugins for the Quod
  Libet media player, each extending the player's functionality in
