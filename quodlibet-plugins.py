@@ -47,7 +47,10 @@ if not args.release:
 else:
     VERSION = RELEASE_VERSION
 
-p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, VERSION[2:], PACKAGE))
+if args.dist == "debian":
+    p("tar -pczf %s_%s-0~rev%s~ppa%s~quodlibet.orig.tar.gz %s" % (PACKAGE, VERSION[2:],rev, args.version,PACKAGE))
+else:
+    p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, VERSION[2:], PACKAGE))
 
 cd(PACKAGE)
 

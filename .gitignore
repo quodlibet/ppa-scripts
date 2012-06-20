@@ -1,3 +1,4 @@
 mutagen-svn
 python-collate
 quodlibet-hg
+*.pyc
