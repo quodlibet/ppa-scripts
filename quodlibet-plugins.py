@@ -36,8 +36,9 @@ p("hg up default -C")
 if args.release:
     p("hg up -r%s" % RELEASE_TAG)
 
-rev = p("hg tip")[1].split()[1].replace(":","~")
-rev_num = rev.split("~")[0]
+rev_num = p("hg id -n")[1]
+rev_hash = p("hg id -i")[1]
+rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
 os.rename("plugins", PACKAGE)
