@@ -70,9 +70,9 @@ for release in releases:
     open(changelog, "w").write(t)
 
     if args.dist == "debian":
-        fail(p("dpkg-buildpackage -tc -uc -us -I -rfakeroot"))
+        fail(p("dpkg-buildpackage -tc -uc -us -tc -I -rfakeroot"))
     else:
-        fail(p("dpkg-buildpackage -uc -us -S -I -rfakeroot"))
+        fail(p("dpkg-buildpackage -uc -us -S -tc -I -rfakeroot"))
 
 p("rm -R debian")
 cd("..")
