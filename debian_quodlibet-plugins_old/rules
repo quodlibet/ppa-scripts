@@ -25,7 +25,7 @@ binary-indep:
 	dh_installchangelogs
 	dh_installdocs
 	dh_installdeb
-	for dir in editing events playorder songsmenu; do \
+	for dir in editing events playorder songsmenu gstreamer; do \
 		for pyver in `pyversions -r`; do \
 			mkdir -p $(D)/usr/lib/pymodules/$$pyver/quodlibet/plugins/$$dir; \
 			touch $(D)/usr/lib/pymodules/$$pyver/quodlibet/plugins/$$dir/.noinit; \

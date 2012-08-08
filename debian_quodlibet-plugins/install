@@ -2,3 +2,4 @@ editing     /usr/share/pyshared/quodlibet/plugins/
 events      /usr/share/pyshared/quodlibet/plugins/
 playorder   /usr/share/pyshared/quodlibet/plugins/
 songsmenu   /usr/share/pyshared/quodlibet/plugins/
+gstreamer   /usr/share/pyshared/quodlibet/plugins/
