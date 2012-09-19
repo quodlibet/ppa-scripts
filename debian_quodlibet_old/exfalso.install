@@ -3,4 +3,6 @@ usr/lib
 usr/share/man/man1/exfalso.1
 usr/share/applications/exfalso.desktop
 usr/share/locale
-usr/lib/python2.*/*-packages/quodlibet/images/hicolor/64x64/apps/exfalso.png usr/share/pixmaps
+usr/share/pixmaps/exfalso.png
+usr/share/icons/hicolor/scalable/apps/exfalso.svg
+usr/share/icons/hicolor/64x64/apps/exfalso.png
