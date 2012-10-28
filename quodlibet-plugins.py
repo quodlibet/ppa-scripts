@@ -59,9 +59,11 @@ if args.dist == "debian":
     releases = {"quodlibet-unstable": "debian_quodlibet-plugins"}
 else:
     releases = {"lucid": "debian_quodlibet-plugins_old",
-                "natty": "debian_quodlibet-plugins",
                 "oneiric": "debian_quodlibet-plugins",
-                "precise": "debian_quodlibet-plugins"}
+                "precise": "debian_quodlibet-plugins",
+                "quantal": "debian_quodlibet-plugins",
+                "raring": "debian_quodlibet-plugins",
+    }
 
 for release, debian_dir in releases.iteritems():
     p("rm -R debian")
