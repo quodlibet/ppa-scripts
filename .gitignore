@@ -2,4 +2,4 @@ mutagen-svn
 python-collate
 quodlibet-hg
 *.pyc
-rpm
+.osc

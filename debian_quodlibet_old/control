@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Christine Spang <christine@debian.org>
 Uploaders: Tristan Seligmann <mithrandi@mithrandi.net>,
     Ondřej Kuzník <ondra@mistotebe.net>
-Build-Depends: debhelper (>= 7.0.50~), python-gobject,
+Build-Depends: debhelper (>= 7.0.50~),
     intltool, python-support (>= 0.90), quilt, libgtk2.0-bin,
 Standards-Version: 3.8.3
 Vcs-git: git://git.debian.org/git/collab-maint/quodlibet
