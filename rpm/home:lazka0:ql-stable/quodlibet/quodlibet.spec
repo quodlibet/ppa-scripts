@@ -34,7 +34,13 @@ Requires:       gstreamer-python >= 0.10.2
 Requires:       gstreamer-plugins-good
 Requires:       python-feedparser
 Requires:       media-player-info
+
+%if 0%{?suse_version}
+Requires:       dbus-1-python
+%else
 Requires:       dbus-python
+%endif
+
 Requires:       python-keybinder
 Requires:       udisks
 

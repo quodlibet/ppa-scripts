@@ -32,16 +32,18 @@ BuildRequires:  unzip
 BuildRequires:  python3-devel
 %endif
 
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
-
 Requires:       exfalso = %{version}-%{release}
 Requires:       gstreamer-python >= 0.10.2
 Requires:       gstreamer-plugins-good
 Requires:       python-feedparser
 Requires:       media-player-info
+
+%if 0%{?suse_version}
+Requires:       dbus-1-python
+%else
 Requires:       dbus-python
+%endif
+
 Requires:       python-keybinder
 Requires:       udisks
 
@@ -120,11 +122,6 @@ desktop-file-install                                            \
         --dir %{buildroot}%{_datadir}/applications              \
         --delete-original                                       \
         %{buildroot}%{_datadir}/applications/exfalso.desktop
-%endif
-
-%if 0%{?suse_version}
-%suse_update_desktop_file quodlibet
-%suse_update_desktop_file exfalso
 %endif
 
 %{find_lang} quodlibet
