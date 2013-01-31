@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        2.4.91
+Version:        2.5
 Release:        1.1%{?dist}
 Summary:        A music management program
 
@@ -30,22 +30,26 @@ BuildRequires:  python3-devel
 %endif
 
 Requires:       exfalso = %{version}-%{release}
+
+%if 0%{?suse_version}
+Requires:       python-gstreamer-0_10 >= 0.10.2
+Requires:       gstreamer-0_10-plugins-good
+Requires:       python-feedparser
+Requires:       media-player-info
+Requires:       dbus-1-python
+Requires:       python-keybinder
+Requires:       udisks
+Requires:       python-gpod
+%else
 Requires:       gstreamer-python >= 0.10.2
 Requires:       gstreamer-plugins-good
 Requires:       python-feedparser
 Requires:       media-player-info
-
-%if 0%{?suse_version}
-Requires:       dbus-1-python
-%else
 Requires:       dbus-python
-%endif
-
 Requires:       python-keybinder
 Requires:       udisks
-
-# for iPod device support
 Requires:       python-gpod
+%endif
 
 %description
 Quod Libet is a music management program. It provides several different ways
@@ -64,11 +68,10 @@ Requires:       python >= 2.6
 Requires:       pygtk2 >= 2.16
 Requires:       python-mutagen >= 1.14
 
-# for CDDB plugin
+%if 0%{?fedora}
 Requires:       python-CDDB
-
-# for musicbrainz plugin
 Requires:       python-musicbrainz2
+%endif
 
 %description -n exfalso
 Ex Falso is a tag editor with the same tag editing interface as Quod Libet,

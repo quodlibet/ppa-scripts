@@ -3,7 +3,7 @@ Section: sound
 Priority: optional
 Maintainer: Ondřej Kuzník <ondra@mistotebe.net>
 Uploaders: Christine Spang <christine@debian.org>
-Build-Depends: debhelper (>= 8),
+Build-Depends: debhelper (>= 8), python-gobject,
     intltool, python-all (>= 2.6.6-3~), quilt, libgtk2.0-bin,
 Standards-Version: 3.9.2.0
 Vcs-git: git://git.debian.org/git/collab-maint/quodlibet

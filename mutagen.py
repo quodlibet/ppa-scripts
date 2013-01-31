@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "mutagen"
-RELEASE_TAG = "mutagen-1.20"
-PPA_VERSION = "1.20.99-0"
-RELEASE_VERSION = "1.20-0"
+RELEASE_TAG = "mutagen-1.21"
+PPA_VERSION = "1.21.99-0"
+RELEASE_VERSION = "1.21-0"
 
 ##########################################################
 
@@ -21,35 +21,29 @@ else:
 
 debian_root = os.getcwd()
 
-svn_dir = "mutagen-svn"
-if not os.path.isdir(svn_dir):
-    os.mkdir(svn_dir)
-
-os.chdir(svn_dir)
-
-if not os.path.isdir(PACKAGE):
-    fail(p("svn checkout http://mutagen.googlecode.com/svn/ %s" % PACKAGE))
-
-os.chdir(PACKAGE)
-p("svn revert -R .")
-rev = fail(p("svn up"))[1].split()[-1].strip()[:-1]
-date = p("date -R")[1]
-
-if args.release:
-    os.chdir("tags")
-
 start_dir = os.getcwd()
 clean(start_dir, PACKAGE)
 
+hg_dir = "mutagen-hg"
+if not os.path.isdir(hg_dir):
+    p("hg clone https://mutagen.googlecode.com/hg/ %s" % hg_dir)
+cd(hg_dir)
+
+p("hg revert --all --no-backup")
+p("hg pull")
+p("hg up default -C")
 if args.release:
-    os.chdir(RELEASE_TAG)
-else:
-    os.chdir("trunk")
+    p("hg up -r%s" % RELEASE_TAG)
+
+rev_num = p("hg id -n")[1]
+rev_hash = p("hg id -i")[1]
+rev = rev_num  +"~" + rev_hash
+date = p("date -R")[1]
 
 if args.dist == "debian":
     releases = ["quodlibet-unstable"]
 else:
-    releases = ["lucid", "natty", "oneiric", "precise", "raring"]
+    releases = ["lucid", "oneiric", "precise", "quantal", "raring"]
 
 debian_dir = "debian_mutagen"
 for release in releases:
