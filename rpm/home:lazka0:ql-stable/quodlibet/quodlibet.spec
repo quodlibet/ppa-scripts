@@ -157,6 +157,7 @@ fi
 %defattr(-,root,root,-)
 %doc COPYING HACKING NEWS README
 %{_bindir}/exfalso
+%{_bindir}/operon
 %if 0%{?fedora}
 %{_datadir}/applications/fedora-exfalso.desktop
 %else
@@ -166,6 +167,7 @@ fi
 %{_datadir}/icons/hicolor/64x64/apps/exfalso.png
 %{_datadir}/icons/hicolor/scalable/apps/exfalso.svg
 %{_mandir}/man1/exfalso.1*
+%{_mandir}/man1/operon.1*
 %{python_sitelib}/quodlibet/
 %{python_sitelib}/quodlibet-%{version}-py*.egg-info
 

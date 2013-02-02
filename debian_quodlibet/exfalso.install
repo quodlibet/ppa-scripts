@@ -2,6 +2,7 @@ usr/bin/exfalso
 usr/bin/operon
 usr/lib
 usr/share/man/man1/exfalso.1
+usr/share/man/man1/operon.1
 usr/share/applications/exfalso.desktop
 usr/share/locale
 usr/share/pixmaps/exfalso.png

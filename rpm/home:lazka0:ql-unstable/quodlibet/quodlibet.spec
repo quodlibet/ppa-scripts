@@ -1,6 +1,6 @@
-%define hash 90b90def0a6b
-%define longhash 90b90def0a6ba1fb2dbc2fc6dbc3b20f33fc1e32
-%define revision 5429
+%define hash c612dac5539d
+%define longhash c612dac5539d4645cb3cb126a2943ac93002dbcb
+%define revision 5435
 %define pyversion 2.5._1
 
 Name:           quodlibet
@@ -163,6 +163,7 @@ fi
 %defattr(-,root,root,-)
 %doc quodlibet/COPYING quodlibet/HACKING quodlibet/NEWS quodlibet/README
 %{_bindir}/exfalso
+%{_bindir}/operon
 %if 0%{?fedora}
 %{_datadir}/applications/fedora-exfalso.desktop
 %else
@@ -172,6 +173,7 @@ fi
 %{_datadir}/icons/hicolor/64x64/apps/exfalso.png
 %{_datadir}/icons/hicolor/scalable/apps/exfalso.svg
 %{_mandir}/man1/exfalso.1*
+%{_mandir}/man1/operon.1*
 %{python_sitelib}/quodlibet/
 %{python_sitelib}/quodlibet-%{pyversion}-py*.egg-info
 
