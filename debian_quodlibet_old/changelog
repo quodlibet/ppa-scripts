@@ -1,5 +1,0 @@
-quodlibet (%version%~%dist%) %dist%; urgency=medium
-
-  * unofficial/untested trunk build
-
- -- Christoph Reiter <christoph.reiter@gmx.at>  %date%

@@ -50,9 +50,7 @@ cd(PACKAGE)
 if args.dist == "debian":
     releases = {"quodlibet-unstable": "debian_quodlibet"}
 else:
-    releases = {"lucid": "debian_quodlibet_old",
-                "oneiric": "debian_quodlibet",
-                "precise": "debian_quodlibet",
+    releases = {"precise": "debian_quodlibet",
                 "quantal": "debian_quodlibet",
                 "raring": "debian_quodlibet",
     }
