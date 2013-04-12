@@ -7,7 +7,7 @@ from _util import *
 
 PACKAGE= "quodlibet-plugins"
 RELEASE_TAG = "quodlibet-2.5.0"
-PPA_VERSION = "1:2.5.99"
+PPA_VERSION = "1:2.9.99"
 RELEASE_VERSION = "1:2.5.0"
 
 ##########################################################
@@ -32,7 +32,7 @@ except OSError: pass
 
 p("hg revert --all --no-backup")
 p("hg pull")
-p("hg up default -C")
+p("hg up pygobject-port -C")
 if args.release:
     p("hg up -r%s" % RELEASE_TAG)
 
@@ -58,9 +58,7 @@ cd(PACKAGE)
 if args.dist == "debian":
     releases = {"quodlibet-unstable": "debian_quodlibet-plugins"}
 else:
-    releases = {"lucid": "debian_quodlibet-plugins_old",
-                "oneiric": "debian_quodlibet-plugins",
-                "precise": "debian_quodlibet-plugins",
+    releases = {"precise": "debian_quodlibet-plugins",
                 "quantal": "debian_quodlibet-plugins",
                 "raring": "debian_quodlibet-plugins",
     }
@@ -96,10 +94,6 @@ dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
     fail(p("%s local %s*.changes" % (dput, PACKAGE)))
 else:
-    if args.release:
-        fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
-    else:
-        fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
-    #fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
+    fail(p("%s gtk3 %s*.changes" % (dput, PACKAGE)))
 
 clean(start_dir, PACKAGE)
