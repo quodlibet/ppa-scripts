@@ -1,6 +1,6 @@
-%define hash ed2ca5b2ceb3
-%define longhash ed2ca5b2ceb3f8709c356ab47adf4728d9ffd926
-%define revision 5494
+%define hash b92df0e6921a
+%define longhash b92df0e6921adae8d0ccee5ae159de2fde8013e2
+%define revision 5635
 %define pyversion 2.5._1
 
 Name:           quodlibet

@@ -43,7 +43,7 @@ date = p("date -R")[1]
 if args.dist == "debian":
     releases = ["quodlibet-unstable"]
 else:
-    releases = ["lucid", "oneiric", "precise", "quantal", "raring"]
+    releases = ["precise", "quantal", "raring"]
 
 debian_dir = "debian_mutagen"
 for release in releases:
