@@ -61,6 +61,7 @@ else:
     releases = {"precise": "debian_quodlibet-plugins",
                 "quantal": "debian_quodlibet-plugins",
                 "raring": "debian_quodlibet-plugins",
+                "saucy": "debian_quodlibet-plugins",
     }
 
 for release, debian_dir in releases.iteritems():

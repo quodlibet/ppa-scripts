@@ -53,6 +53,7 @@ else:
     releases = {"precise": "debian_quodlibet",
                 "quantal": "debian_quodlibet",
                 "raring": "debian_quodlibet",
+                "saucy": "debian_quodlibet",
     }
 
 for release, debian_dir in releases.iteritems():
