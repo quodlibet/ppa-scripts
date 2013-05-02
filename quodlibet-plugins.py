@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet-plugins"
-RELEASE_TAG = "quodlibet-2.5.0"
+RELEASE_TAG = "quodlibet-2.5.1"
 PPA_VERSION = "1:2.5.99"
-RELEASE_VERSION = "1:2.5.0"
+RELEASE_VERSION = "1:2.5.1"
 
 ##########################################################
 
@@ -58,11 +58,10 @@ cd(PACKAGE)
 if args.dist == "debian":
     releases = {"quodlibet-unstable": "debian_quodlibet-plugins"}
 else:
-    releases = {"lucid": "debian_quodlibet-plugins_old",
-                "oneiric": "debian_quodlibet-plugins",
-                "precise": "debian_quodlibet-plugins",
+    releases = {"precise": "debian_quodlibet-plugins",
                 "quantal": "debian_quodlibet-plugins",
                 "raring": "debian_quodlibet-plugins",
+                "saucy": "debian_quodlibet-plugins",
     }
 
 for release, debian_dir in releases.iteritems():
