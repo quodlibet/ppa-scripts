@@ -8,11 +8,10 @@ Standards-Version: 3.9.2.0
 
 Package: quodlibet-plugins
 Architecture: all
-Depends: exfalso (>= 2.3.2), ${python:Depends}, ${misc:Depends}
-Recommends: notification-daemon, python-dbus, python-gnome2, python-cddb,
+Depends: exfalso (>= 2.9.99), ${python:Depends}, ${misc:Depends}
+Recommends: notification-daemon, python-dbus, python-cddb,
     python-musicbrainz2, brasero | k3b, python (>= 2.6) | python-simplejson,
-    python-gtk2 (>= 2.16), python-pyinotify, gstreamer0.10-chromaprint
-Conflicts: python-json
+    python-pyinotify
 Description: various contributed plugins for Quod Libet
  This package contains a number of contributed plugins for the Quod
  Libet media player, each extending the player's functionality in

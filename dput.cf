@@ -18,3 +18,10 @@ method = ftp
 incoming = ~lazka/expedition/ubuntu/
 login = anonymous
 allow_unsigned_uploads = 0
+
+[gtk3]
+fqdn = ppa.launchpad.net
+method = ftp
+incoming = ~lazka/quodlibet-gtk3/
+login = anonymous
+allow_unsigned_uploads = 0
