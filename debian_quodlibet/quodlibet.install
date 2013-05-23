@@ -4,3 +4,4 @@ usr/bin/quodlibet
 usr/share/pixmaps/quodlibet.png
 usr/share/icons/hicolor/scalable/apps/quodlibet.svg
 usr/share/icons/hicolor/64x64/apps/quodlibet.png
+usr/share/gnome-shell/search-providers/quodlibet-search-provider.ini
