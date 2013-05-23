@@ -32,7 +32,7 @@ except OSError: pass
 
 p("hg revert --all --no-backup")
 p("hg pull")
-p("hg up pygobject-port -C")
+p("hg up default -C")
 if args.release:
     p("hg up -r%s" % RELEASE_TAG)
 
@@ -95,6 +95,10 @@ dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
     fail(p("%s local %s*.changes" % (dput, PACKAGE)))
 else:
-    fail(p("%s gtk3 %s*.changes" % (dput, PACKAGE)))
+    if args.release:
+        fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
+    else:
+        fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
+    #fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
 
 clean(start_dir, PACKAGE)
