@@ -14,7 +14,7 @@ Package: exfalso
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.14),
     python-gi (>= 3.2), gir1.2-gtk-3.0
-Recommends: quodlibet-plugins (>= 1:2.4)
+Recommends: quodlibet-plugins (>= 1:2.9)
 Suggests: libmodplug1
 Description: audio tag editor for GTK+
  Ex Falso displays and edits audio metadata tags. Supported formats include
@@ -32,9 +32,8 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0,
     gstreamer1.0-plugins-base, gstreamer1.0-plugins-good,
-    gstreamer1.0-plugins-ugly
-Recommends: gstreamer1.0-pulseaudio | gstreamer1.0-audiosink,
-    python-dbus,
+    gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio
+Recommends: python-dbus,
     python-feedparser,
     udisks, media-player-info, libgpod4
 Suggests: gstreamer1.0-plugins-bad, quodlibet-plugins
