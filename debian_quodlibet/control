@@ -13,7 +13,7 @@ Homepage: http://code.google.com/p/quodlibet/
 Package: exfalso
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.14),
-    python-gi (>= 3.2), gir1.2-gtk-3.0
+    python-gi (>= 3.2), python-gi-cairo (>= 3.2), gir1.2-gtk-3.0
 Recommends: quodlibet-plugins (>= 1:2.9)
 Suggests: libmodplug1
 Description: audio tag editor for GTK+
