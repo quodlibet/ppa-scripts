@@ -1,16 +1,17 @@
-%define hash 2252393e8034
-%define longhash 2252393e80342c96c0fad242ee93ba6a0debc695
-%define revision 5729
-%define pyversion 2.5._1
+%define hash 76079b22b0b2
+%define longhash 76079b22b0b21b3af6c0dabe162cbf180c8f3ef8
+%define revision 5877
+%define pyversion 2.9.91._1
 
 Name:           quodlibet
-Version:        2.5.99
+Version:        2.9.99
 Release:        2.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
 %if 0%{?suse_version}
 Group:          Productivity/Multimedia/Sound/Players
 %else
+# fedora
 Group:          Applications/Multimedia
 %endif
 License:        GPL-2.0
@@ -24,6 +25,7 @@ BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  desktop-file-utils
 BuildRequires:  python >= 2.6
+# needed for gtk-update-icon-cache
 BuildRequires:  gtk2 >= 2.6.0
 BuildRequires:  unzip
 
@@ -34,24 +36,22 @@ BuildRequires:  python3-devel
 
 Requires:       exfalso = %{version}-%{release}
 
+Requires:       python-feedparser
+Requires:       media-player-info
+Requires:       udisks
+Requires:       libgpod
+
 %if 0%{?suse_version}
-Requires:       python-gstreamer-0_10 >= 0.10.2
-Requires:       gstreamer-0_10-plugins-good
-Requires:       python-feedparser
-Requires:       media-player-info
 Requires:       dbus-1-python
-Requires:       python-keybinder
-Requires:       udisks
-Requires:       python-gpod
+Requires:       gstreamer >= 1.0
+Requires:       gstreamer-plugins-base >= 1.0
+Requires:       gstreamer-plugins-good >= 1.0
 %else
-Requires:       gstreamer-python >= 0.10.2
-Requires:       gstreamer-plugins-good
-Requires:       python-feedparser
-Requires:       media-player-info
+# fedora
 Requires:       dbus-python
-Requires:       python-keybinder
-Requires:       udisks
-Requires:       python-gpod
+Requires:       gstreamer1
+Requires:       gstreamer1-plugins-base
+Requires:       gstreamer1-plugins-good
 %endif
 
 
@@ -69,12 +69,17 @@ Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
 Requires:       python >= 2.6
-Requires:       pygtk2 >= 2.16
 Requires:       python-mutagen >= 1.14
+Requires:       gtk3 >= 3.2
 
 %if 0%{?fedora}
+Requires:       pygobject3 >= 3.2
 Requires:       python-CDDB
 Requires:       python-musicbrainz2
+%else
+# suse
+Requires:       python-gobject >= 3.2
+Requires:       python-gobject-cairo >= 3.2
 %endif
 
 %description -n exfalso
@@ -156,12 +161,17 @@ fi
 %{_datadir}/pixmaps/quodlibet.png
 %{_datadir}/icons/hicolor/64x64/apps/quodlibet.png
 %{_datadir}/icons/hicolor/scalable/apps/quodlibet.svg
+%if 0%{?suse_version}
+%dir %{_datadir}/gnome-shell
+%dir %{_datadir}/gnome-shell/search-providers
+%endif
+%{_datadir}/gnome-shell/search-providers/quodlibet-search-provider.ini
 %{_mandir}/man1/quodlibet.1*
 
 
 %files -n exfalso -f quodlibet/%{name}.lang
 %defattr(-,root,root,-)
-%doc quodlibet/COPYING quodlibet/HACKING quodlibet/NEWS quodlibet/README
+%doc quodlibet/COPYING quodlibet/NEWS quodlibet/README
 %{_bindir}/exfalso
 %{_bindir}/operon
 %if 0%{?fedora}
