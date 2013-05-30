@@ -23,6 +23,7 @@ debian_root = os.getcwd()
 
 start_dir = os.getcwd()
 clean(start_dir, PACKAGE)
+clean(start_dir, "python-" + PACKAGE)
 
 hg_dir = "mutagen-hg"
 if not os.path.isdir(hg_dir):
@@ -83,3 +84,4 @@ else:
     #fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
 
 clean(start_dir, PACKAGE)
+clean(start_dir, "python-" + PACKAGE)

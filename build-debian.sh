@@ -10,3 +10,5 @@ mini-dinstall
 mini-dinstall -r
 cd ~/debian_archive/quodlibet-unstable/
 gpg --output Release.gpg -ba Release
+cd -
+./debian_upload.py
