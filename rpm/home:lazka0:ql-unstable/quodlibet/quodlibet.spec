@@ -1,6 +1,6 @@
-%define hash 76079b22b0b2
-%define longhash 76079b22b0b21b3af6c0dabe162cbf180c8f3ef8
-%define revision 5877
+%define hash d98ace915cf9
+%define longhash d98ace915cf93f2bcf1491b90be1c95e477fb9d7
+%define revision 5879
 %define pyversion 2.9.91._1
 
 Name:           quodlibet
