@@ -10,8 +10,8 @@ Package: quodlibet-plugins
 Architecture: all
 Depends: exfalso (>= 2.9.99), ${python:Depends}, ${misc:Depends}
 Recommends: notification-daemon, python-dbus, python-cddb,
-    python-musicbrainz2, brasero | k3b, python (>= 2.6) | python-simplejson,
-    python-pyinotify
+    python-musicbrainz2, python-pyinotify
+Suggests: brasero | k3b | xfburn
 Description: various contributed plugins for Quod Libet
  This package contains a number of contributed plugins for the Quod
  Libet media player, each extending the player's functionality in
