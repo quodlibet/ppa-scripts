@@ -19,11 +19,21 @@ REMOTE = "Novell-M/debian/quodlibet-unstable"
 ###############################################################################
 
 print "%s:%d" % (HOST, PORT)
-username = getpass.getpass("user:")
-password = getpass.getpass("passwd:")
 
-t = paramiko.Transport((HOST, PORT))
-t.connect(username=username, password=password)
+while 1:
+    username = getpass.getpass("user:")
+    password = getpass.getpass("passwd:")
+
+    t = paramiko.Transport((HOST, PORT))
+
+    try:
+        t.connect(username=username, password=password)
+    except paramiko.AuthenticationException:
+        print "auth failed"
+        t.close()
+    else:
+        break
+
 sftp = paramiko.SFTPClient.from_transport(t)
 
 for part in os.path.split(REMOTE):
