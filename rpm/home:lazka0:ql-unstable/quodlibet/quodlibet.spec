@@ -1,10 +1,9 @@
-%define hash d98ace915cf9
-%define longhash d98ace915cf93f2bcf1491b90be1c95e477fb9d7
-%define revision 5879
-%define pyversion 2.9.91._1
+%define hash 46feb993371b
+%define longhash 46feb993371bfb2a0aef5b7664726a5ce6429f81
+%define revision 5967
 
 Name:           quodlibet
-Version:        2.9.99
+Version:        3.0.99
 Release:        2.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
@@ -185,7 +184,7 @@ fi
 %{_mandir}/man1/exfalso.1*
 %{_mandir}/man1/operon.1*
 %{python_sitelib}/quodlibet/
-%{python_sitelib}/quodlibet-%{pyversion}-py*.egg-info
+%{python_sitelib}/quodlibet-*.egg-info
 
 %changelog
 * Fri Dec  7 2012 Christoph Reiter <reiter.christoph@gmail.com>

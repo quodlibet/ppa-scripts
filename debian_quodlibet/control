@@ -35,11 +35,8 @@ Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio
 Recommends: python-dbus,
     python-feedparser,
-    udisks, media-player-info, libgpod4
-Suggests: gstreamer1.0-plugins-bad, quodlibet-plugins
-Replaces: quodlibet-ext
-Conflicts: quodlibet-ext
-Provides: quodlibet-ext
+    udisks, media-player-info, libgpod4, gir1.2-keybinder-3.0
+Suggests: gstreamer1.0-plugins-bad
 Description: audio library manager and player for GTK+
  Quod Libet is a music management program. It provides several different ways
  to view your audio library, as well as support for Internet radio and

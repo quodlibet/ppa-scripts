@@ -7,7 +7,7 @@ from _util import *
 
 PACKAGE= "quodlibet-plugins"
 RELEASE_TAG = "quodlibet-2.5.0"
-PPA_VERSION = "1:2.9.99"
+PPA_VERSION = "1:3.0.99"
 RELEASE_VERSION = "1:2.5.0"
 
 ##########################################################
