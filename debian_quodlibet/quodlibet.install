@@ -5,3 +5,6 @@ usr/share/pixmaps/quodlibet.png
 usr/share/icons/hicolor/scalable/apps/quodlibet.svg
 usr/share/icons/hicolor/64x64/apps/quodlibet.png
 usr/share/gnome-shell/search-providers/quodlibet-search-provider.ini
+/usr/share/dbus-1/services/net.sacredchao.QuodLibet.service
+/usr/share/dbus-1/services/org.mpris.MediaPlayer2.quodlibet.service
+/usr/share/dbus-1/services/org.mpris.quodlibet.service
