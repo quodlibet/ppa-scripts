@@ -32,9 +32,8 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0,
     gstreamer1.0-plugins-base, gstreamer1.0-plugins-good,
-    gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio
-Recommends: python-dbus,
-    python-feedparser,
+    gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio, gstreamer1.0-alsa
+Recommends: python-dbus, python-feedparser,
     udisks, media-player-info, libgpod4, gir1.2-keybinder-3.0
 Suggests: gstreamer1.0-plugins-bad
 Description: audio library manager and player for GTK+
