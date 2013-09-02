@@ -1,10 +1,9 @@
 #!/usr/bin/make -f
 
-DEB_PYTHON_SYSTEM = pycentral
+PYTHON2=$(shell pyversions -vr)
 
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/rules/patchsys-quilt.mk
-include /usr/share/cdbs/1/class/python-distutils.mk
+%:
+	dh $@ --with python2
 
-DEB_INSTALL_CHANGELOGS_ALL = NEWS
-DEB_INSTALL_DOCS_ALL = debian/README.Debian
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS

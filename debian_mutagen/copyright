@@ -4,7 +4,7 @@ This package was adopted by Tristan Seligmann <mithrandi@mithrandi.za.net> on
 Wed, Jun 21 2006 21:25:11 +0200
 
 It was downloaded from:
-    http://code.google.com/p/mutagen/
+    http://www.sacredchao.net/quodlibet/wiki/Development/Mutagen
 
 Files: *
 Copyright: Joe Wreschnig <piman@sacredchao.net>
@@ -25,8 +25,13 @@ Files: mutagen/__init__.py, id3.py
 Copyright: 2005 Michael Urman
 License: GPL-2
 
-Files: monkeysaudio.py, musepack.py, optimfrog.py
+Files: monkeysaudio.py, optimfrog.py
 Copyright: 2006 Lukas Lalinsky <lalinsky@gmail.com>
+License: GPL-2
+
+Files: mutagen/musepack.py
+Copyright: 2006 Lukas Lalinsky <lalinsky@gmail.com>
+           2012 Christoph Reiter <christoph.reiter@gmx.at>
 License: GPL-2
 
 Files: asf.py

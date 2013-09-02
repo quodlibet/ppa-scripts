@@ -7,8 +7,8 @@ from _util import *
 
 PACKAGE= "mutagen"
 RELEASE_TAG = "mutagen-1.21"
-PPA_VERSION = "1.21.99-0"
-RELEASE_VERSION = "1.21-0"
+PPA_VERSION = "1.21.99"
+RELEASE_VERSION = "1.21"
 
 ##########################################################
 
@@ -41,21 +41,35 @@ rev_hash = p("hg id -i")[1]
 rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
+if not args.release:
+    VERSION = PPA_VERSION + "+" + rev_num
+else:
+    VERSION = RELEASE_VERSION
+
+cd("..")
+
+if args.dist == "debian":
+    p("tar --exclude '.hg*' -pczf %s_%s-0~rev%s~ppa%s~quodlibet.orig.tar.gz %s" % (PACKAGE, VERSION, rev, args.version, hg_dir))
+else:
+    p("tar --exclude '.hg*' -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, VERSION, hg_dir))
+
+cd(hg_dir)
+
 if args.dist == "debian":
     releases = ["quodlibet-unstable"]
 else:
-    releases = ["precise", "quantal", "raring"]
+    releases = ["precise", "quantal", "raring", "saucy"]
 
 debian_dir = "debian_mutagen"
 for release in releases:
     p("rm -R debian")
-    p("cp -R %s/%s ." % (debian_root, debian_dir))
+    p("cp -R ../%s ." % debian_dir)
     p("mv %s debian" % debian_dir)
 
     if not args.release:
-        version_str = "%s~rev%s~ppa%s" % (PPA_VERSION, rev, args.version)
+        version_str = "%s-0~rev%s~ppa%s" % (VERSION, rev, args.version)
     else:
-        version_str = "%s~ppa%s" % (RELEASE_VERSION, args.version)
+        version_str = "%s-0~ppa%s" % (VERSION, args.version)
 
     changelog = "debian/changelog"
     t = open(changelog).read()

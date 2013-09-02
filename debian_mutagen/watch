@@ -1,4 +1,5 @@
-version=2
-
-http://code.google.com/p/quodlibet/downloads/list \
-    (?:.*/)?mutagen-([\d\.]*).tar.gz
+version=3
+opts=\
+downloadurlmangle=s|.*[?]name=(.*?)&.*|http://mutagen.googlecode.com/files/$1|,\
+filenamemangle=s|[^/]+[?]name=(.*?)&.*|$1| \
+http://code.google.com/p/mutagen/downloads/detail[?]name=mutagen-([0-9.]+).tar.gz&.*
