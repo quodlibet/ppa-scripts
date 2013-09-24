@@ -1,10 +1,11 @@
 usr/bin/exfalso
 usr/bin/operon
 usr/lib
+usr/share/appdata/exfalso.appdata.xml
+usr/share/applications/exfalso.desktop
+usr/share/icons/hicolor/64x64/apps/exfalso.png
+usr/share/icons/hicolor/scalable/apps/exfalso.svg
+usr/share/locale
 usr/share/man/man1/exfalso.1
 usr/share/man/man1/operon.1
-usr/share/applications/exfalso.desktop
-usr/share/locale
 usr/share/pixmaps/exfalso.png
-usr/share/icons/hicolor/scalable/apps/exfalso.svg
-usr/share/icons/hicolor/64x64/apps/exfalso.png
