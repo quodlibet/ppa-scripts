@@ -14,7 +14,7 @@ import getpass
 HOST = "pluto.tugraz.at"
 PORT = 22
 LOCAL = "~/debian_archive/quodlibet-unstable"
-REMOTE = "Novell-M/debian/quodlibet-unstable"
+REMOTE = "/mnt/dfs/christoph_reiter/app/WWW/christoph_reiter/debian/quodlibet-unstable"
 
 ###############################################################################
 
