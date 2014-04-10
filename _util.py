@@ -34,7 +34,7 @@ def p(cmd):
 def clean(directory, package):
     old = os.getcwd()
     os.chdir(directory)
-    cmd = "rm %s*.changes %s*.tar.gz %s*.dsc %s*.upload %s*.deb %s*.build %s*.diff.gz" % ((package,) * 7)
+    cmd = "rm %s*.changes %s*.tar.gz %s*.tar.xz %s*.dsc %s*.upload %s*.deb %s*.build %s*.diff.gz" % ((package,) * 8)
     p(cmd)
     os.chdir(old)
 

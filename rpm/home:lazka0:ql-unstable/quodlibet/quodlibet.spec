@@ -1,10 +1,10 @@
-%define hash a7ff02add42d
-%define longhash a7ff02add42d9718fa1b5e48544c430b7c97e380
-%define revision 6200
+%define hash 31bc3e16134f
+%define longhash 31bc3e16134fc578bb2681d095d8536e7b0c1692
+%define revision 6530
 
 Name:           quodlibet
-Version:        3.0.99
-Release:        2.%{revision}.%{hash}%{?dist}
+Version:        3.1.99
+Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
 %if 0%{?suse_version}
@@ -163,7 +163,12 @@ fi
 %if 0%{?suse_version}
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
+%dir %{_datadir}/appdata
+%dir %{_datadir}/dbus-1
+%dir %{_datadir}/dbus-1/services
 %endif
+%{_datadir}/dbus-1/services/net.sacredchao.QuodLibet.service
+%{_datadir}/appdata/quodlibet.appdata.xml
 %{_datadir}/gnome-shell/search-providers/quodlibet-search-provider.ini
 %{_mandir}/man1/quodlibet.1*
 
@@ -178,6 +183,10 @@ fi
 %else
 %{_datadir}/applications/exfalso.desktop
 %endif
+%if 0%{?suse_version}
+%dir %{_datadir}/appdata
+%endif
+%{_datadir}/appdata/exfalso.appdata.xml
 %{_datadir}/pixmaps/exfalso.png
 %{_datadir}/icons/hicolor/64x64/apps/exfalso.png
 %{_datadir}/icons/hicolor/scalable/apps/exfalso.svg

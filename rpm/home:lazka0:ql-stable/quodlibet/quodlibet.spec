@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        2.5
+Version:        2.6.2
 Release:        1.1%{?dist}
 Summary:        A music management program
 
@@ -155,7 +155,7 @@ fi
 
 %files -n exfalso -f %{name}.lang
 %defattr(-,root,root,-)
-%doc COPYING HACKING NEWS README
+%doc COPYING NEWS README
 %{_bindir}/exfalso
 %{_bindir}/operon
 %if 0%{?fedora}
