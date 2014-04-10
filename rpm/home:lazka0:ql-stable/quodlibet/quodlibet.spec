@@ -1,17 +1,18 @@
 Name:           quodlibet
-Version:        2.6.2
+Version:        3.1.0
 Release:        1.1%{?dist}
 Summary:        A music management program
 
 %if 0%{?suse_version}
 Group:          Productivity/Multimedia/Sound/Players
 %else
+# fedora
 Group:          Applications/Multimedia
 %endif
 License:        GPL-2.0
 URL:            http://code.google.com/p/quodlibet/
-Source0:        http://quodlibet.googlecode.com/files/quodlibet-%{version}.tar.gz
-Source1:        http://quodlibet.googlecode.com/files/quodlibet-plugins-%{version}.tar.gz
+Source0:        https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-%{version}.tar.gz
+Source1:        https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-plugins-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -19,9 +20,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  desktop-file-utils
-BuildRequires:  gtk2 >= 2.6.0
 BuildRequires:  python >= 2.6
-BuildRequires:  pygtk2 >= 2.16
+# needed for gtk-update-icon-cache
+BuildRequires:  gtk2 >= 2.6.0
 BuildRequires:  unzip
 
 %if 0%{?fedora}
@@ -31,25 +32,24 @@ BuildRequires:  python3-devel
 
 Requires:       exfalso = %{version}-%{release}
 
+Requires:       python-feedparser
+Requires:       media-player-info
+Requires:       udisks
+Requires:       libgpod
+
 %if 0%{?suse_version}
-Requires:       python-gstreamer-0_10 >= 0.10.2
-Requires:       gstreamer-0_10-plugins-good
-Requires:       python-feedparser
-Requires:       media-player-info
 Requires:       dbus-1-python
-Requires:       python-keybinder
-Requires:       udisks
-Requires:       python-gpod
+Requires:       gstreamer >= 1.0
+Requires:       gstreamer-plugins-base >= 1.0
+Requires:       gstreamer-plugins-good >= 1.0
 %else
-Requires:       gstreamer-python >= 0.10.2
-Requires:       gstreamer-plugins-good
-Requires:       python-feedparser
-Requires:       media-player-info
+# fedora
 Requires:       dbus-python
-Requires:       python-keybinder
-Requires:       udisks
-Requires:       python-gpod
+Requires:       gstreamer1
+Requires:       gstreamer1-plugins-base
+Requires:       gstreamer1-plugins-good
 %endif
+
 
 %description
 Quod Libet is a music management program. It provides several different ways
@@ -65,12 +65,17 @@ Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
 Requires:       python >= 2.6
-Requires:       pygtk2 >= 2.16
 Requires:       python-mutagen >= 1.14
+Requires:       gtk3 >= 3.2
 
 %if 0%{?fedora}
+Requires:       pygobject3 >= 3.2
 Requires:       python-CDDB
 Requires:       python-musicbrainz2
+%else
+# suse
+Requires:       python-gobject >= 3.2
+Requires:       python-gobject-cairo >= 3.2
 %endif
 
 %description -n exfalso
@@ -150,6 +155,16 @@ fi
 %{_datadir}/pixmaps/quodlibet.png
 %{_datadir}/icons/hicolor/64x64/apps/quodlibet.png
 %{_datadir}/icons/hicolor/scalable/apps/quodlibet.svg
+%if 0%{?suse_version}
+%dir %{_datadir}/gnome-shell
+%dir %{_datadir}/gnome-shell/search-providers
+%dir %{_datadir}/appdata
+%dir %{_datadir}/dbus-1
+%dir %{_datadir}/dbus-1/services
+%endif
+%{_datadir}/dbus-1/services/net.sacredchao.QuodLibet.service
+%{_datadir}/appdata/quodlibet.appdata.xml
+%{_datadir}/gnome-shell/search-providers/quodlibet-search-provider.ini
 %{_mandir}/man1/quodlibet.1*
 
 
@@ -163,13 +178,17 @@ fi
 %else
 %{_datadir}/applications/exfalso.desktop
 %endif
+%if 0%{?suse_version}
+%dir %{_datadir}/appdata
+%endif
+%{_datadir}/appdata/exfalso.appdata.xml
 %{_datadir}/pixmaps/exfalso.png
 %{_datadir}/icons/hicolor/64x64/apps/exfalso.png
 %{_datadir}/icons/hicolor/scalable/apps/exfalso.svg
 %{_mandir}/man1/exfalso.1*
 %{_mandir}/man1/operon.1*
 %{python_sitelib}/quodlibet/
-%{python_sitelib}/quodlibet-%{version}-py*.egg-info
+%{python_sitelib}/quodlibet-*.egg-info
 
 %changelog
 * Fri Dec  7 2012 Christoph Reiter <reiter.christoph@gmail.com>
