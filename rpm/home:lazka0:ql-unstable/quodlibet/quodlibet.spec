@@ -45,6 +45,9 @@ Requires:       dbus-1-python
 Requires:       gstreamer >= 1.0
 Requires:       gstreamer-plugins-base >= 1.0
 Requires:       gstreamer-plugins-good >= 1.0
+# suse has extra packages for typelibs
+Requires:       typelib-1_0-Gst-1_0
+Requires:       typelib-1_0-GstPbutils-1_0
 %else
 # fedora
 Requires:       dbus-python
@@ -70,6 +73,7 @@ Group: Applications/Multimedia
 Requires:       python >= 2.6
 Requires:       python-mutagen >= 1.14
 Requires:       gtk3 >= 3.2
+Requires:       python-cairo
 
 %if 0%{?fedora}
 Requires:       pygobject3 >= 3.2
@@ -79,6 +83,7 @@ Requires:       python-musicbrainz2
 # suse
 Requires:       python-gobject >= 3.2
 Requires:       python-gobject-cairo >= 3.2
+Requires:       typelib-1_0-Gtk-3_0
 %endif
 
 %description -n exfalso
