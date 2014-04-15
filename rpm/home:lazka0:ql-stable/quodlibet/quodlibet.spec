@@ -70,16 +70,17 @@ Group: Applications/Multimedia
 Requires:       python >= 2.6
 Requires:       python-mutagen >= 1.14
 Requires:       gtk3 >= 3.2
-Requires:       python-cairo
 
 %if 0%{?fedora}
 Requires:       pygobject3 >= 3.2
 Requires:       python-CDDB
 Requires:       python-musicbrainz2
+Requires:       pycairo
 %else
 # suse
 Requires:       python-gobject >= 3.2
 Requires:       python-gobject-cairo >= 3.2
+Requires:       python-cairo
 Requires:       typelib-1_0-Gtk-3_0
 %endif
 
