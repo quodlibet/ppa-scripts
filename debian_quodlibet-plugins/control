@@ -8,7 +8,7 @@ Standards-Version: 3.9.2.0
 
 Package: quodlibet-plugins
 Architecture: all
-Depends: exfalso (>= 2.9.99), ${python:Depends}, ${misc:Depends}
+Depends: exfalso (>= 3.0), ${python:Depends}, ${misc:Depends}
 Recommends: notification-daemon, python-dbus, python-cddb,
     python-musicbrainz2, python-pyinotify
 Suggests: brasero | k3b | xfburn

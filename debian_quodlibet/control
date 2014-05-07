@@ -2,7 +2,8 @@ Source: quodlibet
 Section: sound
 Priority: optional
 Maintainer: Ondřej Kuzník <ondra@mistotebe.net>
-Uploaders: Christine Spang <christine@debian.org>
+Uploaders: Christine Spang <christine@debian.org>,
+    Tristan Seligmann <mithrandi@debian.org>
 Build-Depends: debhelper (>= 8),
     intltool, python-all (>= 2.6.6-3~), quilt, libgtk-3-bin,
 Standards-Version: 3.9.2.0
@@ -20,6 +21,9 @@ Description: audio tag editor for GTK+
  Ex Falso displays and edits audio metadata tags. Supported formats include
  MP3, Ogg Vorbis, FLAC, Musepack (MPC), WavPack, and MOD/XM/IT.
  .
+ A command-line counterpart, Operon, is also distributed as part of this
+ package.
+ .
  Notable features include:
   * Freeform tag editing for most supported formats, including ID3v2
   * Multiple values for tag keys
@@ -32,11 +36,15 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0,
     gstreamer1.0-plugins-base, gstreamer1.0-plugins-good,
-    gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio, gstreamer1.0-alsa
-Recommends: python-dbus, python-feedparser,
-    udisks, media-player-info, libgpod4, gir1.2-keybinder-3.0
-Suggests: gstreamer1.0-plugins-bad
-Description: audio library manager and player for GTK+
+    gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio | gstreamer1.0-audiosink
+Recommends: python-feedparser, libgpod4, python-dbus,
+    udisks, media-player-info, gir1.2-keybinder-3.0, gir1.2-gtksource-3.0,
+    gstreamer1.0-pulseaudio
+Suggests: gstreamer1.0-plugins-bad, quodlibet-plugins
+Replaces: quodlibet-ext
+Conflicts: quodlibet-ext
+Provides: quodlibet-ext
+Description: audio library manager and player for GTK3
  Quod Libet is a music management program. It provides several different ways
  to view your audio library, as well as support for Internet radio and
  audio feeds. It has extremely flexible metadata tag editing and searching
