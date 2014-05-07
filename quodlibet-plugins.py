@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet-plugins"
-RELEASE_TAG = "quodlibet-3.1.0"
+RELEASE_TAG = "quodlibet-3.1.1"
 PPA_VERSION = "1:3.1.99"
-RELEASE_VERSION = "1:3.1.0"
+RELEASE_VERSION = "1:3.1.1"
 
 ##########################################################
 

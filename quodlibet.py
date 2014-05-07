@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_TAG = "quodlibet-3.1.0"
+RELEASE_TAG = "quodlibet-3.1.1"
 PPA_VERSION = "3.1.99"
-RELEASE_VERSION = "3.1.0"
+RELEASE_VERSION = "3.1.1"
 
 ##########################################################
 
@@ -41,7 +41,7 @@ date = p("date -R")[1]
 if not args.release:
     VERSION = PPA_VERSION + "+" + rev_num
 else:
-    VERSION = RELEASE_VERSION + "+1"
+    VERSION = RELEASE_VERSION
 
 p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, VERSION, PACKAGE))
 
