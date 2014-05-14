@@ -1,6 +1,0 @@
-#!/usr/bin/make -f
-# debian/rules for quodlibet-plugins
-# It's obscenely simple. I feel bad.
-
-%:
-	dh $@ --with python2
