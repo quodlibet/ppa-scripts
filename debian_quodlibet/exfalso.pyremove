@@ -1,0 +1,3 @@
+quodlibet/ext/*/
+quodlibet/ext/*/*.py
+quodlibet/ext/*/*/*.py
