@@ -1,6 +1,6 @@
-%define hash 796f1bc7740e
-%define longhash 796f1bc7740e644047f50a56cceb60fc85982235
-%define revision 6616
+%define hash 11e0b914cf4e
+%define longhash 11e0b914cf4ec9bd0995d33a1c733de84fd7f383
+%define revision 6631
 
 Name:           quodlibet
 Version:        3.1.99
@@ -27,11 +27,6 @@ BuildRequires:  python >= 2.6
 # needed for gtk-update-icon-cache
 BuildRequires:  gtk2 >= 2.6.0
 BuildRequires:  unzip
-
-%if 0%{?fedora}
-# needed for py_byte_compile
-BuildRequires:  python3-devel
-%endif
 
 Requires:       exfalso = %{version}-%{release}
 
@@ -103,17 +98,6 @@ cd quodlibet
 
 %install
 rm -rf %{buildroot}
-
-mkdir -p %{buildroot}%{python_sitelib}/quodlibet/
-cp -R plugins %{buildroot}%{python_sitelib}/quodlibet/
-
-%if 0%{?fedora}
-%py_byte_compile %{__python} %{buildroot}%{python_sitelib}/quodlibet/plugins
-%endif
-
-%if 0%{?suse_version}
-%py_compile %{buildroot}%{python_sitelib}/quodlibet/plugins
-%endif
 
 cd quodlibet
 python setup.py install --root=%{buildroot} --prefix=%{_prefix}
