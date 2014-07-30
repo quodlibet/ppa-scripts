@@ -1,9 +1,0 @@
---- a/setup.py
-+++ b/setup.py
-@@ -21,5 +21,6 @@ setup(name='collate',
-                     ['collate/icu/_icu.pyx'],
-                     libraries=libraries)],
-       cmdclass=dict(build_ext=build_ext),
-+      scripts=["./pycollate"],
-       packages=["collate", "collate.icu"],
-       )
