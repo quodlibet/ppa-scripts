@@ -1,9 +1,9 @@
-%define hash 09982d76876b
-%define longhash 09982d76876b9a75cc755f609da10179f1f6c13f
-%define revision 6725
+%define hash bcd739fb90f1
+%define longhash bcd739fb90f1e0472c13d80baba6d547fdf154f7
+%define revision 6838
 
 Name:           quodlibet
-Version:        3.1.99
+Version:        3.2.99
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
@@ -32,7 +32,7 @@ Requires:       exfalso = %{version}-%{release}
 
 Requires:       python-feedparser
 Requires:       media-player-info
-Requires:       udisks
+Requires:       udisks2
 Requires:       libgpod
 
 %if 0%{?suse_version}
