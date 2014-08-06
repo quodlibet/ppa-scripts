@@ -1,0 +1,1 @@
+../rpm/home:lazka0:ql-unstable/quodlibet/quodlibet.spec
