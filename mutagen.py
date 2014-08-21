@@ -58,7 +58,7 @@ cd(hg_dir)
 if args.dist == "debian":
     releases = ["quodlibet-unstable"]
 else:
-    releases = ["precise", "quantal", "raring", "saucy"]
+    releases = ["precise", "trusty", "utopic"]
 
 debian_dir = "debian_mutagen"
 for release in releases:
