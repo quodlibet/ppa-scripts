@@ -15,8 +15,11 @@ Package: exfalso
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.14),
     python-gi (>= 3.2), python-gi-cairo (>= 3.2), gir1.2-gtk-3.0
-Recommends: quodlibet-plugins (>= 1:2.9)
-Suggests: libmodplug1
+Recommends: python-musicbrainz2, python-cddb
+Suggests: libmodplug1, brasero | k3b | xfburn
+Replaces: quodlibet-plugins
+Conflicts: quodlibet-plugins
+Provides: quodlibet-plugins
 Description: audio tag editor for GTK+
  Ex Falso displays and edits audio metadata tags. Supported formats include
  MP3, Ogg Vorbis, FLAC, Musepack (MPC), WavPack, and MOD/XM/IT.
@@ -39,8 +42,8 @@ Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio | gstreamer1.0-audiosink
 Recommends: python-feedparser, libgpod4, python-dbus,
     udisks2 | udisks, media-player-info, gir1.2-keybinder-3.0,
-    gir1.2-gtksource-3.0, gstreamer1.0-pulseaudio
-Suggests: gstreamer1.0-plugins-bad, quodlibet-plugins
+    python-dbus, gir1.2-gtksource-3.0, python-pyinotify, notification-daemon
+Suggests: gstreamer1.0-plugins-bad
 Replaces: quodlibet-ext
 Conflicts: quodlibet-ext
 Provides: quodlibet-ext
@@ -52,24 +55,3 @@ Description: audio library manager and player for GTK3
  .
  Supported formats include MP3, Ogg Vorbis, FLAC, Musepack (MPC), WavPack,
  and MOD/XM/IT.
-
-Package: quodlibet-plugins
-Architecture: all
-Depends: exfalso (= ${source:Version}), ${python:Depends}, ${misc:Depends}
-Recommends: notification-daemon, python-dbus, python-cddb,
-    python-musicbrainz2, python-pyinotify
-Suggests: brasero | k3b | xfburn
-Description: various contributed plugins for Quod Libet
- This package contains a number of contributed plugins for the Quod
- Libet media player, each extending the player's functionality in
- different ways.
- .
- Notable plugins in this package include:
- .
-  - Animated On-Screen Display
-  - MusicBrainz and CDDB/FreeDB tag lookups
-  - Alarm clock and lullaby, start and stop playing music at specified times
-  - Export a playlist as HTML
-  - Export a Jabber JEP-118 file
-  - Burn CDs with Brasero or K3b
-  - AudioScrobbler/Last.fm submission and synchronization (http://www.last.fm/)
