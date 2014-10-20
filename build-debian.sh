@@ -10,4 +10,15 @@ mini-dinstall -r
 cd ~/debian_archive/quodlibet-unstable/
 gpg --output Release.gpg -ba Release
 cd -
-./debian_upload.py
+
+cd ~/debian_archive || exit
+rm -rf .?*
+git init
+git checkout -b gh-pages
+touch  .nojekyll
+git add quodlibet-unstable
+git add .nojekyll
+git commit -m "update"
+git remote add origin https://github.com/lazka/ql-debian.git
+git push --force
+cd -
