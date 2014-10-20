@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.1.1
+Version:        3.2.2
 Release:        1.1%{?dist}
 Summary:        A music management program
 
@@ -12,7 +12,6 @@ Group:          Applications/Multimedia
 License:        GPL-2.0
 URL:            http://code.google.com/p/quodlibet/
 Source0:        https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-%{version}.tar.gz
-Source1:        https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-plugins-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -25,16 +24,11 @@ BuildRequires:  python >= 2.6
 BuildRequires:  gtk2 >= 2.6.0
 BuildRequires:  unzip
 
-%if 0%{?fedora}
-# needed for py_byte_compile
-BuildRequires:  python3-devel
-%endif
-
 Requires:       exfalso = %{version}-%{release}
 
 Requires:       python-feedparser
 Requires:       media-player-info
-Requires:       udisks
+Requires:       udisks2
 Requires:       libgpod
 
 %if 0%{?suse_version}
@@ -71,6 +65,7 @@ Requires:       python >= 2.6
 Requires:       python-mutagen >= 1.14
 Requires:       gtk3 >= 3.2
 
+
 %if 0%{?fedora}
 Requires:       pygobject3 >= 3.2
 Requires:       python-CDDB
@@ -98,17 +93,6 @@ Wavpack, and MPEG-4 AAC.
 
 %install
 rm -rf %{buildroot}
-
-mkdir -p %{buildroot}%{python_sitelib}/quodlibet/plugins
-tar --verbose --strip-components=1 --extract --file=%{S:1} --directory=%{buildroot}%{python_sitelib}/quodlibet/plugins
-
-%if 0%{?fedora}
-%py_byte_compile %{__python} %{buildroot}%{python_sitelib}/quodlibet/plugins
-%endif
-
-%if 0%{?suse_version}
-%py_compile %{buildroot}%{python_sitelib}/quodlibet/plugins
-%endif
 
 python setup.py install --root=%{buildroot} --prefix=%{_prefix}
 

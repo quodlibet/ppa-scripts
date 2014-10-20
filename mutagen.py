@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "mutagen"
-RELEASE_TAG = "mutagen-1.24"
-PPA_VERSION = "1.24.99"
-RELEASE_VERSION = "1.24"
+RELEASE_TAG = "mutagen-1.25.1"
+PPA_VERSION = "1.25.99"
+RELEASE_VERSION = "1.25.1"
 
 ##########################################################
 
