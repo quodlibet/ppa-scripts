@@ -1,15 +1,19 @@
 #!/bin/bash
 
+# needs a pbuilder:
+# sudo pbuilder create --distribution stable
+# sudo pbuilder update
+
 MINID="mini-dinstall --config=mini-dinstall.conf"
 $MINID -k
 $MINID -k
 $MINID -k
 rm -rf ~/debian_archive/quodlibet*
 $MINID
-./quodlibet.py -ddebian
-./mutagen.py -ddebian
+./quodlibet.py -ddebian --release
+./mutagen.py -ddebian --release
 $MINID -r
-cd ~/debian_archive/quodlibet-unstable/
+cd ~/debian_archive/quodlibet-stable/
 gpg --output Release.gpg -ba Release
 cd -
 
@@ -20,9 +24,9 @@ rm -rf ".git"
 git init
 git checkout -b gh-pages
 touch  .nojekyll
-rm -Rf quodlibet-unstable
-cp -R ~/debian_archive/quodlibet-unstable .
-git add * .*
+rm -Rf quodlibet-stable
+cp -R ~/debian_archive/quodlibet-stable .
+git add .
 git commit -m "update"
 git remote add origin https://github.com/lazka/ql-debian.git
 git push --force

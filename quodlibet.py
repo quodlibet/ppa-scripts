@@ -25,7 +25,7 @@ if not os.path.isdir(hg_dir):
 cd(hg_dir)
 
 start_dir = os.getcwd()
-clean(start_dir, PACKAGE)
+clean(start_dir, PACKAGE, "exfalso")
 
 p("hg revert --all --no-backup")
 p("hg pull")
@@ -39,16 +39,20 @@ rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
 if not args.release:
-    VERSION = PPA_VERSION + "+" + rev_num
+    UPSTREAM_VERSION = PPA_VERSION + "+" + rev_num + "~" + rev_hash
 else:
-    VERSION = RELEASE_VERSION
-
-p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, VERSION, PACKAGE))
+    UPSTREAM_VERSION = RELEASE_VERSION
+if args.version != 0:
+    UPSTREAM_VERSION += "+%s" % args.version
+p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, PACKAGE))
 
 cd(PACKAGE)
 
 if args.dist == "debian":
-    releases = {"quodlibet-unstable": "debian_quodlibet"}
+    if args.release:
+        releases = {"quodlibet-stable": "debian_quodlibet"}
+    else:
+        releases = {"quodlibet-unstable": "debian_quodlibet"}
 else:
     releases = {
         "precise": "debian_quodlibet",
@@ -61,22 +65,23 @@ for release, debian_dir in releases.iteritems():
     p("cp -R ../../%s ." % debian_dir)
     p("mv %s debian" % debian_dir)
 
-    if not args.release:
-        version_str = "%s-0~rev%s~ppa%s" % (VERSION, rev, args.version)
-    else:
-        version_str = "%s-0~ppa%s" % (VERSION, args.version)
+    debian_version = "%s-0~ppa%s~%s" % (UPSTREAM_VERSION, args.version, release.replace("-", "~"))
 
     changelog = "debian/changelog"
     t = open(changelog).read()
-    t = t.replace("%version%", version_str)
+    t = t.replace("%version%", debian_version)
     t = t.replace("%dist%", release)
     t = t.replace("%date%", date)
-    open(changelog, "w").write(t)
+    with open(changelog, "w") as h:
+        h.write(t)
 
     if args.dist == "debian":
-        fail(p("dpkg-buildpackage -tc -uc -us -I -rfakeroot"))
+        if args.release:
+            fail(p("pdebuild --use-pdebuild-internal --debbuildopts '-uc -us' --buildresult .."))
+        else:
+            fail(p("dpkg-buildpackage -uc -us -tc -I -rfakeroot"))
     else:
-        fail(p("dpkg-buildpackage -uc -us -S -I -rfakeroot"))
+        fail(p("dpkg-buildpackage -uc -us -S -tc -I -rfakeroot"))
 
 p("rm -R debian")
 cd("..")
@@ -90,7 +95,6 @@ else:
         fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
     else:
         fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
-    #fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
+    # fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
 
-
-clean(start_dir, PACKAGE)
+clean(start_dir, PACKAGE, "exfalso")

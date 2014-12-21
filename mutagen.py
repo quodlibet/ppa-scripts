@@ -5,10 +5,10 @@ from _util import *
 
 ##########################################################
 
-PACKAGE= "mutagen"
-RELEASE_TAG = "mutagen-1.25.1"
-PPA_VERSION = "1.25.99"
-RELEASE_VERSION = "1.25.1"
+PACKAGE = "mutagen"
+RELEASE_TAG = "mutagen-1.27"
+PPA_VERSION = "1.27.99"
+RELEASE_VERSION = "1.27"
 
 ##########################################################
 
@@ -22,8 +22,7 @@ else:
 debian_root = os.getcwd()
 
 start_dir = os.getcwd()
-clean(start_dir, PACKAGE)
-clean(start_dir, "python-" + PACKAGE)
+clean(start_dir, PACKAGE, "python-" + PACKAGE)
 
 hg_dir = "mutagen-hg"
 if not os.path.isdir(hg_dir):
@@ -38,25 +37,24 @@ if args.release:
 
 rev_num = p("hg id -n")[1]
 rev_hash = p("hg id -i")[1]
-rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
 if not args.release:
-    VERSION = PPA_VERSION + "+" + rev_num
+    UPSTREAM_VERSION = PPA_VERSION + "+" + rev_num + "~" + rev_hash
 else:
-    VERSION = RELEASE_VERSION
+    UPSTREAM_VERSION = RELEASE_VERSION
+if args.version != 0:
+    UPSTREAM_VERSION += "~%s" % args.version
 
 cd("..")
-
-if args.dist == "debian":
-    p("tar --exclude '.hg*' -pczf %s_%s-0~rev%s~ppa%s~quodlibet.orig.tar.gz %s" % (PACKAGE, VERSION, rev, args.version, hg_dir))
-else:
-    p("tar --exclude '.hg*' -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, VERSION, hg_dir))
-
+p("tar --exclude '.hg*' -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, hg_dir))
 cd(hg_dir)
 
 if args.dist == "debian":
-    releases = ["quodlibet-unstable"]
+    if args.release:
+        releases = ["quodlibet-stable"]
+    else:
+        releases = ["quodlibet-unstable"]
 else:
     releases = ["precise", "trusty", "utopic"]
 
@@ -66,27 +64,27 @@ for release in releases:
     p("cp -R ../%s ." % debian_dir)
     p("mv %s debian" % debian_dir)
 
-    if not args.release:
-        version_str = "%s-0~rev%s~ppa%s" % (VERSION, rev, args.version)
-    else:
-        version_str = "%s-0~ppa%s" % (VERSION, args.version)
+    debian_version = "%s-0~ppa%s~%s" % (UPSTREAM_VERSION, args.version, release.replace("-", "~"))
 
     changelog = "debian/changelog"
     t = open(changelog).read()
-    t = t.replace("%version%", version_str)
+    t = t.replace("%version%", debian_version)
     t = t.replace("%dist%", release)
     t = t.replace("%date%", date)
-    open(changelog, "w").write(t)
+    with open(changelog, "w") as h:
+        h.write(t)
 
     if args.dist == "debian":
-        fail(p("dpkg-buildpackage -tc -uc -us -tc -I -rfakeroot"))
+        if args.release:
+            fail(p("pdebuild --use-pdebuild-internal --debbuildopts '-uc -us' --buildresult .."))
+        else:
+            fail(p("dpkg-buildpackage -uc -us -tc -I -rfakeroot"))
     else:
         fail(p("dpkg-buildpackage -uc -us -S -tc -I -rfakeroot"))
 
 p("rm -R debian")
 cd("..")
 fail(p("debsign %s*.changes %s*.dsc" % ((PACKAGE,) * 2)))
-
 dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
     fail(p("%s local %s*.changes" % (dput, PACKAGE)))
@@ -95,7 +93,6 @@ else:
         fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
     else:
         fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
-    #fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
+    # fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
 
-clean(start_dir, PACKAGE)
-clean(start_dir, "python-" + PACKAGE)
+clean(start_dir, PACKAGE, "python-" + PACKAGE)

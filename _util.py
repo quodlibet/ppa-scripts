@@ -15,7 +15,7 @@ def parse_args():
                       choices=["ubuntu", "debian"])
 
     parser.add_option("-v", "--version", action="store", dest="version",
-                      default=1, type="int", help="version increment")
+                      default=0, type="int", help="version increment")
 
     return parser.parse_args()[0]
 
@@ -31,11 +31,12 @@ def p(cmd):
     stdout, stderr = p.communicate()
     return p.returncode, stdout.strip(), stderr.strip()
 
-def clean(directory, package):
+def clean(directory, *packages):
     old = os.getcwd()
     os.chdir(directory)
-    cmd = "rm %s*.changes %s*.tar.gz %s*.tar.xz %s*.dsc %s*.upload %s*.deb %s*.build %s*.diff.gz" % ((package,) * 8)
-    p(cmd)
+    for package in packages:
+        cmd = "rm %s*.changes %s*.tar.gz %s*.tar.xz %s*.dsc %s*.upload %s*.deb %s*.build %s*.diff.gz" % ((package,) * 8)
+        p(cmd)
     os.chdir(old)
 
 def fail(out):
