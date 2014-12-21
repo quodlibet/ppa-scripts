@@ -22,7 +22,7 @@ git checkout -b gh-pages
 touch  .nojekyll
 rm -Rf quodlibet-unstable
 cp -R ~/debian_archive/quodlibet-unstable .
-git add * .*
+git add .
 git commit -m "update"
 git remote add origin https://github.com/lazka/ql-debian.git
 git push --force
