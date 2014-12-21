@@ -20,8 +20,9 @@ rm -rf ".git"
 git init
 git checkout -b gh-pages
 touch  .nojekyll
-rm -Rf quodlibet-unstable
-cp -R ~/debian_archive/quodlibet-unstable .
+rm -Rf testing
+mkdir testing
+cp -R ~/debian_archive/quodlibet-unstable ./testing/quodlibet-unstable
 git add .
 git commit -m "update"
 git remote add origin https://github.com/lazka/ql-debian.git
