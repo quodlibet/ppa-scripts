@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.2.2
+Version:        3.3.0
 Release:        1.1%{?dist}
 Summary:        A music management program
 
@@ -19,7 +19,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  desktop-file-utils
-BuildRequires:  python >= 2.6
+BuildRequires:  python >= 2.7
 # needed for gtk-update-icon-cache
 BuildRequires:  gtk2 >= 2.6.0
 BuildRequires:  unzip
@@ -61,7 +61,7 @@ Wavpack, and MPEG-4 AAC.
 Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
-Requires:       python >= 2.6
+Requires:       python >= 2.7
 Requires:       python-mutagen >= 1.14
 Requires:       gtk3 >= 3.2
 

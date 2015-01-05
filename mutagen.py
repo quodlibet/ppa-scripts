@@ -44,7 +44,7 @@ if not args.release:
 else:
     UPSTREAM_VERSION = RELEASE_VERSION
 if args.version != 0:
-    UPSTREAM_VERSION += "~%s" % args.version
+    UPSTREAM_VERSION += "+%s" % args.version
 
 cd("..")
 p("tar --exclude '.hg*' -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, hg_dir))
@@ -56,7 +56,7 @@ if args.dist == "debian":
     else:
         releases = ["quodlibet-unstable"]
 else:
-    releases = ["precise", "trusty", "utopic"]
+    releases = ["precise", "trusty", "utopic", "vivid"]
 
 debian_dir = "debian_mutagen"
 for release in releases:

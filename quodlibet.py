@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_TAG = "quodlibet-3.2.2"
-PPA_VERSION = "3.2.99"
-RELEASE_VERSION = "3.2.2"
+RELEASE_TAG = "quodlibet-3.3.0"
+PPA_VERSION = "3.3.99"
+RELEASE_VERSION = "3.3.0"
 
 ##########################################################
 
@@ -58,6 +58,7 @@ else:
         "precise": "debian_quodlibet",
         "trusty": "debian_quodlibet",
         "utopic": "debian_quodlibet",
+        "vivid": "debian_quodlibet",
     }
 
 for release, debian_dir in releases.iteritems():

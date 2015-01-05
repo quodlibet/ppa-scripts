@@ -39,7 +39,7 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0,
     gstreamer1.0-plugins-base, gstreamer1.0-plugins-good,
-    gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio | gstreamer1.0-audiosink
+    gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio
 Recommends: python-feedparser, libgpod4, python-dbus,
     udisks2 | udisks, media-player-info, gir1.2-keybinder-3.0,
     python-dbus, gir1.2-gtksource-3.0, python-pyinotify, notification-daemon

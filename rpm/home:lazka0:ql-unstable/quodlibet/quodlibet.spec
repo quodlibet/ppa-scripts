@@ -1,9 +1,9 @@
-%define hash 871b818629ab
-%define longhash 871b818629ab7e8a1bcbf84eaefc2ae51da14e7a
-%define revision 7179
+%define hash 5ddaac052ac0
+%define longhash 5ddaac052ac07c586ec9c2b2dd7d65e003611cc9
+%define revision 7272
 
 Name:           quodlibet
-Version:        3.2.99
+Version:        3.3.99
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
