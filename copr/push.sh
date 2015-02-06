@@ -20,7 +20,7 @@ git init
 git add .
 git commit -m "update"
 git remote add origin https://github.com/lazka/ql-copr.git
-git push --force
+git push --force --set-upstream origin master
 cd ..
 
 # tell copr to build it

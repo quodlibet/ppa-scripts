@@ -14,7 +14,7 @@ $MINID
 ./mutagen.py -ddebian --release
 $MINID -r
 cd ~/debian_archive/quodlibet-stable/
-gpg --output Release.gpg -ba Release
+gpg -u B6264964! --output Release.gpg -ba Release
 cd -
 
 git clone https://github.com/lazka/ql-debian.git ql-debian
@@ -30,6 +30,6 @@ cp -R ~/debian_archive/quodlibet-stable ./stable/quodlibet-stable
 git add .
 git commit -m "update"
 git remote add origin https://github.com/lazka/ql-debian.git
-git push --force
+git push --force --set-upstream origin gh-pages
 cd -
 rm -Rf ql-debian

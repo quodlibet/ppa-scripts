@@ -84,7 +84,7 @@ for release in releases:
 
 p("rm -R debian")
 cd("..")
-fail(p("debsign %s*.changes %s*.dsc" % ((PACKAGE,) * 2)))
+fail(p("debsign -k B6264964 %s*.changes %s*.dsc" % ((PACKAGE,) * 2)))
 dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
     fail(p("%s local %s*.changes" % (dput, PACKAGE)))

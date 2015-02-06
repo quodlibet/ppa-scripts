@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_TAG = "quodlibet-3.3.0"
+RELEASE_TAG = "quodlibet-3.3.1"
 PPA_VERSION = "3.3.99"
-RELEASE_VERSION = "3.3.0"
+RELEASE_VERSION = "3.3.1"
 
 ##########################################################
 
@@ -86,7 +86,7 @@ for release, debian_dir in releases.iteritems():
 
 p("rm -R debian")
 cd("..")
-fail(p("debsign %s*.changes %s*.dsc" % ((PACKAGE,) * 2)))
+fail(p("debsign -k B6264964 %s*.changes %s*.dsc" % ((PACKAGE,) * 2)))
 
 dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
