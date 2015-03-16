@@ -1,5 +1,5 @@
 mutagen-hg
 python-collate
-quodlibet-hg
+quodlibet-git
 *.pyc
 .osc

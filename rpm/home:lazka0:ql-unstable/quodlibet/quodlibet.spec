@@ -1,9 +1,9 @@
-%define hash 559cd7144c44
-%define longhash 559cd7144c44bd2b7f24803c45d46627969c9468
-%define revision 7371
+%define hash 827aa65
+%define longhash 827aa65049c48c0685debaca16ec8845e9cdc475
+%define revision 7221
 
 Name:           quodlibet
-Version:        3.3.99
+Version:        3.3.999
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
@@ -14,8 +14,8 @@ Group:          Productivity/Multimedia/Sound/Players
 Group:          Applications/Multimedia
 %endif
 License:        GPL-2.0
-URL:            http://code.google.com/p/quodlibet/
-Source0:        http://quodlibet.googlecode.com/archive/%{longhash}.zip
+URL:            https://github.com/quod-libet/quodlibet
+Source0:        https://github.com/quod-libet/quodlibet/archive/%{longhash}.zip
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)

@@ -3,14 +3,14 @@
 import os
 from _util import *
 
-cd("quodlibet-hg")
-p("hg revert --all --no-backup")
-p("hg pull")
-p("hg up default -C")
+cd("quodlibet-git")
+p("git reset HEAD --hard")
+p("git pull")
+p("hg checkout master")
 
-rev = p("hg id -n")[1]
-short_hash = p("hg id -i")[1]
-full_hash = p("hg parent --template '{node}'")[1]
+rev = p("git rev-list --count HEAD")[1]
+short_hash = p("git rev-parse --short HEAD")[1]
+full_hash = p("git rev-parse HEAD")[1]
 
 cd("..")
 

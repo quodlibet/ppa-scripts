@@ -10,7 +10,7 @@ Group:          Productivity/Multimedia/Sound/Players
 Group:          Applications/Multimedia
 %endif
 License:        GPL-2.0
-URL:            http://code.google.com/p/quodlibet/
+URL:            https://github.com/quod-libet/quodlibet
 Source0:        https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-%{version}.tar.gz
 
 BuildArch:      noarch

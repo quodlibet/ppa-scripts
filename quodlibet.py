@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_TAG = "quodlibet-3.3.1"
-PPA_VERSION = "3.3.99"
+RELEASE_TAG = "release-3.3.1"
+PPA_VERSION = "3.3.999"
 RELEASE_VERSION = "3.3.1"
 
 ##########################################################
@@ -19,22 +19,22 @@ if args.dist == "ubuntu":
 else:
     dput_cfg = os.path.join(os.getcwd(), "dput_debian.cf")
 
-hg_dir = "quodlibet-hg"
-if not os.path.isdir(hg_dir):
-    p("hg clone https://quodlibet.googlecode.com/hg/ %s" % hg_dir)
-cd(hg_dir)
+git_dir = "quodlibet-git"
+if not os.path.isdir(git_dir):
+    p("git clone https://github.com/quod-libet/quodlibet.git %s" % git_dir)
+cd(git_dir)
 
 start_dir = os.getcwd()
 clean(start_dir, PACKAGE, "exfalso")
 
-p("hg revert --all --no-backup")
-p("hg pull")
-p("hg up default -C")
+p("git reset HEAD --hard")
+p("git clean -xfd")
+p("git pull")
 if args.release:
-    p("hg up -r%s" % RELEASE_TAG)
+    p("git checkout -r%s" % RELEASE_TAG)
 
-rev_num = p("hg id -n")[1]
-rev_hash = p("hg id -i")[1]
+rev_num = p("git rev-list --count HEAD")[1]
+rev_hash = p("git rev-parse --short HEAD")[1]
 rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
