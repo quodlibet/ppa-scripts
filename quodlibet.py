@@ -21,7 +21,7 @@ else:
 
 git_dir = "quodlibet-git"
 if not os.path.isdir(git_dir):
-    p("git clone https://github.com/quod-libet/quodlibet.git %s" % git_dir)
+    p("git clone https://github.com/quodlibet/quodlibet.git %s" % git_dir)
 cd(git_dir)
 
 start_dir = os.getcwd()
