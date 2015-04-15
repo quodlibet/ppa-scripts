@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_TAG = "release-3.3.1"
-PPA_VERSION = "3.3.999"
-RELEASE_VERSION = "3.3.1"
+RELEASE_TAG = "release-3.4.0"
+PPA_VERSION = "3.4.99"
+RELEASE_VERSION = "3.4.0"
 
 ##########################################################
 

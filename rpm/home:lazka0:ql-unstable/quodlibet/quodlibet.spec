@@ -1,9 +1,9 @@
-%define hash 827aa65
-%define longhash 827aa65049c48c0685debaca16ec8845e9cdc475
-%define revision 7221
+%define hash 509f00d
+%define longhash 509f00d0e264cf586d1b72d2f93236c9b341e0c4
+%define revision 7266
 
 Name:           quodlibet
-Version:        3.3.999
+Version:        3.4.99
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
@@ -23,9 +23,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  desktop-file-utils
-BuildRequires:  python >= 2.6
-# needed for gtk-update-icon-cache
-BuildRequires:  gtk2 >= 2.6.0
+BuildRequires:  python >= 2.7
 BuildRequires:  unzip
 
 Requires:       exfalso = %{version}-%{release}
@@ -65,8 +63,8 @@ Wavpack, and MPEG-4 AAC.
 Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
-Requires:       python >= 2.6
-Requires:       python-mutagen >= 1.14
+Requires:       python >= 2.7
+Requires:       python-mutagen >= 1.22
 Requires:       gtk3 >= 3.2
 
 
@@ -151,6 +149,7 @@ fi
 %{_datadir}/pixmaps/quodlibet.png
 %{_datadir}/icons/hicolor/64x64/apps/quodlibet.png
 %{_datadir}/icons/hicolor/scalable/apps/quodlibet.svg
+%{_datadir}/icons/hicolor/scalable/apps/quodlibet-symbolic.svg
 %if 0%{?suse_version}
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
@@ -181,6 +180,7 @@ fi
 %{_datadir}/pixmaps/exfalso.png
 %{_datadir}/icons/hicolor/64x64/apps/exfalso.png
 %{_datadir}/icons/hicolor/scalable/apps/exfalso.svg
+%{_datadir}/icons/hicolor/scalable/apps/exfalso-symbolic.svg
 %{_mandir}/man1/exfalso.1*
 %{_mandir}/man1/operon.1*
 %{python_sitelib}/quodlibet/
