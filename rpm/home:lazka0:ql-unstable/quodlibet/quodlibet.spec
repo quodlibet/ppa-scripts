@@ -23,6 +23,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  desktop-file-utils
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  python >= 2.7
 BuildRequires:  unzip
 
@@ -88,7 +89,7 @@ Supported file formats include Ogg Vorbis, MP3, FLAC, MOD/XM/IT, Musepack,
 Wavpack, and MPEG-4 AAC.
 
 %prep
-%setup -q -n quodlibet-%{hash}
+%setup -q -n quodlibet-%{longhash}
 
 %build
 cd quodlibet
@@ -127,16 +128,32 @@ desktop-file-install                                            \
 rm -rf %{buildroot}
 
 %post
+%if 0%{?suse_version}
+%icon_theme_cache_post
+%desktop_database_post
+%else
+# fedora
+/usr/bin/update-desktop-database &> /dev/null || :
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
+%endif
 
 %postun
+%if 0%{?suse_version}
+%icon_theme_cache_postun
+%desktop_database_postun
+%else
+# fedora
+/usr/bin/update-desktop-database &> /dev/null || :
 if [ $1 -eq 0 ] ; then
     /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
     /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 fi
+%endif
 
 %posttrans
+%if 0%{?fedora}
 /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
+%endif
 
 %files
 %defattr(-,root,root,-)
