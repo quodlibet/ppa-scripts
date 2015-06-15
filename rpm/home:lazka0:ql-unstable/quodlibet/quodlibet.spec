@@ -1,6 +1,6 @@
-%define hash 509f00d
-%define longhash 509f00d0e264cf586d1b72d2f93236c9b341e0c4
-%define revision 7266
+%define hash fe07fc7
+%define longhash fe07fc72d05ef76af69f107d354adfc7c695a053
+%define revision 7353
 
 Name:           quodlibet
 Version:        3.4.99
@@ -119,6 +119,7 @@ desktop-file-install                                            \
 desktop-file-install                                            \
         --dir %{buildroot}%{_datadir}/applications              \
         --delete-original                                       \
+        --add-category=AudioVideoEditing                        \
         %{buildroot}%{_datadir}/applications/exfalso.desktop
 %endif
 

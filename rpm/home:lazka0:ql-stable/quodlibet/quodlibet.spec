@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.4.0
+Version:        3.4.1
 Release:        1.1%{?dist}
 Summary:        A music management program
 
@@ -113,6 +113,7 @@ desktop-file-install                                            \
 desktop-file-install                                            \
         --dir %{buildroot}%{_datadir}/applications              \
         --delete-original                                       \
+        --add-category=AudioVideoEditing                        \
         %{buildroot}%{_datadir}/applications/exfalso.desktop
 %endif
 

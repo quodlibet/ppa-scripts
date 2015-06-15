@@ -4,9 +4,10 @@ import os
 from _util import *
 
 cd("quodlibet-git")
+p("git clean -xfd")
 p("git reset HEAD --hard")
+p("git checkout master")
 p("git pull")
-p("hg checkout master")
 
 rev = p("git rev-list --count HEAD")[1]
 short_hash = p("git rev-parse --short HEAD")[1]

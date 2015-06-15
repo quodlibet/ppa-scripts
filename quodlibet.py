@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_TAG = "release-3.4.0"
+RELEASE_TAG = "release-3.4.1"
 PPA_VERSION = "3.4.99"
-RELEASE_VERSION = "3.4.0"
+RELEASE_VERSION = "3.4.1"
 
 ##########################################################
 
@@ -29,7 +29,8 @@ clean(start_dir, PACKAGE, "exfalso")
 
 p("git reset HEAD --hard")
 p("git clean -xfd")
-p("git pull")
+p("git checkout master")
+p("git pull --all")
 if args.release:
     fail(p("git checkout %s" % RELEASE_TAG))
 

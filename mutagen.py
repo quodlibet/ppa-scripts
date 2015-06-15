@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-RELEASE_TAG = "mutagen-1.28"
-PPA_VERSION = "1.28.99"
-RELEASE_VERSION = "1.28"
+RELEASE_TAG = "mutagen-1.29"
+PPA_VERSION = "1.29.99"
+RELEASE_VERSION = "1.29"
 
 ##########################################################
 
@@ -26,7 +26,7 @@ clean(start_dir, PACKAGE, "python-" + PACKAGE)
 
 hg_dir = "mutagen-hg"
 if not os.path.isdir(hg_dir):
-    p("hg clone https://mutagen.googlecode.com/hg/ %s" % hg_dir)
+    p("hg clone https://bitbucket.org/lazka/mutagen %s" % hg_dir)
 cd(hg_dir)
 
 p("hg revert --all --no-backup")
