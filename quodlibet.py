@@ -57,9 +57,9 @@ if args.dist == "debian":
 else:
     releases = {
         "precise": "debian_quodlibet",
-        "trusty": "debian_quodlibet",
-        "utopic": "debian_quodlibet",
+        "trusty": "debian_quodlibet",,
         "vivid": "debian_quodlibet",
+        "wily": "debian_quodlibet",
     }
 
 for release, debian_dir in releases.iteritems():
