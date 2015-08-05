@@ -1,9 +1,17 @@
 #!/usr/bin/make -f
 
-PYTHON2=$(shell pyversions -vr)
+export PYBUILD_NAME=mutagen
 
 %:
-	dh $@ --with python2
+	dh $@ --with python2,python3 --buildsystem=pybuild
+
+
+override_dh_auto_install:
+	dh_auto_install
+	# Don't ship binaries or manpages in the pypy or python3 packages
+	rm -rf debian/python3-mutagen/usr/bin \
+	       debian/python3-mutagen/usr/share
+
 
 override_dh_installchangelogs:
 	dh_installchangelogs NEWS

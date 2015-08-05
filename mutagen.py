@@ -52,14 +52,18 @@ cd(hg_dir)
 
 if args.dist == "debian":
     if args.release:
-        releases = ["quodlibet-stable"]
+        releases = {"quodlibet-stable": "debian_mutagen_old"}
     else:
-        releases = ["quodlibet-unstable"]
+        releases = {"quodlibet-unstable": "debian_mutagen"}
 else:
-    releases = ["precise", "trusty", "vivid", "wily"]
+    releases = {
+        "precise": "debian_mutagen_old",
+        "trusty": "debian_mutagen",
+        "vivid": "debian_mutagen",
+        "wily": "debian_mutagen",
+    }
 
-debian_dir = "debian_mutagen"
-for release in releases:
+for release, debian_dir in releases.items():
     p("rm -R debian")
     p("cp -R ../%s ." % debian_dir)
     p("mv %s debian" % debian_dir)
