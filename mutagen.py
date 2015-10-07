@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-RELEASE_TAG = "mutagen-1.29"
-PPA_VERSION = "1.29.99"
-RELEASE_VERSION = "1.29"
+RELEASE_TAG = "mutagen-1.31"
+PPA_VERSION = "1.31.99"
+RELEASE_VERSION = "1.31"
 
 ##########################################################
 
@@ -99,4 +99,4 @@ else:
         fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
     # fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
 
-clean(start_dir, PACKAGE, "python-" + PACKAGE)
+clean(start_dir, PACKAGE, "python-" + PACKAGE, "python3-" + PACKAGE)

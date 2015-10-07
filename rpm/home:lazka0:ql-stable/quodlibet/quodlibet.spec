@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.4.1
+Version:        3.5.0
 Release:        1.1%{?dist}
 Summary:        A music management program
 
@@ -61,7 +61,7 @@ Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
 Requires:       python >= 2.7
-Requires:       python-mutagen >= 1.22
+Requires:       python-mutagen >= 1.27
 Requires:       gtk3 >= 3.2
 
 

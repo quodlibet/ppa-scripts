@@ -1,9 +1,9 @@
-%define hash fe07fc7
-%define longhash fe07fc72d05ef76af69f107d354adfc7c695a053
-%define revision 7353
+%define hash 10d9c31
+%define longhash 10d9c318499fa0e9b875768f6b4af26ac9d841cb
+%define revision 7553
 
 Name:           quodlibet
-Version:        3.4.99
+Version:        3.5.99
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
@@ -65,7 +65,7 @@ Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
 Requires:       python >= 2.7
-Requires:       python-mutagen >= 1.22
+Requires:       python-mutagen >= 1.27
 Requires:       gtk3 >= 3.2
 
 
