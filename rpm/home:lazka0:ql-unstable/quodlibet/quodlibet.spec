@@ -1,6 +1,6 @@
-%define hash 10d9c31
-%define longhash 10d9c318499fa0e9b875768f6b4af26ac9d841cb
-%define revision 7553
+%define hash 6bc7f73
+%define longhash 6bc7f73fec9f88d4d6280d31e575289101e98232
+%define revision 7574
 
 Name:           quodlibet
 Version:        3.5.99
@@ -65,19 +65,19 @@ Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
 Requires:       python >= 2.7
-Requires:       python-mutagen >= 1.27
-Requires:       gtk3 >= 3.2
+Requires:       python-mutagen >= 1.30
+Requires:       gtk3 >= 3.10
 
 
 %if 0%{?fedora}
-Requires:       pygobject3 >= 3.2
+Requires:       pygobject3 >= 3.10
 Requires:       python-CDDB
 Requires:       python-musicbrainz2
 Requires:       pycairo
 %else
 # suse
-Requires:       python-gobject >= 3.2
-Requires:       python-gobject-cairo >= 3.2
+Requires:       python-gobject >= 3.10
+Requires:       python-gobject-cairo >= 3.10
 Requires:       python-cairo
 Requires:       typelib-1_0-Gtk-3_0
 %endif

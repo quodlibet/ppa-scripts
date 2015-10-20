@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.5.0
+Version:        3.5.1
 Release:        1.1%{?dist}
 Summary:        A music management program
 

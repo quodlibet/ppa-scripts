@@ -6,9 +6,9 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_TAG = "release-3.5.0"
+RELEASE_TAG = "release-3.5.1"
 PPA_VERSION = "3.5.99"
-RELEASE_VERSION = "3.5.0"
+RELEASE_VERSION = "3.5.1"
 
 ##########################################################
 
@@ -56,11 +56,13 @@ if args.dist == "debian":
         releases = {"quodlibet-unstable": "debian_quodlibet"}
 else:
     releases = {
-        "precise": "debian_quodlibet",
         "trusty": "debian_quodlibet",
         "vivid": "debian_quodlibet",
         "wily": "debian_quodlibet",
     }
+    if args.release:
+        releases["precise"] = "debian_quodlibet"
+
 
 for release, debian_dir in releases.iteritems():
     p("rm -R debian")
