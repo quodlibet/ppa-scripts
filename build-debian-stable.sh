@@ -27,6 +27,7 @@ touch  .nojekyll
 rm -Rf stable
 mkdir stable
 cp -R ~/debian_archive/quodlibet-stable ./stable/quodlibet-stable
+python ../build_index.py .
 git add .
 git commit -m "update"
 git remote add origin https://github.com/lazka/ql-debian.git

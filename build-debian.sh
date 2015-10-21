@@ -23,6 +23,7 @@ touch  .nojekyll
 rm -Rf testing
 mkdir testing
 cp -R ~/debian_archive/quodlibet-unstable ./testing/quodlibet-unstable
+python ../build_index.py .
 git add .
 git commit -m "update"
 git remote add origin https://github.com/lazka/ql-debian.git

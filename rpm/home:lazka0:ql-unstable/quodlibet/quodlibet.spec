@@ -1,6 +1,6 @@
-%define hash 6bc7f73
-%define longhash 6bc7f73fec9f88d4d6280d31e575289101e98232
-%define revision 7574
+%define hash c4d70ff
+%define longhash c4d70ff641254eb5785f81bd35508657629aa6b7
+%define revision 7590
 
 Name:           quodlibet
 Version:        3.5.99
