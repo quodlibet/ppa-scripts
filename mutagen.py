@@ -52,7 +52,7 @@ cd(hg_dir)
 
 if args.dist == "debian":
     if args.release:
-        releases = {"quodlibet-stable": "debian_mutagen_old"}
+        releases = {"quodlibet-stable": "debian_mutagen"}
     else:
         releases = {"quodlibet-unstable": "debian_mutagen"}
 else:

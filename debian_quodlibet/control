@@ -13,8 +13,8 @@ Homepage: http://code.google.com/p/quodlibet/
 
 Package: exfalso
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.14),
-    python-gi (>= 3.2), python-gi-cairo (>= 3.2), gir1.2-gtk-3.0
+Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.27),
+    python-gi (>= 3.10), python-gi-cairo (>= 3.10), gir1.2-gtk-3.0 (>= 3.10)
 Recommends: python-musicbrainz2, python-cddb
 Suggests: libmodplug1, brasero | k3b | xfburn
 Replaces: quodlibet-plugins
