@@ -1,6 +1,6 @@
-%define hash ba9cf9c
-%define longhash ba9cf9c369e859365a7a4cb4099e7048c624a347
-%define revision 7726
+%define hash 4404856
+%define longhash 4404856a5701e8789d234e696f0dd3cfe13d630a
+%define revision 7999
 
 Name:           quodlibet
 Version:        3.5.99
@@ -42,12 +42,14 @@ Requires:       gstreamer-plugins-good >= 1.0
 # suse has extra packages for typelibs
 Requires:       typelib-1_0-Gst-1_0
 Requires:       typelib-1_0-GstPbutils-1_0
+Requires:       typelib-1_0-Soup-2_4
 %else
 # fedora
 Requires:       dbus-python
 Requires:       gstreamer1
 Requires:       gstreamer1-plugins-base
 Requires:       gstreamer1-plugins-good
+Requires:       libsoup
 %endif
 
 
@@ -71,8 +73,7 @@ Requires:       gtk3 >= 3.10
 
 %if 0%{?fedora}
 Requires:       pygobject3 >= 3.10
-Requires:       python-CDDB
-Requires:       python-musicbrainz2
+Requires:       python-musicbrainzngs
 Requires:       pycairo
 %else
 # suse
