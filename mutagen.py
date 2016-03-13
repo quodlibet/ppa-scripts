@@ -59,7 +59,6 @@ else:
     releases = {
         "precise": "debian_mutagen_old",
         "trusty": "debian_mutagen",
-        "vivid": "debian_mutagen",
         "wily": "debian_mutagen",
         "xenial": "debian_mutagen",
     }

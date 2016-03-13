@@ -58,7 +58,6 @@ else:
     releases = {
         "precise": "debian_quodlibet",
         "trusty": "debian_quodlibet",
-        "vivid": "debian_quodlibet",
         "wily": "debian_quodlibet",
         "xenial": "debian_quodlibet",
     }
