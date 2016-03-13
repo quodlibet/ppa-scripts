@@ -57,8 +57,8 @@ if args.dist == "debian":
 else:
     releases = {
         "trusty": "debian_quodlibet",
-        "vivid": "debian_quodlibet",
         "wily": "debian_quodlibet",
+        "xenial": "debian_quodlibet",
     }
 
 

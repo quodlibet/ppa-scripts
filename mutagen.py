@@ -58,8 +58,8 @@ if args.dist == "debian":
 else:
     releases = {
         "trusty": "debian_mutagen",
-        "vivid": "debian_mutagen",
         "wily": "debian_mutagen",
+        "xenial": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():
