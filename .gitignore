@@ -3,3 +3,4 @@ python-collate
 quodlibet-git
 *.pyc
 .osc
+copr/copr.conf

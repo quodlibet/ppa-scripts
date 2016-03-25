@@ -10,9 +10,10 @@ import os
 def main(argv):
     srpm_url = argv[1]
 
+    dir_ = os.path.dirname(os.path.realpath(__file__))
     config = ConfigParser.RawConfigParser()
-    config_path = os.path.join(os.path.expanduser("~"), ".config", "copr")
-    assert os.path.exists(config_path), "%s missing" % config_path
+    config_path = os.path.join(dir_, "copr.conf")
+    assert os.path.exists(config_path), "%s missing. Visit https://copr.fedorainfracloud.org/api/" % config_path
 
     config.read(config_path)
     username = config.get("copr-cli", "login")
