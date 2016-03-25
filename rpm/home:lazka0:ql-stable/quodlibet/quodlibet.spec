@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.5.3
+Version:        3.6.0
 Release:        1.1%{?dist}
 Summary:        A music management program
 
@@ -38,12 +38,14 @@ Requires:       gstreamer-plugins-good >= 1.0
 # suse has extra packages for typelibs
 Requires:       typelib-1_0-Gst-1_0
 Requires:       typelib-1_0-GstPbutils-1_0
+Requires:       typelib-1_0-Soup-2_4
 %else
 # fedora
 Requires:       dbus-python
 Requires:       gstreamer1
 Requires:       gstreamer1-plugins-base
 Requires:       gstreamer1-plugins-good
+Requires:       libsoup
 %endif
 
 
@@ -61,19 +63,18 @@ Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
 Requires:       python >= 2.7
-Requires:       python-mutagen >= 1.27
-Requires:       gtk3 >= 3.2
+Requires:       python-mutagen >= 1.30
+Requires:       gtk3 >= 3.10
 
 
 %if 0%{?fedora}
-Requires:       pygobject3 >= 3.2
-Requires:       python-CDDB
-Requires:       python-musicbrainz2
+Requires:       pygobject3 >= 3.10
+Requires:       python-musicbrainzngs
 Requires:       pycairo
 %else
 # suse
-Requires:       python-gobject >= 3.2
-Requires:       python-gobject-cairo >= 3.2
+Requires:       python-gobject >= 3.10
+Requires:       python-gobject-cairo >= 3.10
 Requires:       python-cairo
 Requires:       typelib-1_0-Gtk-3_0
 %endif

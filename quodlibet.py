@@ -6,9 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_TAG = "release-3.5.3"
-PPA_VERSION = "3.5.99"
-RELEASE_VERSION = "3.5.3"
+PPA_VERSION = "3.6.99"
+RELEASE_VERSION = "3.6.0"
 
 ##########################################################
 
@@ -32,7 +31,7 @@ p("git clean -xfd")
 p("git checkout master")
 p("git pull --all")
 if args.release:
-    fail(p("git checkout %s" % RELEASE_TAG))
+    fail(p("git checkout release-%s" % RELEASE_VERSION))
 
 rev_num = p("git rev-list --count HEAD")[1]
 rev_hash = p("git rev-parse --short HEAD")[1]

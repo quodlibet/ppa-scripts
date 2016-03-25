@@ -13,9 +13,9 @@ Homepage: http://code.google.com/p/quodlibet/
 
 Package: exfalso
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.27),
+Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.30),
     python-gi (>= 3.10), python-gi-cairo (>= 3.10), gir1.2-gtk-3.0 (>= 3.10),
-    gir1.2-soup-2.4
+    gir1.2-soup-2.4 (>= 2.44)
 Recommends: python-musicbrainzngs
 Suggests: libmodplug1, brasero | k3b | xfburn
 Replaces: quodlibet-plugins
@@ -43,7 +43,8 @@ Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio
 Recommends: python-feedparser, libgpod4, python-dbus,
     udisks2 | udisks, media-player-info, gir1.2-keybinder-3.0,
-    python-dbus, gir1.2-gtksource-3.0, python-pyinotify, notification-daemon
+    python-dbus, gir1.2-gtksource-3.0, python-pyinotify, notification-daemon,
+    gir1.2-webkit2-4.0
 Suggests: gstreamer1.0-plugins-bad
 Replaces: quodlibet-ext
 Conflicts: quodlibet-ext

@@ -6,7 +6,6 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-RELEASE_TAG = "mutagen-1.31"
 PPA_VERSION = "1.31.99"
 RELEASE_VERSION = "1.31"
 
@@ -33,7 +32,7 @@ p("hg revert --all --no-backup")
 p("hg pull")
 p("hg up default -C")
 if args.release:
-    p("hg up -r%s" % RELEASE_TAG)
+    p("hg up -rmutagen-%s" % RELEASE_VERSION)
 
 rev_num = p("hg id -n")[1]
 rev_hash = p("hg id -i")[1]
