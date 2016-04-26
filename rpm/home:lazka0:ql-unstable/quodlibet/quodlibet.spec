@@ -1,6 +1,6 @@
-%define hash 85c3086
-%define longhash 85c308622ef73a2033b53d3e5f3ce2cd1f36e1ee
-%define revision 8028
+%define hash a2b9f57
+%define longhash a2b9f578dc01c8b5aa7a26bbb125718cd7e40798
+%define revision 8064
 
 Name:           quodlibet
 Version:        3.6.99
@@ -69,16 +69,17 @@ Group: Applications/Multimedia
 Requires:       python >= 2.7
 Requires:       python-mutagen >= 1.30
 Requires:       gtk3 >= 3.10
+Requires:       python-requests >= 2.2
 
 
 %if 0%{?fedora}
-Requires:       pygobject3 >= 3.10
+Requires:       pygobject3 >= 3.12
 Requires:       python-musicbrainzngs
 Requires:       pycairo
 %else
 # suse
-Requires:       python-gobject >= 3.10
-Requires:       python-gobject-cairo >= 3.10
+Requires:       python-gobject >= 3.12
+Requires:       python-gobject-cairo >= 3.12
 Requires:       python-cairo
 Requires:       typelib-1_0-Gtk-3_0
 %endif
