@@ -6,7 +6,7 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-PPA_VERSION = "1.31.99"
+PPA_VERSION = "1.31.999"
 RELEASE_VERSION = "1.31"
 
 ##########################################################
@@ -18,24 +18,24 @@ if args.dist == "ubuntu":
 else:
     dput_cfg = os.path.join(os.getcwd(), "dput_debian.cf")
 
-debian_root = os.getcwd()
-
 start_dir = os.getcwd()
-clean(start_dir, PACKAGE, "python-" + PACKAGE)
+clean(start_dir, PACKAGE, "python-" + PACKAGE, "python3-" + PACKAGE)
 
-hg_dir = "mutagen-hg"
-if not os.path.isdir(hg_dir):
-    p("hg clone https://bitbucket.org/lazka/mutagen %s" % hg_dir)
-cd(hg_dir)
+git_dir = "mutagen-git"
+if not os.path.isdir(git_dir):
+    p("git clone https://github.com/quodlibet/mutagen.git %s" % git_dir)
+cd(git_dir)
 
-p("hg revert --all --no-backup")
-p("hg pull")
-p("hg up default -C")
+p("git reset HEAD --hard")
+p("git clean -xfd")
+p("git checkout master")
+p("git pull --all")
 if args.release:
-    p("hg up -rmutagen-%s" % RELEASE_VERSION)
+    fail("git checkout release-%s" % RELEASE_VERSION)
 
-rev_num = p("hg id -n")[1]
-rev_hash = p("hg id -i")[1]
+rev_num = p("git rev-list --count HEAD")[1]
+rev_hash = p("git rev-parse --short HEAD")[1]
+rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
 if not args.release:
@@ -44,10 +44,9 @@ else:
     UPSTREAM_VERSION = RELEASE_VERSION
 if args.version != 0:
     UPSTREAM_VERSION += "+%s" % args.version
-
 cd("..")
-p("tar --exclude '.hg*' -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, hg_dir))
-cd(hg_dir)
+p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, git_dir))
+cd(git_dir)
 
 if args.dist == "debian":
     if args.release:
