@@ -1,0 +1,4 @@
+This Debian package is currently packaged using git-buildpackage, using the
+the layout described by Russ Allbery here:
+
+http://www.eyrie.org/~eagle/notes/debian/git.html

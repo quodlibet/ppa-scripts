@@ -48,16 +48,22 @@ p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, PACKAGE))
 
 cd(PACKAGE)
 
+if args.release:
+    debian_dir = "debian_quodlibet_stable"
+else:
+    debian_dir = "debian_quodlibet"
+
 if args.dist == "debian":
     if args.release:
-        releases = {"quodlibet-stable": "debian_quodlibet"}
+        releases = {"quodlibet-stable": debian_dir}
     else:
-        releases = {"quodlibet-unstable": "debian_quodlibet"}
+        releases = {"quodlibet-unstable": debian_dir}
 else:
     releases = {
-        "trusty": "debian_quodlibet",
-        "wily": "debian_quodlibet",
-        "xenial": "debian_quodlibet",
+        "trusty": debian_dir,
+        "wily": debian_dir,
+        "xenial": debian_dir,
+        "yakkety": debian_dir,
     }
 
 
