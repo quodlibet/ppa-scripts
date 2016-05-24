@@ -31,7 +31,7 @@ p("git clean -xfd")
 p("git checkout master")
 p("git pull --all")
 if args.release:
-    fail("git checkout release-%s" % RELEASE_VERSION)
+    fail(p("git checkout release-%s" % RELEASE_VERSION))
 
 rev_num = p("git rev-list --count HEAD")[1]
 rev_hash = p("git rev-parse --short HEAD")[1]
