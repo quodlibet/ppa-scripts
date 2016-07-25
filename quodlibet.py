@@ -39,6 +39,9 @@ rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
 if not args.release:
+    p("echo 'BUILD_INFO = u\"%s\"' >> 'quodlibet/quodlibet/build.py'" % rev_hash)
+
+if not args.release:
     UPSTREAM_VERSION = PPA_VERSION + "+" + rev_num + "~" + rev_hash
 else:
     UPSTREAM_VERSION = RELEASE_VERSION
