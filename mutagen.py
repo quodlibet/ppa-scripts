@@ -58,6 +58,7 @@ else:
         "trusty": "debian_mutagen",
         "wily": "debian_mutagen",
         "xenial": "debian_mutagen",
+        "yakkety": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():
