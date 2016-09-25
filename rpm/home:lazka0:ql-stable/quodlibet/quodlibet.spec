@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.6.2
+Version:        3.7.1
 Release:        1.1%{?dist}
 Summary:        A music management program
 
@@ -63,13 +63,13 @@ Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
 Requires:       python >= 2.7
-Requires:       python-mutagen >= 1.30
+Requires:       python-mutagen >= 1.32
 Requires:       gtk3 >= 3.10
 
 
 %if 0%{?fedora}
-Requires:       pygobject3 >= 3.10
-Requires:       python-musicbrainzngs
+Requires:       pygobject3 >= 3.12
+Requires:       python-musicbrainzngs >= 0.5
 Requires:       pycairo
 %else
 # suse
@@ -132,7 +132,6 @@ rm -rf %{buildroot}
 /usr/bin/update-desktop-database &> /dev/null || :
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
 %endif
-
 
 %postun
 %if 0%{?suse_version}

@@ -1,9 +1,9 @@
-%define hash fa66a2f
-%define longhash fa66a2fbbdcf3a02a5015fa37c3082344ad3ffc4
-%define revision 8318
+%define hash 5ea3359
+%define longhash 5ea335925aa5730ca2154ab88cc0aed12cf9aa9c
+%define revision 8437
 
 Name:           quodlibet
-Version:        3.6.99
+Version:        3.7.99
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
@@ -67,14 +67,13 @@ Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
 Requires:       python >= 2.7
-Requires:       python-mutagen >= 1.30
+Requires:       python-mutagen >= 1.32
 Requires:       gtk3 >= 3.10
-Requires:       python-requests >= 2.2
 
 
 %if 0%{?fedora}
 Requires:       pygobject3 >= 3.12
-Requires:       python-musicbrainzngs
+Requires:       python-musicbrainzngs >= 0.5
 Requires:       pycairo
 %else
 # suse
@@ -176,11 +175,14 @@ fi
 %dir %{_datadir}/appdata
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/vendor-completions
 %endif
 %{_datadir}/dbus-1/services/net.sacredchao.QuodLibet.service
 %{_datadir}/appdata/quodlibet.appdata.xml
 %{_datadir}/gnome-shell/search-providers/quodlibet-search-provider.ini
 %{_mandir}/man1/quodlibet.1*
+%{_datadir}/zsh/vendor-completions/_quodlibet
 
 
 %files -n exfalso -f quodlibet/%{name}.lang

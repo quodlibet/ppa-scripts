@@ -7,7 +7,7 @@ from _util import *
 
 PACKAGE = "mutagen"
 PPA_VERSION = "1.34.999"
-RELEASE_VERSION = "1.34"
+RELEASE_VERSION = "1.34.1"
 
 ##########################################################
 

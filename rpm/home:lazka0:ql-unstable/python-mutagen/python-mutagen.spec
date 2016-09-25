@@ -1,7 +1,7 @@
 %global realname mutagen
 
 Name:           python-%{realname}
-Version:        1.31
+Version:        1.34.1
 Release:        1%{?dist}
 Summary:        Mutagen is a Python module to handle audio meta-data
 

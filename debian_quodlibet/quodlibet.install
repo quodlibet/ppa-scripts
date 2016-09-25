@@ -8,3 +8,4 @@ usr/share/icons/hicolor/scalable/apps/quodlibet.svg
 usr/share/icons/hicolor/scalable/apps/quodlibet-symbolic.svg
 usr/share/man/man1/quodlibet.1
 usr/share/pixmaps/quodlibet.png
+usr/share/zsh/vendor-completions/_quodlibet

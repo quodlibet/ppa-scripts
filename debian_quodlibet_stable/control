@@ -13,8 +13,8 @@ Homepage: http://code.google.com/p/quodlibet/
 
 Package: exfalso
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.30),
-    python-gi (>= 3.10), python-gi-cairo (>= 3.10), gir1.2-gtk-3.0 (>= 3.10),
+Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.32),
+    python-gi (>= 3.12), python-gi-cairo (>= 3.12), gir1.2-gtk-3.0 (>= 3.10),
     gir1.2-soup-2.4 (>= 2.44)
 Recommends: python-musicbrainzngs (>= 0.5)
 Suggests: libmodplug1, brasero | k3b | xfburn
@@ -40,7 +40,8 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0,
     gstreamer1.0-plugins-base, gstreamer1.0-plugins-good,
-    gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio
+    gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio,
+    gir1.2-appindicator3-0.1
 Recommends: python-feedparser, libgpod4, python-dbus,
     udisks2 | udisks, media-player-info, gir1.2-keybinder-3.0,
     python-dbus, gir1.2-gtksource-3.0, python-pyinotify, notification-daemon,
