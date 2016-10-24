@@ -15,7 +15,7 @@ Package: exfalso
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.32),
     python-gi (>= 3.12), python-gi-cairo (>= 3.12), gir1.2-gtk-3.0 (>= 3.10),
-    gir1.2-soup-2.4 (>= 2.44)
+    gir1.2-soup-2.4 (>= 2.44), python-concurrent.futures
 Recommends: python-musicbrainzngs (>= 0.5)
 Suggests: libmodplug1, brasero | k3b | xfburn
 Replaces: quodlibet-plugins

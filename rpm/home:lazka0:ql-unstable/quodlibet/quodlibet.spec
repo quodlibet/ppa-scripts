@@ -1,6 +1,6 @@
-%define hash 5ea3359
-%define longhash 5ea335925aa5730ca2154ab88cc0aed12cf9aa9c
-%define revision 8437
+%define hash 10ef3c3
+%define longhash 10ef3c39249d8c4e819363899c2c51e4eb25fec8
+%define revision 8509
 
 Name:           quodlibet
 Version:        3.7.99
@@ -29,7 +29,6 @@ BuildRequires:  unzip
 
 Requires:       exfalso = %{version}-%{release}
 
-Requires:       python-feedparser
 Requires:       media-player-info
 Requires:       udisks2
 Requires:       libgpod
@@ -69,6 +68,8 @@ Group: Applications/Multimedia
 Requires:       python >= 2.7
 Requires:       python-mutagen >= 1.32
 Requires:       gtk3 >= 3.10
+Requires:       python-futures
+Requires:       python-feedparser
 
 
 %if 0%{?fedora}
