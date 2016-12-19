@@ -43,9 +43,9 @@ Depends: ${python3:Depends}, ${misc:Depends}, exfalso-py3 (= ${source:Version}),
     gstreamer1.0-plugins-base, gstreamer1.0-plugins-good,
     gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio,
     gir1.2-appindicator3-0.1
-Recommends: python3-feedparser, libgpod4, python3-dbus,
+Recommends: python3-feedparser, python3-dbus,
     udisks2 | udisks, media-player-info, gir1.2-keybinder-3.0,
-    python3-dbus, gir1.2-gtksource-3.0, python3-pyinotify, notification-daemon,
+    gir1.2-gtksource-3.0, python3-pyinotify, notification-daemon,
     gir1.2-webkit2-4.0
 Suggests: gstreamer1.0-plugins-bad
 Replaces: quodlibet-ext
