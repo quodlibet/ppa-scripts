@@ -7,6 +7,7 @@ $MINID -k
 rm -rf ~/debian_archive/quodlibet*
 $MINID
 ./quodlibet.py -ddebian
+./quodlibet.py -ddebian --py3
 ./mutagen.py -ddebian
 $MINID -r
 cd ~/debian_archive/quodlibet-unstable/

@@ -10,6 +10,9 @@ def parse_args():
     parser.add_option("-r", "--release", dest="release", action="store_true",
                       default=False, help="stable release")
 
+    parser.add_option("--py3", dest="py3", action="store_true",
+                      default=False, help="py3")
+
     parser.add_option("-d", "--dist", action="store", dest="dist",
                       default="ubuntu", help="ubuntu/debian",
                       choices=["ubuntu", "debian"])
@@ -35,7 +38,7 @@ def clean(directory, *packages):
     old = os.getcwd()
     os.chdir(directory)
     for package in packages:
-        cmd = "rm %s*.changes %s*.tar.gz %s*.tar.xz %s*.dsc %s*.upload %s*.deb %s*.build %s*.diff.gz" % ((package,) * 8)
+        cmd = "rm %s*.changes %s*.tar.gz %s*.tar.xz %s*.dsc %s*.upload %s*.deb %s*.build %s*.buildinfo %s*.diff.gz" % ((package,) * 9)
         p(cmd)
     os.chdir(old)
 

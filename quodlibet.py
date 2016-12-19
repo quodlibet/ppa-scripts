@@ -6,12 +6,14 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-PPA_VERSION = "3.7.99"
+PPA_VERSION = "3.8.99"
 RELEASE_VERSION = "3.7.1"
 
 ##########################################################
 
 args = parse_args()
+if args.py3:
+    PACKAGE += "-py3"
 
 if args.dist == "ubuntu":
     dput_cfg = os.path.join(os.getcwd(), "dput.cf")
@@ -47,14 +49,18 @@ else:
     UPSTREAM_VERSION = RELEASE_VERSION
 if args.version != 0:
     UPSTREAM_VERSION += "+%s" % args.version
-p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, PACKAGE))
+p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, "quodlibet"))
 
-cd(PACKAGE)
+cd("quodlibet")
 
 if args.release:
+    assert not args.py3
     debian_dir = "debian_quodlibet_stable"
 else:
-    debian_dir = "debian_quodlibet"
+    if args.py3:
+        debian_dir = "debian_quodlibet_py3"
+    else:
+        debian_dir = "debian_quodlibet"
 
 if args.dist == "debian":
     if args.release:
@@ -67,6 +73,7 @@ else:
         "wily": debian_dir,
         "xenial": debian_dir,
         "yakkety": debian_dir,
+        "zesty": debian_dir,
     }
 
 

@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-PPA_VERSION = "1.34.999"
-RELEASE_VERSION = "1.34.1"
+PPA_VERSION = "1.35.999"
+RELEASE_VERSION = "1.35"
 
 ##########################################################
 
@@ -44,9 +44,8 @@ else:
     UPSTREAM_VERSION = RELEASE_VERSION
 if args.version != 0:
     UPSTREAM_VERSION += "+%s" % args.version
-cd("..")
-p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, git_dir))
-cd(git_dir)
+
+p("git archive --prefix=mutagen/ --format=tar.gz HEAD -o ../%s_%s.orig.tar.gz" % (PACKAGE, UPSTREAM_VERSION))
 
 if args.dist == "debian":
     if args.release:
@@ -59,6 +58,7 @@ else:
         "wily": "debian_mutagen",
         "xenial": "debian_mutagen",
         "yakkety": "debian_mutagen",
+        "zesty": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():
