@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.7.1
+Version:        3.8.0
 Release:        1.1%{?dist}
 Summary:        A music management program
 
@@ -28,7 +28,6 @@ Requires:       exfalso = %{version}-%{release}
 Requires:       python-feedparser
 Requires:       media-player-info
 Requires:       udisks2
-Requires:       libgpod
 
 %if 0%{?suse_version}
 Requires:       dbus-1-python
@@ -65,6 +64,8 @@ Group: Applications/Multimedia
 Requires:       python >= 2.7
 Requires:       python-mutagen >= 1.32
 Requires:       gtk3 >= 3.10
+Requires:       python-futures
+Requires:       python-feedparser
 
 
 %if 0%{?fedora}
@@ -73,8 +74,8 @@ Requires:       python-musicbrainzngs >= 0.5
 Requires:       pycairo
 %else
 # suse
-Requires:       python-gobject >= 3.10
-Requires:       python-gobject-cairo >= 3.10
+Requires:       python-gobject >= 3.12
+Requires:       python-gobject-cairo >= 3.12
 Requires:       python-cairo
 Requires:       typelib-1_0-Gtk-3_0
 %endif
@@ -169,11 +170,14 @@ fi
 %dir %{_datadir}/appdata
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/vendor-completions
 %endif
 %{_datadir}/dbus-1/services/net.sacredchao.QuodLibet.service
 %{_datadir}/appdata/quodlibet.appdata.xml
 %{_datadir}/gnome-shell/search-providers/quodlibet-search-provider.ini
 %{_mandir}/man1/quodlibet.1*
+%{_datadir}/zsh/vendor-completions/_quodlibet
 
 
 %files -n exfalso -f %{name}.lang

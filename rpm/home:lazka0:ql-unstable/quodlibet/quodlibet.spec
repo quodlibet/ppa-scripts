@@ -1,6 +1,6 @@
-%define hash 8c1db7a78
-%define longhash 8c1db7a78a75830ec65493338f8b340bcd615996
-%define revision 8785
+%define hash 7f6551c2c
+%define longhash 7f6551c2c43a8bd17dacc4f13b7fac8723f88179
+%define revision 8855
 
 Name:           quodlibet
 Version:        3.8.99
@@ -29,9 +29,9 @@ BuildRequires:  unzip
 
 Requires:       exfalso = %{version}-%{release}
 
+Requires:       python-feedparser
 Requires:       media-player-info
 Requires:       udisks2
-Requires:       libgpod
 
 %if 0%{?suse_version}
 Requires:       dbus-1-python

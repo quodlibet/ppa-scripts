@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-PPA_VERSION = "1.35.999"
-RELEASE_VERSION = "1.35"
+PPA_VERSION = "1.36.999"
+RELEASE_VERSION = "1.36"
 
 ##########################################################
 
@@ -55,7 +55,6 @@ if args.dist == "debian":
 else:
     releases = {
         "trusty": "debian_mutagen",
-        "wily": "debian_mutagen",
         "xenial": "debian_mutagen",
         "yakkety": "debian_mutagen",
         "zesty": "debian_mutagen",

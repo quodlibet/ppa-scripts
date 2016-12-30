@@ -7,7 +7,7 @@ from _util import *
 
 PACKAGE= "quodlibet"
 PPA_VERSION = "3.8.99"
-RELEASE_VERSION = "3.7.1"
+RELEASE_VERSION = "3.8.0"
 
 ##########################################################
 
@@ -70,7 +70,6 @@ if args.dist == "debian":
 else:
     releases = {
         "trusty": debian_dir,
-        "wily": debian_dir,
         "xenial": debian_dir,
         "yakkety": debian_dir,
         "zesty": debian_dir,
