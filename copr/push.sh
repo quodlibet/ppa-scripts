@@ -19,7 +19,7 @@ cd workingdir
 git init
 git add .
 git commit -m "update"
-git remote add origin https://github.com/lazka/ql-copr.git
+git remote add origin https://github.com/quodlibet/ql-copr.git
 git push --force --set-upstream origin master
 cd ..
 
@@ -27,7 +27,7 @@ cd ..
 srpm_path=$(find -name "*src.rpm")
 bname=$(basename $srpm_path)
 
-./new_build.py "https://github.com/lazka/ql-copr/raw/master/SRPMS/$bname"
+./new_build.py "https://github.com/quodlibet/ql-copr/raw/master/SRPMS/$bname"
 
 # clean up
 rm -Rf workingdir
