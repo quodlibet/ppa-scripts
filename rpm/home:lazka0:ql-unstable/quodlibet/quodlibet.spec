@@ -1,6 +1,6 @@
-%define hash 7f6551c2c
-%define longhash 7f6551c2c43a8bd17dacc4f13b7fac8723f88179
-%define revision 8855
+%define hash 20ad20df2
+%define longhash 20ad20df210c56f1f0826d16b3ba2fb556078c2f
+%define revision 9077
 
 Name:           quodlibet
 Version:        3.8.99
@@ -76,12 +76,15 @@ Requires:       python-feedparser
 Requires:       pygobject3 >= 3.12
 Requires:       python-musicbrainzngs >= 0.5
 Requires:       pycairo
+# missing in fedora 25
+# Requires:       python2-faulthandler
 %else
 # suse
 Requires:       python-gobject >= 3.12
 Requires:       python-gobject-cairo >= 3.12
 Requires:       python-cairo
 Requires:       typelib-1_0-Gtk-3_0
+Requires:       python-faulthandler
 %endif
 
 %description -n exfalso
