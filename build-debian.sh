@@ -1,9 +1,11 @@
 #!/bin/bash
 
+set -e
+
 MINID="mini-dinstall --config=mini-dinstall.conf"
-$MINID -k
-$MINID -k
-$MINID -k
+$MINID -k || true
+$MINID -k || true
+$MINID -k || true
 rm -rf ~/debian_archive/quodlibet*
 $MINID
 ./quodlibet.py -ddebian

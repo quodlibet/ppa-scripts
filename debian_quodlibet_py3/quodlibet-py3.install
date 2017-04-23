@@ -3,9 +3,8 @@ usr/share/appdata/quodlibet.appdata.xml
 usr/share/applications/quodlibet.desktop
 usr/share/dbus-1/services/net.sacredchao.QuodLibet.service
 usr/share/gnome-shell/search-providers/quodlibet-search-provider.ini
-usr/share/icons/hicolor/64x64/apps/quodlibet.png
-usr/share/icons/hicolor/scalable/apps/quodlibet.svg
-usr/share/icons/hicolor/scalable/apps/quodlibet-symbolic.svg
+usr/share/icons/hicolor/*/apps/quodlibet.png
+usr/share/icons/hicolor/*/apps/quodlibet.svg
+usr/share/icons/hicolor/*/apps/quodlibet-symbolic.svg
 usr/share/man/man1/quodlibet.1
-usr/share/pixmaps/quodlibet.png
 usr/share/zsh/vendor-completions/_quodlibet

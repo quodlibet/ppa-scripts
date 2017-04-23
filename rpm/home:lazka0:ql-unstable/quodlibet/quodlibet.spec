@@ -1,6 +1,6 @@
-%define hash 20ad20df2
-%define longhash 20ad20df210c56f1f0826d16b3ba2fb556078c2f
-%define revision 9077
+%define hash 0f30e75ac
+%define longhash 0f30e75acae3afbbdeafe20fc76af027a0ad5f0b
+%define revision 9091
 
 Name:           quodlibet
 Version:        3.8.99
@@ -169,10 +169,9 @@ fi
 %else
 %{_datadir}/applications/quodlibet.desktop
 %endif
-%{_datadir}/pixmaps/quodlibet.png
-%{_datadir}/icons/hicolor/64x64/apps/quodlibet.png
-%{_datadir}/icons/hicolor/scalable/apps/quodlibet.svg
-%{_datadir}/icons/hicolor/scalable/apps/quodlibet-symbolic.svg
+%{_datadir}/icons/hicolor/*/apps/quodlibet.png
+%{_datadir}/icons/hicolor/*/apps/quodlibet.svg
+%{_datadir}/icons/hicolor/*/apps/quodlibet-symbolic.svg
 %if 0%{?suse_version}
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
@@ -203,10 +202,9 @@ fi
 %dir %{_datadir}/appdata
 %endif
 %{_datadir}/appdata/exfalso.appdata.xml
-%{_datadir}/pixmaps/exfalso.png
-%{_datadir}/icons/hicolor/64x64/apps/exfalso.png
-%{_datadir}/icons/hicolor/scalable/apps/exfalso.svg
-%{_datadir}/icons/hicolor/scalable/apps/exfalso-symbolic.svg
+%{_datadir}/icons/hicolor/*/apps/exfalso.png
+%{_datadir}/icons/hicolor/*/apps/exfalso.svg
+%{_datadir}/icons/hicolor/*/apps/exfalso-symbolic.svg
 %{_mandir}/man1/exfalso.1*
 %{_mandir}/man1/operon.1*
 %{python_sitelib}/quodlibet/
