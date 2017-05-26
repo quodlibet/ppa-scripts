@@ -1,9 +1,9 @@
-%define hash 0f30e75ac
-%define longhash 0f30e75acae3afbbdeafe20fc76af027a0ad5f0b
-%define revision 9091
+%define hash b3aab8880
+%define longhash b3aab8880e447aabe8d4f7153dbf3c9c0cf3e7d1
+%define revision 9146
 
 Name:           quodlibet
-Version:        3.8.99
+Version:        3.9.99
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
@@ -35,9 +35,9 @@ Requires:       udisks2
 
 %if 0%{?suse_version}
 Requires:       dbus-1-python
-Requires:       gstreamer >= 1.0
-Requires:       gstreamer-plugins-base >= 1.0
-Requires:       gstreamer-plugins-good >= 1.0
+Requires:       gstreamer >= 1.4
+Requires:       gstreamer-plugins-base >= 1.4
+Requires:       gstreamer-plugins-good >= 1.4
 # suse has extra packages for typelibs
 Requires:       typelib-1_0-Gst-1_0
 Requires:       typelib-1_0-GstPbutils-1_0
@@ -45,9 +45,9 @@ Requires:       typelib-1_0-Soup-2_4
 %else
 # fedora
 Requires:       dbus-python
-Requires:       gstreamer1
-Requires:       gstreamer1-plugins-base
-Requires:       gstreamer1-plugins-good
+Requires:       gstreamer1 >= 1.4
+Requires:       gstreamer1-plugins-base >= 1.4
+Requires:       gstreamer1-plugins-good >= 1.4
 Requires:       libsoup
 %endif
 
@@ -67,21 +67,20 @@ Group: Applications/Multimedia
 
 Requires:       python >= 2.7
 Requires:       python-mutagen >= 1.32
-Requires:       gtk3 >= 3.10
+Requires:       gtk3 >= 3.14
 Requires:       python-futures
 Requires:       python-feedparser
 
 
 %if 0%{?fedora}
-Requires:       pygobject3 >= 3.12
+Requires:       pygobject3 >= 3.14
 Requires:       python-musicbrainzngs >= 0.5
 Requires:       pycairo
-# missing in fedora 25
-# Requires:       python2-faulthandler
+Requires:       python2-faulthandler
 %else
 # suse
-Requires:       python-gobject >= 3.12
-Requires:       python-gobject-cairo >= 3.12
+Requires:       python-gobject >= 3.14
+Requires:       python-gobject-cairo >= 3.14
 Requires:       python-cairo
 Requires:       typelib-1_0-Gtk-3_0
 Requires:       python-faulthandler

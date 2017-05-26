@@ -7,8 +7,8 @@ Summary:        Mutagen is a Python module to handle audio meta-data
 
 Group:          Development/Languages
 License:        GPLv2
-URL:            https://bitbucket.org/lazka/mutagen/overview
-Source0:        https://bitbucket.org/lazka/mutagen/downloads/mutagen-%{version}.tar.gz
+URL:            https://mutagen.readthedocs.io
+Source0:        https://github.com/quodlibet/mutagen/releases/download/release-%{version}/mutagen-%{version}.tar.gz
 
 BuildArch:      noarch
 
