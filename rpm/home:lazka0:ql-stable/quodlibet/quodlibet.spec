@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.9.0
+Version:        3.9.1
 Release:        1.1%{?dist}
 Summary:        A music management program
  
@@ -79,6 +79,7 @@ Requires:       python-gobject >= 3.14
 Requires:       python-gobject-cairo >= 3.14
 Requires:       python-cairo
 Requires:       typelib-1_0-Gtk-3_0
+Requires:       python-gobject-Gdk
 Requires:       python-faulthandler
 %endif
 

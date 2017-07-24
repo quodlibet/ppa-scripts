@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-PPA_VERSION = "1.37.999"
-RELEASE_VERSION = "1.37"
+PPA_VERSION = "1.38.999"
+RELEASE_VERSION = "1.38"
 
 ##########################################################
 
@@ -58,6 +58,7 @@ else:
         "xenial": "debian_mutagen",
         "yakkety": "debian_mutagen",
         "zesty": "debian_mutagen",
+        "artful": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():

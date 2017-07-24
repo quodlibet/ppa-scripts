@@ -1,7 +1,7 @@
-%define hash b3aab8880
-%define longhash b3aab8880e447aabe8d4f7153dbf3c9c0cf3e7d1
-%define revision 9146
-
+%define hash 7132552e7
+%define longhash 7132552e7ee57e3220154bcde0ab7e20e042cece
+%define revision 9287
+ 
 Name:           quodlibet
 Version:        3.9.99
 Release:        3.%{revision}.%{hash}%{?dist}
@@ -83,6 +83,7 @@ Requires:       python-gobject >= 3.14
 Requires:       python-gobject-cairo >= 3.14
 Requires:       python-cairo
 Requires:       typelib-1_0-Gtk-3_0
+Requires:       python-gobject-Gdk
 Requires:       python-faulthandler
 %endif
 
