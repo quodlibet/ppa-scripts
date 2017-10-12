@@ -3,10 +3,10 @@
 set -e
 
 MINID="mini-dinstall --config=mini-dinstall.conf"
-$MINID -k || true
-$MINID -k || true
-$MINID -k || true
-rm -rf ~/debian_archive/quodlibet*
+$MINID -k >/dev/null 2>&1 || true
+$MINID -k >/dev/null 2>&1 || true
+$MINID -k >/dev/null 2>&1 || true
+rm -rf ~/debian_archive
 $MINID
 ./quodlibet.py -ddebian
 ./quodlibet.py -ddebian --py3
@@ -16,6 +16,7 @@ cd ~/debian_archive/quodlibet-unstable/
 gpg -u B6264964! --output Release.gpg -ba Release
 cd -
 
+rm -Rf ql-debian
 git clone https://github.com/lazka/ql-debian.git ql-debian
 cd ql-debian
 git checkout gh-pages
@@ -33,3 +34,4 @@ git remote add origin https://github.com/lazka/ql-debian.git
 git push --force --set-upstream origin gh-pages
 cd -
 rm -Rf ql-debian
+rm -rf ~/debian_archive

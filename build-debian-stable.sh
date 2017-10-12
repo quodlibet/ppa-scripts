@@ -4,11 +4,13 @@
 # sudo pbuilder create --distribution stable
 # sudo pbuilder update
 
+set -e
+
 MINID="mini-dinstall --config=mini-dinstall.conf"
-$MINID -k
-$MINID -k
-$MINID -k
-rm -rf ~/debian_archive/quodlibet*
+$MINID -k >/dev/null 2>&1 || true
+$MINID -k >/dev/null 2>&1 || true
+$MINID -k >/dev/null 2>&1 || true
+rm -rf ~/debian_archive
 $MINID
 ./quodlibet.py -ddebian --release
 ./mutagen.py -ddebian --release
@@ -17,6 +19,7 @@ cd ~/debian_archive/quodlibet-stable/
 gpg2 -u B6264964! --output Release.gpg -ba Release
 cd -
 
+rm -Rf ql-debian
 git clone https://github.com/lazka/ql-debian.git ql-debian
 cd ql-debian
 git checkout gh-pages
@@ -34,3 +37,4 @@ git remote add origin https://github.com/lazka/ql-debian.git
 git push --force --set-upstream origin gh-pages
 cd -
 rm -Rf ql-debian
+rm -rf ~/debian_archive
