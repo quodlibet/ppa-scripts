@@ -10,9 +10,6 @@ def parse_args():
     parser.add_option("-r", "--release", dest="release", action="store_true",
                       default=False, help="stable release")
 
-    parser.add_option("--py3", dest="py3", action="store_true",
-                      default=False, help="py3")
-
     parser.add_option("-d", "--dist", action="store", dest="dist",
                       default="ubuntu", help="ubuntu/debian",
                       choices=["ubuntu", "debian"])

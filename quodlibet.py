@@ -11,6 +11,8 @@ RELEASE_VERSION = "3.9.1"
 
 ##########################################################
 
+args = parse_args()
+
 if args.dist == "ubuntu":
     dput_cfg = os.path.join(os.getcwd(), "dput.cf")
 else:
