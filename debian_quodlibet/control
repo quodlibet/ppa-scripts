@@ -4,23 +4,23 @@ Priority: optional
 Maintainer: Ondřej Kuzník <ondra@mistotebe.net>
 Uploaders: Christine Spang <christine@debian.org>,
     Tristan Seligmann <mithrandi@debian.org>
-Build-Depends: debhelper (>= 8),
-    intltool, python-all (>= 2.6.6-3~), quilt, libgtk-3-bin,
+Build-Depends: debhelper (>= 9),
+    intltool, python3-all (>= 3.4), quilt, libgtk-3-bin,
 Standards-Version: 3.9.2.0
+X-Python3-Version: >= 3.4
 Vcs-git: git://git.debian.org/git/collab-maint/quodlibet
 Vcs-Browser: http://git.debian.org/?p=collab-maint/quodlibet.git
 Homepage: http://code.google.com/p/quodlibet/
 
 Package: exfalso
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, python-mutagen (>= 1.32),
-    python-gi (>= 3.12), python-gi-cairo (>= 3.12), gir1.2-gtk-3.0 (>= 3.10),
-    gir1.2-soup-2.4 (>= 2.44), python-concurrent.futures, python-feedparser,
-    python-faulthandler
-Recommends: python-musicbrainzngs (>= 0.5)
+Depends: ${python3:Depends}, ${misc:Depends}, python3-mutagen (>= 1.34),
+    python3-gi (>= 3.18), python3-gi-cairo (>= 3.18), gir1.2-gtk-3.0 (>= 3.18),
+    gir1.2-soup-2.4 (>= 2.52), python3-feedparser
+Recommends: python3-musicbrainzngs (>= 0.5)
 Suggests: libmodplug1, brasero | k3b | xfburn
 Replaces: quodlibet-plugins
-Conflicts: quodlibet-plugins
+Conflicts: quodlibet-plugins, exfalso
 Provides: quodlibet-plugins
 Description: audio tag editor for GTK+
  Ex Falso displays and edits audio metadata tags. Supported formats include
@@ -38,14 +38,14 @@ Description: audio tag editor for GTK+
 
 Package: quodlibet
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
+Depends: ${python3:Depends}, ${misc:Depends}, exfalso (= ${source:Version}),
     gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0,
     gstreamer1.0-plugins-base, gstreamer1.0-plugins-good,
     gstreamer1.0-plugins-ugly, gstreamer1.0-pulseaudio,
     gir1.2-appindicator3-0.1
-Recommends: python-dbus,
+Recommends: python3-dbus,
     udisks2 | udisks, media-player-info, gir1.2-keybinder-3.0,
-    gir1.2-gtksource-3.0, python-pyinotify, notification-daemon,
+    gir1.2-gtksource-3.0, python3-pyinotify, notification-daemon,
     gir1.2-webkit2-4.0
 Suggests: gstreamer1.0-plugins-bad
 Replaces: quodlibet-ext

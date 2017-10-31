@@ -11,10 +11,6 @@ RELEASE_VERSION = "3.9.1"
 
 ##########################################################
 
-args = parse_args()
-if args.py3:
-    PACKAGE += "-py3"
-
 if args.dist == "ubuntu":
     dput_cfg = os.path.join(os.getcwd(), "dput.cf")
 else:
@@ -54,13 +50,9 @@ p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, "quodlibet"))
 cd("quodlibet")
 
 if args.release:
-    assert not args.py3
     debian_dir = "debian_quodlibet_stable"
 else:
-    if args.py3:
-        debian_dir = "debian_quodlibet_py3"
-    else:
-        debian_dir = "debian_quodlibet"
+    debian_dir = "debian_quodlibet"
 
 if args.dist == "debian":
     if args.release:
@@ -70,11 +62,10 @@ if args.dist == "debian":
 else:
     releases = {
         "xenial": debian_dir,
-        "yakkety": debian_dir,
         "zesty": debian_dir,
         "artful": debian_dir,
+        "bionic": debian_dir,
     }
-
 
 for release, debian_dir in releases.iteritems():
     p("rm -R debian")
