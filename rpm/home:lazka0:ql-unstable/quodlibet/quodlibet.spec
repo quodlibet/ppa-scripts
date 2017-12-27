@@ -3,7 +3,7 @@
 %define revision 9517
  
 Name:           quodlibet
-Version:        3.9.99
+Version:        4.0.99
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 

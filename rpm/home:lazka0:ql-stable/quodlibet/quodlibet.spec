@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        3.9.1
+Version:        4.0.0
 Release:        1.1%{?dist}
 Summary:        A music management program
  
@@ -20,30 +20,31 @@ BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python >= 2.7
+BuildRequires:  python3 >= 3.5
+%if 0%{?fedora}
+BuildRequires:  python3-devel >= 3.5
+%endif
 BuildRequires:  unzip
 
 Requires:       exfalso = %{version}-%{release}
 
-Requires:       python-feedparser
-Requires:       media-player-info
-Requires:       udisks2
+Requires:       python3-feedparser
 
 %if 0%{?suse_version}
-Requires:       dbus-1-python
-Requires:       gstreamer >= 1.4
-Requires:       gstreamer-plugins-base >= 1.4
-Requires:       gstreamer-plugins-good >= 1.4
+Requires:       dbus-1-python3
+Requires:       gstreamer >= 1.8
+Requires:       gstreamer-plugins-base >= 1.8
+Requires:       gstreamer-plugins-good >= 1.8
 # suse has extra packages for typelibs
 Requires:       typelib-1_0-Gst-1_0
 Requires:       typelib-1_0-GstPbutils-1_0
 Requires:       typelib-1_0-Soup-2_4
 %else
 # fedora
-Requires:       dbus-python
-Requires:       gstreamer1 >= 1.4
-Requires:       gstreamer1-plugins-base >= 1.4
-Requires:       gstreamer1-plugins-good >= 1.4
+Requires:       python3-dbus
+Requires:       gstreamer1 >= 1.8
+Requires:       gstreamer1-plugins-base >= 1.8
+Requires:       gstreamer1-plugins-good >= 1.8
 Requires:       libsoup
 %endif
 
@@ -61,26 +62,21 @@ Wavpack, and MPEG-4 AAC.
 Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
-Requires:       python >= 2.7
-Requires:       python-mutagen >= 1.32
-Requires:       gtk3 >= 3.14
-Requires:       python-futures
-Requires:       python-feedparser
-
+Requires:       python3 >= 3.5
+Requires:       python3-mutagen >= 1.34
+Requires:       gtk3 >= 3.18
+Requires:       python3-feedparser
+Requires:       python3-musicbrainzngs >= 0.5
+Requires:       python3-gobject >= 3.18
+Requires:       python3-cairo
 
 %if 0%{?fedora}
-Requires:       pygobject3 >= 3.14
-Requires:       python-musicbrainzngs >= 0.5
-Requires:       pycairo
-Requires:       python2-faulthandler
+Requires:       librsvg2
 %else
-# suse
-Requires:       python-gobject >= 3.14
-Requires:       python-gobject-cairo >= 3.14
-Requires:       python-cairo
+Requires:       librsvg-2-2
+Requires:       python3-gobject-cairo >= 3.18
 Requires:       typelib-1_0-Gtk-3_0
-Requires:       python-gobject-Gdk
-Requires:       python-faulthandler
+Requires:       python3-gobject-Gdk
 %endif
 
 %description -n exfalso
@@ -93,12 +89,12 @@ Wavpack, and MPEG-4 AAC.
 %setup -q
 
 %build
-%{__python} setup.py build
+%{__python3} setup.py build
 
 %install
 rm -rf %{buildroot}
 
-python setup.py install --root=%{buildroot} --prefix=%{_prefix}
+%{__python3} setup.py install --root=%{buildroot} --prefix=%{_prefix}
 
 # leave vendor for fedora to keep links alive
 %if 0%{?fedora}
@@ -201,8 +197,8 @@ fi
 %{_datadir}/icons/hicolor/*/apps/exfalso-symbolic.svg
 %{_mandir}/man1/exfalso.1*
 %{_mandir}/man1/operon.1*
-%{python_sitelib}/quodlibet/
-%{python_sitelib}/quodlibet-*.egg-info
+%{python3_sitelib}/quodlibet/
+%{python3_sitelib}/quodlibet-*.egg-info
 
 %changelog
 * Fri Dec  7 2012 Christoph Reiter <reiter.christoph@gmail.com>
