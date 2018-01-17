@@ -7,7 +7,7 @@ from _util import *
 
 PACKAGE= "quodlibet"
 PPA_VERSION = "4.0.99"
-RELEASE_VERSION = "4.0.1"
+RELEASE_VERSION = "4.0.2"
 
 ##########################################################
 
