@@ -94,7 +94,7 @@ for release, debian_dir in releases.iteritems():
 
 p("rm -R debian")
 cd("..")
-fail(p("debsign -k B6264964 %s*.changes" % (PACKAGE,)))
+fail(p("debsign -k '0EBF 782C 5D53 F7E5 FB02  A667 46BD 761F 7A49 B0EC' %s*.changes" % (PACKAGE,)))
 
 dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
