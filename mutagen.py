@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-PPA_VERSION = "1.39.999"
-RELEASE_VERSION = "1.39"
+PPA_VERSION = "1.40.999"
+RELEASE_VERSION = "1.40.0"
 
 ##########################################################
 
@@ -60,6 +60,7 @@ else:
         "zesty": "debian_mutagen",
         "artful": "debian_mutagen",
         "bionic": "debian_mutagen",
+        "cosmic": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():
@@ -87,7 +88,12 @@ for release, debian_dir in releases.items():
 
 p("rm -R debian")
 cd("..")
-fail(p("debsign -k '0EBF 782C 5D53 F7E5 FB02  A667 46BD 761F 7A49 B0EC' %s*.changes" % (PACKAGE,)))
+
+while 1:
+    out = p("debsign -k '0EBF 782C 5D53 F7E5 FB02  A667 46BD 761F 7A49 B0EC' %s*.changes" % (PACKAGE,))
+    if not failed(out):
+        break
+
 dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
     fail(p("%s local %s*.changes" % (dput, PACKAGE)))

@@ -39,6 +39,12 @@ def clean(directory, *packages):
         p(cmd)
     os.chdir(old)
 
+
+def failed(out):
+    status, stdout, stderr = out
+    return status != 0
+
+
 def fail(out):
     status, stdout, stderr = out
     if status != 0:

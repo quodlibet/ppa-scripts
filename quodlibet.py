@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-PPA_VERSION = "4.0.99"
-RELEASE_VERSION = "4.0.2"
+PPA_VERSION = "4.1.99"
+RELEASE_VERSION = "4.1.0"
 
 ##########################################################
 
@@ -67,6 +67,7 @@ else:
         "zesty": debian_dir,
         "artful": debian_dir,
         "bionic": debian_dir,
+        "cosmic": debian_dir,
     }
 
 for release, debian_dir in releases.iteritems():
@@ -94,7 +95,11 @@ for release, debian_dir in releases.iteritems():
 
 p("rm -R debian")
 cd("..")
-fail(p("debsign -k '0EBF 782C 5D53 F7E5 FB02  A667 46BD 761F 7A49 B0EC' %s*.changes" % (PACKAGE,)))
+
+while 1:
+    out = p("debsign -k '0EBF 782C 5D53 F7E5 FB02  A667 46BD 761F 7A49 B0EC' %s*.changes" % (PACKAGE,))
+    if not failed(out):
+        break
 
 dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":

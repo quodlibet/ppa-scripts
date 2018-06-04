@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        4.0.2
+Version:        4.1.0
 Release:        1.1%{?dist}
 Summary:        A music management program
  
@@ -96,27 +96,14 @@ rm -rf %{buildroot}
 
 %{__python3} setup.py install --root=%{buildroot} --prefix=%{_prefix}
 
-# leave vendor for fedora to keep links alive
-%if 0%{?fedora}
-desktop-file-install --vendor fedora                            \
-        --dir %{buildroot}%{_datadir}/applications              \
-        --delete-original                                       \
-        %{buildroot}%{_datadir}/applications/quodlibet.desktop
-desktop-file-install --vendor fedora                            \
-        --dir %{buildroot}%{_datadir}/applications              \
-        --delete-original                                       \
-        %{buildroot}%{_datadir}/applications/exfalso.desktop
-%else
 desktop-file-install                                            \
         --dir %{buildroot}%{_datadir}/applications              \
         --delete-original                                       \
-        %{buildroot}%{_datadir}/applications/quodlibet.desktop
+        %{buildroot}%{_datadir}/applications/io.github.quodlibet.QuodLibet.desktop
 desktop-file-install                                            \
         --dir %{buildroot}%{_datadir}/applications              \
         --delete-original                                       \
-        --add-category=AudioVideoEditing                        \
         %{buildroot}%{_datadir}/applications/exfalso.desktop
-%endif
 
 %{find_lang} quodlibet
 
@@ -154,14 +141,10 @@ fi
 %files
 %defattr(-,root,root,-)
 %{_bindir}/quodlibet
-%if 0%{?fedora}
-%{_datadir}/applications/fedora-quodlibet.desktop
-%else
-%{_datadir}/applications/quodlibet.desktop
-%endif
-%{_datadir}/icons/hicolor/*/apps/quodlibet.png
-%{_datadir}/icons/hicolor/*/apps/quodlibet.svg
-%{_datadir}/icons/hicolor/*/apps/quodlibet-symbolic.svg
+%{_datadir}/applications/io.github.quodlibet.QuodLibet.desktop
+%{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.QuodLibet.png
+%{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.QuodLibet.svg
+%{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.QuodLibet-symbolic.svg
 %if 0%{?suse_version}
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
@@ -172,8 +155,8 @@ fi
 %dir %{_datadir}/zsh/vendor-completions
 %endif
 %{_datadir}/dbus-1/services/net.sacredchao.QuodLibet.service
-%{_datadir}/appdata/quodlibet.appdata.xml
-%{_datadir}/gnome-shell/search-providers/quodlibet-search-provider.ini
+%{_datadir}/appdata/io.github.quodlibet.QuodLibet.appdata.xml
+%{_datadir}/gnome-shell/search-providers/io.github.quodlibet.QuodLibet-search-provider.ini
 %{_mandir}/man1/quodlibet.1*
 %{_datadir}/zsh/vendor-completions/_quodlibet
 
@@ -183,11 +166,7 @@ fi
 %doc COPYING NEWS README
 %{_bindir}/exfalso
 %{_bindir}/operon
-%if 0%{?fedora}
-%{_datadir}/applications/fedora-exfalso.desktop
-%else
 %{_datadir}/applications/exfalso.desktop
-%endif
 %if 0%{?suse_version}
 %dir %{_datadir}/appdata
 %endif
