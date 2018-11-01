@@ -1,9 +1,9 @@
-%define hash a4a693ce9
-%define longhash a4a693ce986aa6fd5cf654ee783cb596fe14a1c3
-%define revision 9790
+%define hash 4979510f0
+%define longhash 4979510f042269e2145f3ddc2c78785537af2aa6
+%define revision 10028
  
 Name:           quodlibet
-Version:        4.1.99
+Version:        4.2.99
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
@@ -21,7 +21,6 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  gettext
-BuildRequires:  intltool
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3 >= 3.5

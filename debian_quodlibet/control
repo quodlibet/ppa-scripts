@@ -5,7 +5,7 @@ Maintainer: Ondřej Kuzník <ondra@mistotebe.net>
 Uploaders: Christine Spang <christine@debian.org>,
     Tristan Seligmann <mithrandi@debian.org>
 Build-Depends: debhelper (>= 9),
-    intltool, python3-all (>= 3.4), quilt, libgtk-3-bin,
+    python3-all (>= 3.4), quilt, libgtk-3-bin,
 Standards-Version: 3.9.2.0
 X-Python3-Version: >= 3.4
 Vcs-git: git://git.debian.org/git/collab-maint/quodlibet

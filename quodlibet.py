@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-PPA_VERSION = "4.1.99"
-RELEASE_VERSION = "4.1.0"
+PPA_VERSION = "4.2.99"
+RELEASE_VERSION = "4.2.0"
 
 ##########################################################
 

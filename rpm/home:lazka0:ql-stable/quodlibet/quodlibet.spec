@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        4.1.0
+Version:        4.2.0
 Release:        1.1%{?dist}
 Summary:        A music management program
  
@@ -17,7 +17,6 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  gettext
-BuildRequires:  intltool
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3 >= 3.5
