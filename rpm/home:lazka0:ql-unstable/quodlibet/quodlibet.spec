@@ -1,6 +1,6 @@
-%define hash 4979510f0
-%define longhash 4979510f042269e2145f3ddc2c78785537af2aa6
-%define revision 10028
+%define hash dfcf9455f
+%define longhash dfcf9455f0f4af1943c62f8cc5375898015a2e3d
+%define revision 10134
  
 Name:           quodlibet
 Version:        4.2.99
@@ -108,7 +108,7 @@ desktop-file-install                                            \
 desktop-file-install                                            \
         --dir %{buildroot}%{_datadir}/applications              \
         --delete-original                                       \
-        %{buildroot}%{_datadir}/applications/exfalso.desktop
+        %{buildroot}%{_datadir}/applications/io.github.quodlibet.ExFalso.desktop
 
 %{find_lang} quodlibet
 
@@ -171,14 +171,14 @@ fi
 %doc quodlibet/COPYING quodlibet/NEWS quodlibet/README
 %{_bindir}/exfalso
 %{_bindir}/operon
-%{_datadir}/applications/exfalso.desktop
+%{_datadir}/applications/io.github.quodlibet.ExFalso.desktop
 %if 0%{?suse_version}
 %dir %{_datadir}/appdata
 %endif
-%{_datadir}/appdata/exfalso.appdata.xml
-%{_datadir}/icons/hicolor/*/apps/exfalso.png
-%{_datadir}/icons/hicolor/*/apps/exfalso.svg
-%{_datadir}/icons/hicolor/*/apps/exfalso-symbolic.svg
+%{_datadir}/appdata/io.github.quodlibet.ExFalso.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.ExFalso.png
+%{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.ExFalso.svg
+%{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.ExFalso-symbolic.svg
 %{_mandir}/man1/exfalso.1*
 %{_mandir}/man1/operon.1*
 %{python3_sitelib}/quodlibet/
