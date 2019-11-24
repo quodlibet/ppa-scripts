@@ -64,10 +64,9 @@ if args.dist == "debian":
 else:
     releases = {
         "xenial": debian_dir,
-        "zesty": debian_dir,
-        "artful": debian_dir,
         "bionic": debian_dir,
-        "cosmic": debian_dir,
+        "disco": debian_dir,
+        "eoan": debian_dir,
     }
 
 for release, debian_dir in releases.iteritems():

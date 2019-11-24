@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-PPA_VERSION = "1.41.999"
-RELEASE_VERSION = "1.41.1"
+PPA_VERSION = "1.43.999"
+RELEASE_VERSION = "1.43.0"
 
 ##########################################################
 
@@ -54,13 +54,10 @@ if args.dist == "debian":
         releases = {"quodlibet-unstable": "debian_mutagen"}
 else:
     releases = {
-        "trusty": "debian_mutagen",
         "xenial": "debian_mutagen",
-        "yakkety": "debian_mutagen",
-        "zesty": "debian_mutagen",
-        "artful": "debian_mutagen",
         "bionic": "debian_mutagen",
-        "cosmic": "debian_mutagen",
+        "disco": "debian_mutagen",
+        "eoan": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():
