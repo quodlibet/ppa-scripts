@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-PPA_VERSION = "1.43.999"
-RELEASE_VERSION = "1.43.0"
+PPA_VERSION = "1.44.999"
+RELEASE_VERSION = "1.44.0"
 
 ##########################################################
 
@@ -56,8 +56,8 @@ else:
     releases = {
         "xenial": "debian_mutagen",
         "bionic": "debian_mutagen",
-        "disco": "debian_mutagen",
         "eoan": "debian_mutagen",
+        "focal": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():

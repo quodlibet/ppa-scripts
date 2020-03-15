@@ -6,8 +6,8 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-PPA_VERSION = "4.2.99"
-RELEASE_VERSION = "4.2.0"
+PPA_VERSION = "4.3.99"
+RELEASE_VERSION = "4.2.1"
 
 ##########################################################
 
@@ -65,8 +65,8 @@ else:
     releases = {
         "xenial": debian_dir,
         "bionic": debian_dir,
-        "disco": debian_dir,
         "eoan": debian_dir,
+        "focal": debian_dir,
     }
 
 for release, debian_dir in releases.iteritems():
