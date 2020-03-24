@@ -7,4 +7,4 @@ usr/share/icons/hicolor/*/apps/io.github.quodlibet.QuodLibet.png
 usr/share/icons/hicolor/*/apps/io.github.quodlibet.QuodLibet.svg
 usr/share/icons/hicolor/*/apps/io.github.quodlibet.QuodLibet-symbolic.svg
 usr/share/man/man1/quodlibet.1
-usr/share/zsh/vendor-completions/_quodlibet
+usr/share/zsh/site-functions/_quodlibet

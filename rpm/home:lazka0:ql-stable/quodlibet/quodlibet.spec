@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        4.2.1
+Version:        4.3.0
 Release:        1.1%{?dist}
 Summary:        A music management program
  
@@ -102,7 +102,7 @@ desktop-file-install                                            \
 desktop-file-install                                            \
         --dir %{buildroot}%{_datadir}/applications              \
         --delete-original                                       \
-        %{buildroot}%{_datadir}/applications/exfalso.desktop
+        %{buildroot}%{_datadir}/applications/io.github.quodlibet.ExFalso.desktop
 
 %{find_lang} quodlibet
 
@@ -151,13 +151,14 @@ fi
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
 %dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/vendor-completions
+%dir %{_datadir}/zsh/site-functions
 %endif
 %{_datadir}/dbus-1/services/net.sacredchao.QuodLibet.service
 %{_datadir}/appdata/io.github.quodlibet.QuodLibet.appdata.xml
 %{_datadir}/gnome-shell/search-providers/io.github.quodlibet.QuodLibet-search-provider.ini
 %{_mandir}/man1/quodlibet.1*
-%{_datadir}/zsh/vendor-completions/_quodlibet
+%{_datadir}/zsh/site-functions/_quodlibet
+%{_datadir}/bash-completion/completions/quodlibet
 
 
 %files -n exfalso -f %{name}.lang
@@ -165,16 +166,17 @@ fi
 %doc COPYING NEWS README
 %{_bindir}/exfalso
 %{_bindir}/operon
-%{_datadir}/applications/exfalso.desktop
+%{_datadir}/applications/io.github.quodlibet.ExFalso.desktop
 %if 0%{?suse_version}
 %dir %{_datadir}/appdata
 %endif
-%{_datadir}/appdata/exfalso.appdata.xml
-%{_datadir}/icons/hicolor/*/apps/exfalso.png
-%{_datadir}/icons/hicolor/*/apps/exfalso.svg
-%{_datadir}/icons/hicolor/*/apps/exfalso-symbolic.svg
+%{_datadir}/appdata/io.github.quodlibet.ExFalso.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.ExFalso.png
+%{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.ExFalso.svg
+%{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.ExFalso-symbolic.svg
 %{_mandir}/man1/exfalso.1*
 %{_mandir}/man1/operon.1*
+%{_datadir}/bash-completion/completions/operon
 %{python3_sitelib}/quodlibet/
 %{python3_sitelib}/quodlibet-*.egg-info
 

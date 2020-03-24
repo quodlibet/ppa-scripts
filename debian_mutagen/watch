@@ -1,3 +1,4 @@
-version=3
-opts=pgpsigurlmangle=s/$/.sig/ \
- http://bitbucket.org/lazka/mutagen/downloads/mutagen-([0-9.]+).tar.gz
+version=4
+opts=filenamemangle=s/.+\/mutagen-?(\d\S+)\.tar\.gz/mutagen-$1\.tar\.gz/,\
+pgpsigurlmangle=s/$/.sig/ \
+  https://github.com/quodlibet/mutagen/releases .*/mutagen-(\d\S+)\.tar\.gz

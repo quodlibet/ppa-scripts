@@ -1,9 +1,9 @@
-%define hash dfcf9455f
-%define longhash dfcf9455f0f4af1943c62f8cc5375898015a2e3d
-%define revision 10134
+%define hash 7025a5833
+%define longhash 7025a58336919b5ec5e6a0af8d940876428592d4
+%define revision 10352
  
 Name:           quodlibet
-Version:        4.2.99
+Version:        4.3.99
 Release:        3.%{revision}.%{hash}%{?dist}
 Summary:        A music management program
 
@@ -157,13 +157,14 @@ fi
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
 %dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/vendor-completions
+%dir %{_datadir}/zsh/site-functions
 %endif
 %{_datadir}/dbus-1/services/net.sacredchao.QuodLibet.service
 %{_datadir}/appdata/io.github.quodlibet.QuodLibet.appdata.xml
 %{_datadir}/gnome-shell/search-providers/io.github.quodlibet.QuodLibet-search-provider.ini
 %{_mandir}/man1/quodlibet.1*
-%{_datadir}/zsh/vendor-completions/_quodlibet
+%{_datadir}/zsh/site-functions/_quodlibet
+%{_datadir}/bash-completion/completions/quodlibet
 
 
 %files -n exfalso -f quodlibet/%{name}.lang
@@ -181,6 +182,7 @@ fi
 %{_datadir}/icons/hicolor/*/apps/io.github.quodlibet.ExFalso-symbolic.svg
 %{_mandir}/man1/exfalso.1*
 %{_mandir}/man1/operon.1*
+%{_datadir}/bash-completion/completions/operon
 %{python3_sitelib}/quodlibet/
 %{python3_sitelib}/quodlibet-*.egg-info
 
