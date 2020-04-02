@@ -1,31 +1,32 @@
-Source: mutagen
+Source: python2-mutagen
 Section: python
 Priority: optional
 Maintainer: Tristan Seligmann <mithrandi@debian.org>
 Uploaders:
  Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>,
+ Simon Chopin <chopin.simon@gmail.com>
 Build-Depends:
  debhelper (>= 9),
- dh-python,
  faad,
  flac,
  libc-bin (>= 2.13),
  oggz-tools,
- python3-all,
- python3-setuptools,
- vorbis-tools
-Standards-Version: 4.1.4
-Vcs-Git: https://salsa.debian.org/python-team/modules/mutagen.git
-Vcs-Browser: https://salsa.debian.org/python-team/modules/mutagen
-Homepage: https://github.com/quodlibet/mutagen
+ python-all (>= 2.6.6-3~),
+ python-setuptools,
+ vorbis-tools,
+ dh-python
+Standards-Version: 3.9.6
+X-Python-Version: >= 2.7
+Vcs-Svn: svn://anonscm.debian.org/python-modules/packages/mutagen/trunk/
+Vcs-Browser: http://anonscm.debian.org/viewvc/python-modules/packages/mutagen/trunk/
+Homepage: http://code.google.com/p/mutagen/
 
-Package: python3-mutagen
+
+Package: python-mutagen
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends},
- python3-pkg-resources
-Breaks: python-mutagen (<< 1.43.0-1)
-Replaces: python-mutagen (<< 1.43.0-1)
-Description: audio metadata editing library (Python 3)
+Depends: ${misc:Depends}, ${python:Depends},
+ python-pkg-resources
+Description: audio metadata editing library
  Mutagen is a Python module to handle audio metadata. It supports FLAC,
  M4A, MP3, Ogg FLAC, Ogg Speex, Ogg Theora, Ogg Vorbis, True Audio, and
  WavPack audio files. All versions of ID3v2 are supported, and all
@@ -33,5 +34,3 @@ Description: audio metadata editing library (Python 3)
  accurately calculate the bitrate and length of MP3s. ID3 and APEv2
  tags can be edited regardless of audio format. It can also manipulate
  Ogg streams on an individual packet/page level.
- .
- This package is built for Python 3.

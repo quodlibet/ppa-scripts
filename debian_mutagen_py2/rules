@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=mutagen
+export PYBUILD_DISABLE=test
+
+%:
+	dh $@ --with python2 --buildsystem=pybuild
+
+
+override_dh_auto_install:
+	dh_auto_install
+	# Don't ship binaries or manpages in the python2 packages
+	rm -rf debian/python-mutagen/usr/bin \
+	       debian/python-mutagen/usr/share
+
+
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS

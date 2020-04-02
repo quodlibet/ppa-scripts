@@ -1,0 +1,3 @@
+version=3
+opts=pgpsigurlmangle=s/$/.sig/ \
+ http://bitbucket.org/lazka/mutagen/downloads/mutagen-([0-9.]+).tar.gz
