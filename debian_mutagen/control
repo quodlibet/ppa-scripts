@@ -24,7 +24,6 @@ Architecture: all
 Depends: ${misc:Depends}, ${python3:Depends},
  python3-pkg-resources
 Breaks: python-mutagen (<< 1.43.0-1)
-Replaces: python-mutagen (<< 1.43.0-1)
 Description: audio metadata editing library (Python 3)
  Mutagen is a Python module to handle audio metadata. It supports FLAC,
  M4A, MP3, Ogg FLAC, Ogg Speex, Ogg Theora, Ogg Vorbis, True Audio, and
