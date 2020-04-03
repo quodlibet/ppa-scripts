@@ -51,7 +51,7 @@ if args.dist == "debian":
     if args.release:
         releases = {"quodlibet-stable": "debian_mutagen"}
     else:
-        releases = {"quodlibet-unstable": "debian_mutagen"}
+        releases = {"quodlibet-unstable": "debian_mutagen_py3only"}
 else:
     releases = {
         "xenial": "debian_mutagen",

@@ -21,9 +21,12 @@ else:
 git_dir = "quodlibet-git"
 if not os.path.isdir(git_dir):
     p("git clone https://github.com/quodlibet/quodlibet.git %s" % git_dir)
+if not args.release:
+    start_dir = os.getcwd()
 cd(git_dir)
+if args.release:
+    start_dir = os.getcwd()
 
-start_dir = os.getcwd()
 clean(start_dir, PACKAGE, "exfalso")
 
 p("git reset HEAD --hard")
@@ -39,7 +42,7 @@ rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
 if not args.release:
-    p("echo 'BUILD_INFO = u\"%s\"' >> 'quodlibet/quodlibet/build.py'" % rev_hash)
+    p("echo 'BUILD_INFO = u\"%s\"' >> 'quodlibet/build.py'" % rev_hash)
 
 if not args.release:
     UPSTREAM_VERSION = PPA_VERSION + "+" + rev_num + "~" + rev_hash
@@ -47,9 +50,16 @@ else:
     UPSTREAM_VERSION = RELEASE_VERSION
 if args.version != 0:
     UPSTREAM_VERSION += "+%s" % args.version
-p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, "quodlibet"))
 
-cd("quodlibet")
+if args.release:
+    p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, "quodlibet"))
+else:
+    stash = p("git stash create")[1]
+    p("git archive --prefix=quodlibet/ --format=tar.gz %s -o ../%s_%s.orig.tar.gz" % (stash, PACKAGE, UPSTREAM_VERSION))
+
+
+if args.release:
+    cd("quodlibet")
 
 if args.release:
     debian_dir = "debian_quodlibet_stable"
@@ -71,7 +81,10 @@ else:
 
 for release, debian_dir in releases.iteritems():
     p("rm -R debian")
-    p("cp -R ../../%s ." % debian_dir)
+    if args.release:
+        p("cp -R ../../%s ." % debian_dir)
+    else:
+        p("cp -R ../%s ." % debian_dir)
     p("mv %s debian" % debian_dir)
 
     debian_version = "%s-0~ppa%s~%s" % (UPSTREAM_VERSION, args.version, release.replace("-", "~"))

@@ -53,7 +53,7 @@ if args.dist == "debian":
     if args.release:
         releases = {"quodlibet-stable": "debian_mutagen_py2"}
     else:
-        releases = {"quodlibet-unstable": "debian_mutagen_py2"}
+        assert 0, "no py2 there anymore"
 else:
     releases = {
         "xenial": "debian_mutagen_py2",
