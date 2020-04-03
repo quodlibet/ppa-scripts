@@ -59,6 +59,7 @@ else:
         "xenial": "debian_mutagen_py2",
         "bionic": "debian_mutagen_py2",
         "eoan": "debian_mutagen_py2",
+        "focal": "debian_mutagen_py2",
     }
 
 for release, debian_dir in releases.items():
