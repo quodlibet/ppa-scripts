@@ -22,12 +22,13 @@ def parse_args():
 def cd(d):
     old = os.getcwd()
     os.chdir(d)
-    print "> CD: %s -> %s" % (old, d)
+    print("> CD: %s -> %s" % (old, d))
 
 def p(cmd):
-    print "> %s" % cmd
+    print("> %s" % cmd)
     pipe = subprocess.PIPE
-    p = subprocess.Popen(cmd, shell=True, stdout=pipe, stderr=pipe, stdin=pipe)
+    p = subprocess.Popen(cmd, shell=True, stdout=pipe, stderr=pipe, stdin=pipe,
+                         universal_newlines=True)
     stdout, stderr = p.communicate()
     return p.returncode, stdout.strip(), stderr.strip()
 
@@ -48,9 +49,9 @@ def failed(out):
 def fail(out):
     status, stdout, stderr = out
     if status != 0:
-        print "#" * 24
-        print stdout
-        print stderr
-        print "#" * 24
+        print("#" * 24)
+        print(stdout)
+        print(stderr)
+        print("#" * 24)
         sys.exit()
     return out

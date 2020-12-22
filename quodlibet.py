@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 from _util import *
@@ -77,9 +77,10 @@ else:
         "bionic": debian_dir,
         "eoan": debian_dir,
         "focal": debian_dir,
+        "groovy": debian_dir,
     }
 
-for release, debian_dir in releases.iteritems():
+for release, debian_dir in releases.items():
     p("rm -R debian")
     if args.release:
         p("cp -R ../../%s ." % debian_dir)

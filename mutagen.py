@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 from _util import *
@@ -7,7 +7,7 @@ from _util import *
 
 PACKAGE = "mutagen"
 PPA_VERSION = "1.44.999"
-RELEASE_VERSION = "1.44.0"
+RELEASE_VERSION = "1.45.1"
 
 ##########################################################
 
@@ -58,6 +58,7 @@ else:
         "bionic": "debian_mutagen",
         "eoan": "debian_mutagen",
         "focal": "debian_mutagen",
+        "groovy": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():
