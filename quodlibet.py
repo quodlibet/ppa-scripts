@@ -6,7 +6,6 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-PPA_VERSION = "4.3.99"
 RELEASE_VERSION = "4.3.0"
 
 ##########################################################
@@ -21,11 +20,8 @@ else:
 git_dir = "quodlibet-git"
 if not os.path.isdir(git_dir):
     p("git clone https://github.com/quodlibet/quodlibet.git %s" % git_dir)
-if not args.release:
-    start_dir = os.getcwd()
 cd(git_dir)
-if args.release:
-    start_dir = os.getcwd()
+start_dir = os.getcwd()
 
 clean(start_dir, PACKAGE, "exfalso")
 
@@ -33,21 +29,14 @@ p("git reset HEAD --hard")
 p("git clean -xfd")
 p("git checkout master")
 p("git pull --all")
-if args.release:
-    fail(p("git checkout release-%s" % RELEASE_VERSION))
+fail(p("git checkout release-%s" % RELEASE_VERSION))
 
 rev_num = p("git rev-list --count HEAD")[1]
 rev_hash = p("git rev-parse --short HEAD")[1]
 rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
-if not args.release:
-    p("echo 'BUILD_INFO = u\"%s\"' >> 'quodlibet/build.py'" % rev_hash)
-
-if not args.release:
-    UPSTREAM_VERSION = PPA_VERSION + "+" + rev_num + "~" + rev_hash
-else:
-    UPSTREAM_VERSION = RELEASE_VERSION
+UPSTREAM_VERSION = RELEASE_VERSION
 if args.version != 0:
     UPSTREAM_VERSION += "+%s" % args.version
 
@@ -118,10 +107,6 @@ dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
     fail(p("%s local %s*.changes" % (dput, PACKAGE)))
 else:
-    if args.release:
-        fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
-    else:
-        fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
-    # fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
+    fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
 
 clean(start_dir, PACKAGE, "exfalso")

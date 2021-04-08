@@ -6,7 +6,6 @@ from _util import *
 ##########################################################
 
 PACKAGE = "python2-mutagen"
-PPA_VERSION = "1.43.9999"
 RELEASE_VERSION = "1.43.0"
 
 ##########################################################
@@ -30,30 +29,21 @@ p("git reset HEAD --hard")
 p("git clean -xfd")
 p("git checkout master")
 p("git pull --all")
-if args.release:
-    fail(p("git checkout release-%s" % RELEASE_VERSION))
-else:
-    fail(p("git checkout release-%s" % RELEASE_VERSION))
+fail(p("git checkout release-%s" % RELEASE_VERSION))
 
 rev_num = p("git rev-list --count HEAD")[1]
 rev_hash = p("git rev-parse --short HEAD")[1]
 rev = rev_num  +"~" + rev_hash
 date = p("date -R")[1]
 
-if not args.release:
-    UPSTREAM_VERSION = PPA_VERSION + "+" + rev_num + "~" + rev_hash
-else:
-    UPSTREAM_VERSION = RELEASE_VERSION
+UPSTREAM_VERSION = RELEASE_VERSION
 if args.version != 0:
     UPSTREAM_VERSION += "+%s" % args.version
 
 p("git archive --prefix=mutagen/ --format=tar.gz HEAD -o ../%s_%s.orig.tar.gz" % (PACKAGE, UPSTREAM_VERSION))
 
 if args.dist == "debian":
-    if args.release:
-        releases = {"quodlibet-stable": "debian_mutagen_py2"}
-    else:
-        assert 0, "no py2 there anymore"
+    releases = {"quodlibet-stable": "debian_mutagen_py2"}
 else:
     releases = {
         "xenial": "debian_mutagen_py2",
@@ -78,10 +68,7 @@ for release, debian_dir in releases.items():
         h.write(t)
 
     if args.dist == "debian":
-        if args.release:
-            fail(p("pdebuild --use-pdebuild-internal --debbuildopts '-uc -us' --buildresult .."))
-        else:
-            fail(p("dpkg-buildpackage -uc -us -tc -I -rfakeroot"))
+        fail(p("pdebuild --use-pdebuild-internal --debbuildopts '-uc -us' --buildresult .."))
     else:
         fail(p("dpkg-buildpackage -uc -us -S -tc -I -rfakeroot"))
 
