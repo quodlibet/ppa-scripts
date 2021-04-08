@@ -40,41 +40,24 @@ UPSTREAM_VERSION = RELEASE_VERSION
 if args.version != 0:
     UPSTREAM_VERSION += "+%s" % args.version
 
-if args.release:
-    p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, "quodlibet"))
-else:
-    stash = p("git stash create")[1]
-    p("git archive --prefix=quodlibet/ --format=tar.gz %s -o ../%s_%s.orig.tar.gz" % (stash, PACKAGE, UPSTREAM_VERSION))
+p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, "quodlibet"))
+cd("quodlibet")
 
-
-if args.release:
-    cd("quodlibet")
-
-if args.release:
-    debian_dir = "debian_quodlibet_stable"
-else:
-    debian_dir = "debian_quodlibet"
+debian_dir = "debian_quodlibet"
 
 if args.dist == "debian":
-    if args.release:
-        releases = {"quodlibet-stable": debian_dir}
-    else:
-        releases = {"quodlibet-unstable": debian_dir}
+    releases = {"quodlibet-stable": debian_dir}
 else:
     releases = {
-        "xenial": debian_dir,
         "bionic": debian_dir,
-        "eoan": debian_dir,
         "focal": debian_dir,
         "groovy": debian_dir,
+        "hirsute": debian_dir,
     }
 
 for release, debian_dir in releases.items():
     p("rm -R debian")
-    if args.release:
-        p("cp -R ../../%s ." % debian_dir)
-    else:
-        p("cp -R ../%s ." % debian_dir)
+    p("cp -R ../../%s ." % debian_dir)
     p("mv %s debian" % debian_dir)
 
     debian_version = "%s-0~ppa%s~%s" % (UPSTREAM_VERSION, args.version, release.replace("-", "~"))
@@ -88,10 +71,7 @@ for release, debian_dir in releases.items():
         h.write(t)
 
     if args.dist == "debian":
-        if args.release:
-            fail(p("pdebuild --use-pdebuild-internal --debbuildopts '-uc -us' --buildresult .."))
-        else:
-            fail(p("dpkg-buildpackage -uc -us -tc -I -rfakeroot"))
+        fail(p("pdebuild --use-pdebuild-internal --debbuildopts '-uc -us' --buildresult .."))
     else:
         fail(p("dpkg-buildpackage -uc -us -S -tc -I -rfakeroot"))
 
