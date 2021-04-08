@@ -6,7 +6,7 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_VERSION = "4.3.0"
+RELEASE_VERSION = "4.4.0"
 
 ##########################################################
 
@@ -17,13 +17,13 @@ if args.dist == "ubuntu":
 else:
     dput_cfg = os.path.join(os.getcwd(), "dput_debian.cf")
 
+start_dir = os.getcwd()
+clean(start_dir, PACKAGE, "exfalso")
+
 git_dir = "quodlibet-git"
 if not os.path.isdir(git_dir):
     p("git clone https://github.com/quodlibet/quodlibet.git %s" % git_dir)
 cd(git_dir)
-start_dir = os.getcwd()
-
-clean(start_dir, PACKAGE, "exfalso")
 
 p("git reset HEAD --hard")
 p("git clean -xfd")
@@ -40,8 +40,7 @@ UPSTREAM_VERSION = RELEASE_VERSION
 if args.version != 0:
     UPSTREAM_VERSION += "+%s" % args.version
 
-p("tar -pczf %s_%s.orig.tar.gz %s" % (PACKAGE, UPSTREAM_VERSION, "quodlibet"))
-cd("quodlibet")
+p("git archive --prefix=quodlibet/ --format=tar.gz HEAD -o ../%s_%s.orig.tar.gz" % (PACKAGE, UPSTREAM_VERSION))
 
 debian_dir = "debian_quodlibet"
 
@@ -57,7 +56,7 @@ else:
 
 for release, debian_dir in releases.items():
     p("rm -R debian")
-    p("cp -R ../../%s ." % debian_dir)
+    p("cp -R ../%s ." % debian_dir)
     p("mv %s debian" % debian_dir)
 
     debian_version = "%s-0~ppa%s~%s" % (UPSTREAM_VERSION, args.version, release.replace("-", "~"))

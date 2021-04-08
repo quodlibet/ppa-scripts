@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 from _util import *
@@ -84,10 +84,6 @@ dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
     fail(p("%s local %s*.changes" % (dput, PACKAGE)))
 else:
-    if args.release:
-        fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
-    else:
-        fail(p("%s unstable %s*.changes" % (dput, PACKAGE)))
-    # fail(p("%s experimental %s*.changes" % (dput, PACKAGE)))
+    fail(p("%s stable %s*.changes" % (dput, PACKAGE)))
 
 clean(start_dir, PACKAGE, "python-" + PACKAGE, "python3-" + PACKAGE)

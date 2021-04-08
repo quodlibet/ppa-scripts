@@ -1,10 +1,9 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
 import sys
 import os
-import urllib
-import cgi
+import urllib.parse
+import html
 
 
 def create_index(dir_):
@@ -19,9 +18,9 @@ def create_index(dir_):
         if os.path.isdir(os.path.join(dir_, e)):
             e += "/"
         links.append(
-            "<a href='%s'>%s</a><br>" % (urllib.quote(e), cgi.escape(e)))
+            "<a href='%s'>%s</a><br>" % (urllib.parse.quote(e), html.escape(e)))
 
-    with open(os.path.join(dir_, "index.html"), "wb") as h:
+    with open(os.path.join(dir_, "index.html"), "w", encoding="utf-8") as h:
         h.write("""<!DOCTYPE html>
 <html>
 <body>
