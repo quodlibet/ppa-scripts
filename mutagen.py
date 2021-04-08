@@ -48,17 +48,13 @@ if args.version != 0:
 p("git archive --prefix=mutagen/ --format=tar.gz HEAD -o ../%s_%s.orig.tar.gz" % (PACKAGE, UPSTREAM_VERSION))
 
 if args.dist == "debian":
-    if args.release:
-        releases = {"quodlibet-stable": "debian_mutagen"}
-    else:
-        releases = {"quodlibet-unstable": "debian_mutagen_py3only"}
+    releases = {"quodlibet-stable": "debian_mutagen"}
 else:
     releases = {
-        "xenial": "debian_mutagen",
         "bionic": "debian_mutagen",
-        "eoan": "debian_mutagen",
-        "focal": "debian_mutagen",
-        "groovy": "debian_mutagen",
+        "focal": "debian_mutagen_py3only",
+        "groovy": "debian_mutagen_py3only",
+        "hirsute": "debian_mutagen_py3only",
     }
 
 for release, debian_dir in releases.items():
