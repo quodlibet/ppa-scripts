@@ -48,7 +48,6 @@ if args.dist == "debian":
     releases = {"quodlibet-stable": debian_dir}
 else:
     releases = {
-        "bionic": debian_dir,
         "focal": debian_dir,
         "groovy": debian_dir,
         "hirsute": debian_dir,
