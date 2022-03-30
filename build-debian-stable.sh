@@ -14,7 +14,6 @@ rm -rf ~/debian_archive
 $MINID
 ./quodlibet.py -ddebian
 ./mutagen.py -ddebian -v1
-./mutagen-py2.py -ddebian -v1
 $MINID -r
 cd ~/debian_archive/quodlibet-stable/
 gpg -u B6264964! --output Release.gpg -ba Release

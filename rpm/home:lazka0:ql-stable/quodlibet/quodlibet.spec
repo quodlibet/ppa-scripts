@@ -1,6 +1,6 @@
 Name:           quodlibet
-Version:        4.3.0
-Release:        1.1%{?dist}
+Version:        4.5.0
+Release:        0%{?dist}
 Summary:        A music management program
  
 %if 0%{?suse_version}
@@ -19,9 +19,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3 >= 3.5
+BuildRequires:  python3 >= 3.7
 %if 0%{?fedora}
-BuildRequires:  python3-devel >= 3.5
+BuildRequires:  python3-devel >= 3.7
 %endif
 BuildRequires:  unzip
 
@@ -61,7 +61,7 @@ Wavpack, and MPEG-4 AAC.
 Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
-Requires:       python3 >= 3.5
+Requires:       python3 >= 3.7
 Requires:       python3-mutagen >= 1.34
 Requires:       gtk3 >= 3.18
 Requires:       python3-feedparser
@@ -163,7 +163,7 @@ fi
 
 %files -n exfalso -f %{name}.lang
 %defattr(-,root,root,-)
-%doc COPYING NEWS README
+%doc COPYING NEWS.rst README.rst
 %{_bindir}/exfalso
 %{_bindir}/operon
 %{_datadir}/applications/io.github.quodlibet.ExFalso.desktop
@@ -181,6 +181,9 @@ fi
 %{python3_sitelib}/quodlibet-*.egg-info
 
 %changelog
+* Fri Nov  5 08:28:59 UTC 2021 - Sebastien CHAVAUX <seb95.scou@gmail.com>
+- Update version 4.4.0.
+
 * Fri Dec  7 2012 Christoph Reiter <reiter.christoph@gmail.com>
 - unstable build
 
