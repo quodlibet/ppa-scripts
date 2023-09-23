@@ -78,6 +78,8 @@ while 1:
     out = p("debsign -k '0EBF 782C 5D53 F7E5 FB02  A667 46BD 761F 7A49 B0EC' %s*.changes" % (PACKAGE,))
     if not failed(out):
         break
+    else:
+        print(out)
 
 dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
