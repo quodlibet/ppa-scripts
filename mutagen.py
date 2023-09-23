@@ -6,7 +6,7 @@ from _util import *
 ##########################################################
 
 PACKAGE = "mutagen"
-RELEASE_VERSION = "1.45.1"
+RELEASE_VERSION = "1.47.0"
 
 ##########################################################
 
@@ -27,7 +27,7 @@ cd(git_dir)
 
 p("git reset HEAD --hard")
 p("git clean -xfd")
-p("git checkout master")
+p("git checkout main")
 p("git pull --all")
 fail(p("git checkout release-%s" % RELEASE_VERSION))
 
@@ -47,8 +47,8 @@ if args.dist == "debian":
 else:
     releases = {
         "focal": "debian_mutagen",
-        "groovy": "debian_mutagen",
-        "hirsute": "debian_mutagen",
+        "jammy": "debian_mutagen",
+        "lunar": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():
