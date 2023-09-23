@@ -6,7 +6,7 @@ from _util import *
 ##########################################################
 
 PACKAGE= "quodlibet"
-RELEASE_VERSION = "4.5.0"
+RELEASE_VERSION = "4.6.0"
 
 ##########################################################
 
@@ -27,7 +27,7 @@ cd(git_dir)
 
 p("git reset HEAD --hard")
 p("git clean -xfd")
-p("git checkout master")
+p("git checkout main")
 p("git pull --all")
 fail(p("git checkout release-%s" % RELEASE_VERSION))
 
@@ -49,8 +49,8 @@ if args.dist == "debian":
 else:
     releases = {
         "focal": debian_dir,
-        "impish": debian_dir,
         "jammy": debian_dir,
+        "lunar": debian_dir,
     }
 
 for release, debian_dir in releases.items():
@@ -80,6 +80,8 @@ while 1:
     out = p("debsign -k '0EBF 782C 5D53 F7E5 FB02  A667 46BD 761F 7A49 B0EC' %s*.changes" % (PACKAGE,))
     if not failed(out):
         break
+    else:
+        print(out)
 
 dput = "dput --config '%s'" % dput_cfg
 if args.dist == "debian":
