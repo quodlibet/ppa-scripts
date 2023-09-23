@@ -46,10 +46,9 @@ if args.dist == "debian":
     releases = {"quodlibet-stable": "debian_mutagen"}
 else:
     releases = {
-        "bionic": "debian_mutagen",
-        "focal": "debian_mutagen_py3only",
-        "groovy": "debian_mutagen_py3only",
-        "hirsute": "debian_mutagen_py3only",
+        "focal": "debian_mutagen",
+        "groovy": "debian_mutagen",
+        "hirsute": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():
