@@ -51,6 +51,7 @@ else:
         "focal": debian_dir,
         "jammy": debian_dir,
         "lunar": debian_dir,
+        "mantic": debian_dir,
     }
 
 for release, debian_dir in releases.items():

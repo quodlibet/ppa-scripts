@@ -49,6 +49,7 @@ else:
         "focal": "debian_mutagen",
         "jammy": "debian_mutagen",
         "lunar": "debian_mutagen",
+        "mantic": "debian_mutagen",
     }
 
 for release, debian_dir in releases.items():
