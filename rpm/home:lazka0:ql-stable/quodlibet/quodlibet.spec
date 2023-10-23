@@ -1,5 +1,5 @@
 Name:           quodlibet
-Version:        4.5.0
+Version:        4.6.0
 Release:        0%{?dist}
 Summary:        A music management program
  
@@ -19,9 +19,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3 >= 3.7
+BuildRequires:  python3 >= 3.8
+BuildRequires:  python3-setuptools
 %if 0%{?fedora}
-BuildRequires:  python3-devel >= 3.7
+BuildRequires:  python3-devel >= 3.8
 %endif
 BuildRequires:  unzip
 
@@ -37,14 +38,14 @@ Requires:       gstreamer-plugins-good >= 1.8
 # suse has extra packages for typelibs
 Requires:       typelib-1_0-Gst-1_0
 Requires:       typelib-1_0-GstPbutils-1_0
-Requires:       typelib-1_0-Soup-2_4
+Requires:       typelib-1_0-Soup-3_0
 %else
 # fedora
 Requires:       python3-dbus
 Requires:       gstreamer1 >= 1.8
 Requires:       gstreamer1-plugins-base >= 1.8
 Requires:       gstreamer1-plugins-good >= 1.8
-Requires:       libsoup
+Requires:       libsoup3
 %endif
 
 
@@ -61,8 +62,8 @@ Wavpack, and MPEG-4 AAC.
 Summary: Tag editor for various music files
 Group: Applications/Multimedia
 
-Requires:       python3 >= 3.7
-Requires:       python3-mutagen >= 1.34
+Requires:       python3 >= 3.8
+Requires:       python3-mutagen >= 1.37
 Requires:       gtk3 >= 3.18
 Requires:       python3-feedparser
 Requires:       python3-musicbrainzngs >= 0.5
