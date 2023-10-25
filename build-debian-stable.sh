@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # needs a pbuilder:
-# sudo pbuilder create --distribution stable
+# sudo pbuilder create --distribution stable --mirror http://ftp.de.debian.org/debian/
 # sudo pbuilder update
 
 set -e
@@ -13,7 +13,7 @@ $MINID -k >/dev/null 2>&1 || true
 rm -rf ~/debian_archive
 $MINID
 ./quodlibet.py -ddebian
-./mutagen.py -ddebian -v1
+./mutagen.py -ddebian
 $MINID -r
 cd ~/debian_archive/quodlibet-stable/
 gpg -u B6264964! --output Release.gpg -ba Release
